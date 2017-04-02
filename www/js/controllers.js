@@ -117,55 +117,6 @@ angular.module('starter.controllers', [])
 
 .controller('hakkimizdaCtrl', function($scope) 
 {
-
-//ADIMSAYAR
-    // var successHandler = function (pedometerData) {
-    //     console.log(pedometerData.numberOfSteps);
-    // };
     
-    // var onError = function(error){
-    //         console.log("Error in tracking pedometer data: ", error);
-    //     };
-
-    // pedometer.startPedometerUpdates(successHandler, onError);
-
-
-
-//PUSULA
-// document.addEventListener("deviceready", onDeviceReady, false);
-// function onDeviceReady() {
-
-//     function onSuccess(heading) {
-//         console.log(heading.magneticHeading);
-//     };
-
-//     function onError(compassError) {
-//         alert('Compass error: ' + compassError.code);
-//     };
-
-//     var options = {
-//         frequency: 100
-//     }; 
-
-//     navigator.compass.watchHeading(onSuccess, onError, options);
-// }
-var arr=[];
-var gelenListe=[];
-var i=0;
-$scope.listeEkle=function()
-{
-    arr.push(i);
-    i++;
-}
-
-$scope.listeYazdir=function()
-{
-    gelenListe=arr.slice(Math.max(arr.length - 5, 0));
-}
-
-})
-
-
-
-
-;
+    
+});
