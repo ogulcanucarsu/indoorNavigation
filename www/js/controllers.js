@@ -46,15 +46,13 @@ angular.module('starter.controllers', [])
     // Chats.push();
     $scope.liste = Chats.all();
 
-
-
-
    //AÇ $scope.bulundugunYer=Chats.get(barcodeSonuc).s_name;
     
 })
 
 .controller('haritaCtrl', function($scope, $stateParams, Chats) 
 {
+    ///PUSULA
     var pusulaDegeri=0;
     var ilkDeger=0;
     var ikinciDeger=0;
@@ -79,19 +77,24 @@ angular.module('starter.controllers', [])
     }; 
 
     navigator.compass.watchHeading(onSuccess, onError, options);
+
+    ///PUSULA
     
 
     $scope.secilenYer = Chats.get($stateParams.haritaId);
-    $scope.harita='img/katPlaniGuncel2.png';
-    $scope.buradasiniz='img/buradasiniz2.png';
+
+    sinifKoordinat($scope.secilenYer.s_id);
+    denemeHK(370,374);
+
+    $scope.harita='img/rota2.png';
+    $scope.buradasiniz='img/buradasinizKonum.png';
 
     
-    document.getElementById("buradasinID").style["left"] = solHiza+"px";
-    document.getElementById("buradasinID").style["top"] = topHiza+"px";  
+    // document.getElementById("buradasinizKonum").style["left"] = 371+"px";
+    // document.getElementById("buradasinizKonum").style["top"] = 374+"px";  
     
 
-    
-
+    //ADIM SAYAR
     var successHandler = function (pedometerData) {
         ilkDeger=ikinciDeger;
         ikinciDeger=pedometerData.numberOfSteps;
@@ -112,6 +115,8 @@ angular.module('starter.controllers', [])
         };
 
     pedometer.startPedometerUpdates(successHandler, onError);
+
+    ///ADIM SAYAR
     
 })
 

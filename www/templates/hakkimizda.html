@@ -2,14 +2,16 @@
   <ion-content class="padding">
     
     <ion-scroll zooming="true" direction="xy" >
-      <div id="deneme2" class="parent">
-          <img class="image1" src="img/rota2.jpg"  />
-          <img class="image2" id="buradasinID" src="img/buradasiniz2.png"  style="top: 367px; left: 365px;" />
+      <div id="harita" class="parent">
+          <img class="image1" id="harita" src="img/rota2.jpg"  />
+          <img class="image2" id="buradasinizRota" src="img/buradasinizRota.png"  style="left: 371px; top: 374px; " />
       </div>
     </ion-scroll>
 
-    <button onclick="denemeHK(367,362)" class="button button-positive">Yazdir</button>
+    <button onclick="sinifKoordinat('BM301'); denemeHK(371,374);" class="button button-positive">301</button>
+    <button onclick="sinifKoordinat('BM303'); denemeHK(371,374);" class="button button-positive">303</button>
+    <button onclick="sinifKoordinat('BM305'); denemeHK(371,374);" class="button button-positive">305</button>
       
-   <button onclick="ekle()" class="button">asdasd</button>
+   <!--<button onclick="ekle()" class="button">asdasd</button>-->
   </ion-content>
 </ion-view>
