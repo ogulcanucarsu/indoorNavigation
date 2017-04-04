@@ -45,7 +45,7 @@ angular.module('starter.controllers', [])
 //   }
     // Chats.push();
     $scope.liste = Chats.all();
-
+    $scope.bulundugunYer="Bilgisayar Mühendisliği Giriş."
    //AÇ $scope.bulundugunYer=Chats.get(barcodeSonuc).s_name;
     
 })

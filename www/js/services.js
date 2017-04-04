@@ -48,53 +48,62 @@ var adimPusulaListe=[];
 
 var solHiza=371;
 var topHiza=374;
+var baslangicNoktasi=90;
+function baslangicBelirle()
+{
+    baslangicNoktasi=pusulaListe.slice(Math.max(pusulaListe.length - 1, 0));
+    console.log("baslangic noktasi: "+baslangicNoktasi+" alindi");
+    // baslangicNoktasi=yeniDeger;
+}
 
 function hareketEt(adim)
 {
       adimPusulaListe=pusulaListe.slice(Math.max(pusulaListe.length - adim, 0));
 
+      
         for(var i=0;i<adim;i++)
         {
             pusulaDegeri=adimPusulaListe[i];
-            if(pusulaDegeri>=22.5 && pusulaDegeri<=67.5)          
+            var fark=baslangicNoktasi-90;
+            if(pusulaDegeri>=(22.5+fark)%360 && pusulaDegeri<=(67.5+fark)%360)          
             {
                 solaGit();
                 yukariGit();
             }
-            else if(pusulaDegeri>=67.5 && pusulaDegeri<=112.5)
+            else if(pusulaDegeri>=(67.5+fark)%360 && pusulaDegeri<=(112.5+fark)%360)
             {
                 yukariGit();
             }
-            else if(pusulaDegeri>=112.5 && pusulaDegeri<=157.5)
+            else if(pusulaDegeri>=(112.5+fark)%360 && pusulaDegeri<=(157.5+fark)%360)
             {
                 sagaGit();
                 yukariGit();
             }
-            else if(pusulaDegeri>=157.5 && pusulaDegeri<=202.5)
+            else if(pusulaDegeri>=(157.5+fark)%360 && pusulaDegeri<=(202.5+fark)%360)
             {
                 sagaGit();
             }
-            else if(pusulaDegeri>=202.5 && pusulaDegeri<=247.5)
+            else if(pusulaDegeri>=(202.5+fark)%360 && pusulaDegeri<=(247.5+fark)%360)
             {
                 sagaGit();
                 asagiGit();
             }
-            else if(pusulaDegeri>=247.5 && pusulaDegeri<=292.5)
+            else if(pusulaDegeri>=(247.5+fark)%360 && pusulaDegeri<=(292.5+fark)%360)
             {
                 asagiGit();
             }
-            else if(pusulaDegeri>=292.5 && pusulaDegeri<=337.5)
+            else if(pusulaDegeri>=(292.5+fark)%360 && pusulaDegeri<=(337.5+fark)%360)
             {
                 solaGit();
                 asagiGit();
             }
-            else if(pusulaDegeri>=337.5 && pusulaDegeri<=360)
+            else if(pusulaDegeri>=(337.5+fark)%360 && pusulaDegeri<=(360+fark)%360)
             {
                 solaGit();
             }
-            else if(pusulaDegeri>=0 && pusulaDegeri<=22.5)
+            else if(pusulaDegeri>=(0+fark)%360 && pusulaDegeri<=(22.5+fark)%360)
             {
-                solaGitf();
+                solaGit();
             }
         }
 }
@@ -209,16 +218,16 @@ function denemeHK(solHiza2,topHiza2)
                 var topKalan=Math.abs(hedefTop-topHiza2);
                 var leftArtir=1;
                 var topArtir=1;
-                console.log("Top Kalan: "+(topKalan)+" Left Kalan: "+(leftKalan));
+                // console.log("Top Kalan: "+(topKalan)+" Left Kalan: "+(leftKalan));
                 if(topKalan>leftKalan+3)
                 {
                     topArtir=2;
-                    console.log("topBuyuk");
+                    // console.log("topBuyuk");
                 }
                 if(leftKalan>topKalan+3)
                 {
                     leftArtir=2;
-                    console.log("leftBuyuk");            
+                    // console.log("leftBuyuk");            
                 }
 
                 for(var i=0;i<sinifListe.length;i++)
