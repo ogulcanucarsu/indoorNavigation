@@ -6,6 +6,7 @@ angular.module('starter.services', [])
 
   // Some fake testing data
   var liste=[
+      {s_id:300, s_name:'DENEME'},
       {s_id:301, s_name:'BM 301'},
       {s_id:303, s_name:'BM 303'},
       {s_id:305, s_name:'BM 305'},
@@ -189,7 +190,10 @@ function denemeHK(solHiza2,topHiza2)
         
         var yeniHedefLeft;
         var yeniHedefTop;
+        var yeniHedefLeft2; //top cakisirsa
+        var yeniHedefTop2;
         var yeniHedefBool=false;
+        var yeniHedefBool2=false;
 
         function yeniHedefFunc(hedefLeft,hedefTop)
         {
@@ -267,6 +271,7 @@ function denemeHK(solHiza2,topHiza2)
                         }
                         if(yeniHedefBool)
                         {
+                             console.log("yeni hedef 1 calisti");                            
                             yeniHedefFunc(yeniHedefLeft,yeniHedefTop);
                         }
                         if(solHiza2==yeniHedefLeft && topHiza2==yeniHedefTop)
@@ -281,16 +286,47 @@ function denemeHK(solHiza2,topHiza2)
                     }
                     else if(topHiza2>sinifListe[i].y1 && topHiza2<sinifListe[i].y2 && (solHiza2==sinifListe[i].x1 || solHiza2==sinifListe[i].x2))
                     {
-                        // if(topHiza2==hedefTop && Math.abs((topHiza2-sinifListe[i].y1))>Math.abs((topHiza2-sinifListe[i].y2)))
-                        // {
-                        //     topIsaret=1;
-                        // }
-                        // if(topHiza2==hedefTop && Math.abs((topHiza2-sinifListe[i].y1))<Math.abs((topHiza2-sinifListe[i].y2)))
-                        // {
-                        //     topIsaret=-1;                    
-                        // }
                         solHiza2=solHiza2+0;
                         topHiza2=topHiza2+1*topIsaret;
+
+                         if(topHiza2==hedefTop && Math.abs((sinifListe[i].y1-topHiza2))<Math.abs((sinifListe[i].y2-topHiza2)))
+                         {
+                             yeniHedefLeft2=sinifListe[i].y1; 
+                             //yukarı yakin y1
+                            if(Math.abs((sinifListe[i].x1-solHiza2))>Math.abs((sinifListe[i].x2-solHiza2)))
+                            {
+                                yeniHedefTop2=sinifListe[i].x1;                 
+                            }
+                            else
+                            {
+                                yeniHedefTop2=sinifListe[i].x2; 
+                            }
+                            yeniHedefBool2=true;
+                         }
+                         else if(topHiza2==hedefTop && Math.abs((sinifListe[i].y1-topHiza2))>Math.abs((sinifListe[i].y2-topHiza2)))
+                         {
+                             yeniHedefLeft2=sinifListe[i].y2; 
+                             //asagi Yakın y2
+                             if(Math.abs((sinifListe[i].x1-solHiza2))>Math.abs((sinifListe[i].x2-solHiza2)))
+                             {
+                                 yeniHedefTop2=sinifListe[i].x1;                 
+                             }
+                             else
+                             {
+                                 yeniHedefTop2=sinifListe[i].x2; 
+                             }
+                             yeniHedefBool2=true;                    
+                         }
+                         if(yeniHedefBool2)
+                         {
+                             console.log("yeni hedef 2 calisti");
+                             yeniHedefFunc(yeniHedefLeft2,yeniHedefTop2);
+                         }
+                        if(solHiza2==yeniHedefLeft2 && topHiza2==yeniHedefTop2)
+                        {
+                            yeniHedefBool2=false;
+                        }
+
                         document.getElementById("buradasinizRota").style["left"] = solHiza2+"px";
                         document.getElementById("buradasinizRota").style["top"] = topHiza2+"px"; 
                         break;  
@@ -353,6 +389,11 @@ function denemeHK(solHiza2,topHiza2)
 
 function sinifKoordinat(sinif)
 {
+    if(sinif=='300') //BM301
+    {
+        hedefLeft=130;
+        hedefTop=104;
+    }
     if(sinif=='301') //BM301
     {
         hedefLeft=202;
