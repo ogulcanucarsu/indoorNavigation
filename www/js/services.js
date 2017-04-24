@@ -2,9 +2,7 @@ var barcodeSonuc;
 angular.module('starter.services', [])
 
 .factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
+    
   var liste=[
       {s_id:300, s_kat:3, s_name:'DENEME'},
       {s_id:301, s_kat:3, s_name:'BM 301'},
@@ -34,13 +32,6 @@ angular.module('starter.services', [])
       }
       return null;
     }
-    // push: function()
-    // {
-    //     for(var i=0;i<3;i++)
-    //     {
-    //       liste.push({s_id:9, s_name:'Eklendi'});
-    //     }
-    // }
   };
 });
 
@@ -187,7 +178,7 @@ function yukariGit()
         var hedefTop;
         var caprazGit=false;
         var caprazIkinciDefa=3;
-function denemeHK(solHiza2,topHiza2)
+function hedefFunc(solHiza2,topHiza2)
     {
         
         var yeniHedefLeft;
@@ -401,7 +392,7 @@ function denemeHK(solHiza2,topHiza2)
     yeniHedefFunc(hedefLeft,hedefTop);
 
     if(hedefTop==topHiza2 && hedefLeft==solHiza2) console.log("tamamlandı");
-    else denemeHK(solHiza2,topHiza2);
+    else hedefFunc(solHiza2,topHiza2);
 
 }
 
@@ -427,20 +418,6 @@ function denemeHK(solHiza2,topHiza2)
         sinifListe.push({son:'son'});        
         console.log(sinifListe);
     } 
-
-// {s_id:301, s_name:'BM 301'},
-//       {s_id:303, s_name:'BM 303'},
-//       {s_id:305, s_name:'BM 305'},
-//       {s_id:306, s_name:'BM Amfi A'},
-//       {s_id:307, s_name:'BM Amfi B'},  
-//       {s_id:308, s_name:'BM Elektronik Lab.'},  
-//       {s_id:309, s_name:'BM Kablosuz İletisim Lab.'},  
-//       {s_id:310, s_name:'BM Görüntü İşleme Lab.'},  
-//       {s_id:311, s_name:'BM Bilgisayar Lab.'},  
-//       {s_id:312, s_name:'BM Dekanlık Lab.'},  
-//       {s_id:313, s_name:'BM Gömülü Sistem Lab.'},  
-//       {s_id:314, s_name:'BM Öğretim Üyeleri Ofis'},  
-//       {s_id:315, s_name:'BM Bölüm Başlanlığı'}  
 
 function sinifKoordinat(sinif)
 {
@@ -516,21 +493,6 @@ function sinifKoordinat(sinif)
     }
 }
 
-// var liste=[
-//       {s_id:'BM301', s_name:'BM 301'},
-//       {s_id:'BM303', s_name:'BM 303'},
-//       {s_id:'BM305', s_name:'BM 305'},
-//       {s_id:'BMamfiA', s_name:'BM Amfi A'},
-//       {s_id:'BMamfiB', s_name:'BM Amfi B'},  
-//       {s_id:'BMelektronikLab', s_name:'BM Elektronik Lab.'},  
-//       {s_id:'BMkablosuzLab', s_name:'BM Kablosuz İletisim Lab.'},  
-//       {s_id:'BMgoruntuLab', s_name:'BM Görüntü İşleme Lab.'},  
-//       {s_id:'BMbilgisayarLab', s_name:'BM Bilgisayar Lab.'},  
-//       {s_id:'BMdekanlikLab', s_name:'BM Dekanlık Lab.'},  
-//       {s_id:'BMgomuluSistemLab', s_name:'BM Gömülü Sistem Lab.'},  
-//       {s_id:'BMofis', s_name:'BM Öğretim Üyeleri Ofis'},  
-//       {s_id:'BMbolumBaskanligi', s_name:'BM Bölüm Başlanlığı'}  
-//   ];
 var merdivenlerListe=[];
     
     function merdivenEkle()
@@ -567,5 +529,5 @@ function merdivenGit(solHiza3,topHiza3)
     }
     hedefLeft=merdivenlerListe[0].merdivenListe[enKucuk.index].x1;
     hedefTop=merdivenlerListe[0].merdivenListe[enKucuk.index].y1;
-    denemeHK(solHiza3,topHiza3);
+    hedefFunc(solHiza3,topHiza3);
 }

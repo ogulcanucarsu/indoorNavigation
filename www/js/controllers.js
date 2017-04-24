@@ -84,7 +84,7 @@ angular.module('starter.controllers', [])
     $scope.secilenYer = Chats.get($stateParams.haritaId);
 
     sinifKoordinat($scope.secilenYer.s_id);
-    // denemeHK(84,216);
+    // hedefFunc(84,216);
 
     $scope.harita='img/rota2.png';
     $scope.buradasiniz='img/buradasinizKonum.png';

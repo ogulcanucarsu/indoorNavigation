@@ -1,48 +1,30 @@
 <ion-view view-title="Harita">
   <ion-content class="padding">
-      <!--{{secilenYer.s_name}}-->
-      <!--{{adim}} - {{fark}} -->
-      <!--<div>
-        <img ng-src="{{buradasiniz}}" >
-      </div>
-      <div>
-        <img ng-src="{{harita}}"  >
-      </div>-->
       <ion-scroll zooming="true" direction="xy" >
+      <div id="harita" class="parent">
+          <img class="image1" src="img/yeniRota.png" />
+          <img class="image2" id="buradasinizRota" src="img/buradasinizRota.png"  />
+          <img class="image3" id="buradasinizKonum" src="img/buradasinizKonum.png"  />
+      </div>
+      </ion-scroll>
+  </ion-content>
+</ion-view>
+
+<!--<ion-scroll zooming="true" direction="xy" >
       <div id="harita" class="parent">
           <img class="image1" src="img/rota2.jpg" />
           <img class="image2" id="buradasinizRota" src="img/buradasinizRota.png"  />
           <img class="image3" id="buradasinizKonum" src="img/buradasinizKonum.png"  />
       </div>
        <button  class="button button-positive" onclick="baslangicBelirle()">Baslangic b.</button>
-       <button  class="button button-positive" onclick="denemeHK(84,216)">K0</button>
-       <button  class="button button-positive" onclick="denemeHK(360,250)">K1</button>
-       <button  class="button button-positive" onclick="denemeHK(632,105)">K2</button>
-       <button  class="button button-positive" onclick="denemeHK(282,414)">K3</button>
+       <button  class="button button-positive" onclick="hedefFunc(84,216)">K0</button>
+       <button  class="button button-positive" onclick="hedefFunc(360,250)">K1</button>
+       <button  class="button button-positive" onclick="hedefFunc(632,105)">K2</button>
+       <button  class="button button-positive" onclick="hedefFunc(282,414)">K3</button>
        <button  class="button button-positive" onclick="merdivenGit(84,216)">M0</button>
        <button  class="button button-positive" onclick="merdivenGit(360,250)">M1</button>
        <button  class="button button-positive" onclick="merdivenGit(632,105)">M2</button>
        <button  class="button button-positive" onclick="merdivenGit(282,414)">M3</button>
        <button  class="button button-positive" onclick="merdivenGit(153,237)">M4</button>
        
-       
-
-      </ion-scroll>
-
-          <!--<button  class="button button-positive" onclick="baslangicBelirle()">Baslangic Belirle</button>-->
-
-
-      <!--<ion-scroll zooming="true" direction="xy" >
-        <div id="deneme2" class="parent">
-            <img class="image1" id="harita" src="img/rota2.jpg"  />
-            <img class="image2" id="buradasinKonum" src="img/buradasinizRota.png"  style="left: 371px; top: 374px; " />
-        </div>
-    </ion-scroll>-->
-
-      <!--<button class="button button-assertive" ng-click="solaGit()"><</button>
-      <button class="button button-assertive" ng-click="sagaGit()">></button>
-      <button class="button button-assertive" ng-click="asagiGit()">asagi</button>
-      <button class="button button-assertive" ng-click="yukariGit()">yukarı</button>-->
-      
-  </ion-content>
-</ion-view>
+      </ion-scroll>-->
