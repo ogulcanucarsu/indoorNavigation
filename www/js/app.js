@@ -21,6 +21,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova','starter.
       StatusBar.styleDefault();
     }
     ekle();
+    merdivenEkle();
   });
 })
 

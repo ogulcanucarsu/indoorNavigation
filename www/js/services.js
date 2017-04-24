@@ -6,20 +6,20 @@ angular.module('starter.services', [])
 
   // Some fake testing data
   var liste=[
-      {s_id:300, s_name:'DENEME'},
-      {s_id:301, s_name:'BM 301'},
-      {s_id:303, s_name:'BM 303'},
-      {s_id:305, s_name:'BM 305'},
-      {s_id:306, s_name:'BM Amfi A'},
-      {s_id:307, s_name:'BM Amfi B'},  
-      {s_id:308, s_name:'BM Elektronik Lab.'},  
-      {s_id:309, s_name:'BM Kablosuz İletisim Lab.'},  
-      {s_id:310, s_name:'BM Görüntü İşleme Lab.'},  
-      {s_id:311, s_name:'BM Bilgisayar Lab.'},  
-      {s_id:312, s_name:'BM Dekanlık Lab.'},  
-      {s_id:313, s_name:'BM Gömülü Sistem Lab.'},  
-      {s_id:314, s_name:'BM Öğretim Üyeleri Ofis'},  
-      {s_id:315, s_name:'BM Bölüm Başlanlığı'}  
+      {s_id:300, s_kat:3, s_name:'DENEME'},
+      {s_id:301, s_kat:3, s_name:'BM 301'},
+      {s_id:303, s_kat:3, s_name:'BM 303'},
+      {s_id:305, s_kat:3, s_name:'BM 305'},
+      {s_id:306, s_kat:3, s_name:'BM Amfi A'},
+      {s_id:307, s_kat:3, s_name:'BM Amfi B'},  
+      {s_id:308, s_kat:3, s_name:'BM Elektronik Lab.'},  
+      {s_id:309, s_kat:3, s_name:'BM Kablosuz İletisim Lab.'},  
+      {s_id:310, s_kat:3, s_name:'BM Görüntü İşleme Lab.'},  
+      {s_id:311, s_kat:3, s_name:'BM Bilgisayar Lab.'},  
+      {s_id:312, s_kat:3, s_name:'BM Dekanlık Lab.'},  
+      {s_id:313, s_kat:3, s_name:'BM Gömülü Sistem Lab.'},  
+      {s_id:314, s_kat:3, s_name:'BM Öğretim Üyeleri Ofis'},  
+      {s_id:315, s_kat:3, s_name:'BM Bölüm Başlanlığı'}  
   ];
 
   return {
@@ -185,6 +185,8 @@ function yukariGit()
 
         var hedefLeft;
         var hedefTop;
+        var caprazGit=false;
+        var caprazIkinciDefa=3;
 function denemeHK(solHiza2,topHiza2)
     {
         
@@ -198,11 +200,11 @@ function denemeHK(solHiza2,topHiza2)
         function yeniHedefFunc(hedefLeft,hedefTop)
         {
                 var leftIsaret;
-                if(hedefLeft>solHiza2) leftIsaret=1;
+                if(hedefLeft>=solHiza2) leftIsaret=1;
                 else {leftIsaret=-1;}
 
                 var topIsaret;
-                if(hedefTop>topHiza2) topIsaret=1;
+                if(hedefTop>=topHiza2) topIsaret=1;
                 else {topIsaret=-1;}
                 
                 
@@ -222,20 +224,45 @@ function denemeHK(solHiza2,topHiza2)
                 var topKalan=Math.abs(hedefTop-topHiza2);
                 var leftArtir=1;
                 var topArtir=1;
+                var leftArtirBool=false;
+                var topArtirBool=false;
                 // console.log("Top Kalan: "+(topKalan)+" Left Kalan: "+(leftKalan));
-                if(topKalan>leftKalan+3)
+                if(topKalan>leftKalan)
                 {
-                    topArtir=2;
+                    // topArtir=2;
+                    topArtirBool=true;
                     // console.log("topBuyuk");
                 }
-                if(leftKalan>topKalan+3)
+                else if(topKalan<leftKalan)
                 {
-                    leftArtir=2;
+                    // leftArtir=2;
+                    leftArtirBool=true;
                     // console.log("leftBuyuk");            
                 }
-
+                // if(caprazIkinciDefa<=2)
+                //     {
+                //         if(caprazIkinciDefa==1)
+                //         {
+                //             caprazGit=true;
+                //             caprazIkinciDefa=3;
+                //         }
+                //         else
+                //         {
+                //             caprazIkinciDefa--;                            
+                //         }                                           
+                //     }
                 for(var i=0;i<sinifListe.length;i++)
-                {
+                {    
+                    // if((solHiza2==sinifListe[i].x1 || solHiza2==sinifListe[i].x2) && (topHiza2==sinifListe[i].y1 || topHiza2==sinifListe[i].y2))
+                    // {
+                    //     solHiza2=solHiza2+1*leftIsaret*(-1);
+                    //     topHiza2=topHiza2+1*topIsaret*(-1);
+                    //     document.getElementById("buradasinizRota").style["left"] = solHiza2+"px";
+                    //     document.getElementById("buradasinizRota").style["top"] = topHiza2+"px";  
+                    //     caprazIkinciDefa=2;
+                    //     yeniHedefFunc(hedefLeft-5,hedefTop);                      
+                    //     break;
+                    // }
                     if(solHiza2>sinifListe[i].x1 && solHiza2<sinifListe[i].x2 && (topHiza2==sinifListe[i].y1 || topHiza2==sinifListe[i].y2 ))
                     {
                         solHiza2=solHiza2+1*leftIsaret;
@@ -269,19 +296,22 @@ function denemeHK(solHiza2,topHiza2)
                             }
                             yeniHedefBool=true;                    
                         }
-                        if(yeniHedefBool)
-                        {
-                             console.log("yeni hedef 1 calisti");                            
-                            yeniHedefFunc(yeniHedefLeft,yeniHedefTop);
-                        }
+                        
                         if(solHiza2==yeniHedefLeft && topHiza2==yeniHedefTop)
                         {
                             yeniHedefBool=false;
+                            alert("hedeftamamlandı");                            
                         }
                         
                         
                         document.getElementById("buradasinizRota").style["left"] = solHiza2+"px";
                         document.getElementById("buradasinizRota").style["top"] = topHiza2+"px"; 
+                        if(yeniHedefBool)
+                        {
+                             console.log("yeni hedef 1 calisti");                            
+                            yeniHedefFunc(yeniHedefLeft,yeniHedefTop);
+                        }
+                        caprazGit=true;
                         break;
                     }
                     else if(topHiza2>sinifListe[i].y1 && topHiza2<sinifListe[i].y2 && (solHiza2==sinifListe[i].x1 || solHiza2==sinifListe[i].x2))
@@ -291,50 +321,75 @@ function denemeHK(solHiza2,topHiza2)
 
                          if(topHiza2==hedefTop && Math.abs((sinifListe[i].y1-topHiza2))<Math.abs((sinifListe[i].y2-topHiza2)))
                          {
-                             yeniHedefLeft2=sinifListe[i].y1; 
+                             yeniHedefTop2=sinifListe[i].y1; 
                              //yukarı yakin y1
                             if(Math.abs((sinifListe[i].x1-solHiza2))>Math.abs((sinifListe[i].x2-solHiza2)))
                             {
-                                yeniHedefTop2=sinifListe[i].x1;                 
+                                yeniHedefLeft2=sinifListe[i].x1;                 
                             }
                             else
                             {
-                                yeniHedefTop2=sinifListe[i].x2; 
+                                yeniHedefLeft2=sinifListe[i].x2; 
                             }
                             yeniHedefBool2=true;
                          }
                          else if(topHiza2==hedefTop && Math.abs((sinifListe[i].y1-topHiza2))>Math.abs((sinifListe[i].y2-topHiza2)))
                          {
-                             yeniHedefLeft2=sinifListe[i].y2; 
+                             yeniHedefTop2=sinifListe[i].y2; 
                              //asagi Yakın y2
                              if(Math.abs((sinifListe[i].x1-solHiza2))>Math.abs((sinifListe[i].x2-solHiza2)))
                              {
-                                 yeniHedefTop2=sinifListe[i].x1;                 
+                                 yeniHedefLeft2=sinifListe[i].x1;                 
                              }
                              else
                              {
-                                 yeniHedefTop2=sinifListe[i].x2; 
+                                 yeniHedefLeft2=sinifListe[i].x2; 
                              }
                              yeniHedefBool2=true;                    
                          }
-                         if(yeniHedefBool2)
+                         
+                        if(solHiza2==yeniHedefLeft2 && topHiza2==yeniHedefTop2)
+                        {
+                            yeniHedefBool2=false;
+                            alert("hedeftamamlandı");
+                        }
+
+                        document.getElementById("buradasinizRota").style["left"] = solHiza2+"px";
+                        document.getElementById("buradasinizRota").style["top"] = topHiza2+"px";
+                        if(yeniHedefBool2)
                          {
                              console.log("yeni hedef 2 calisti");
                              yeniHedefFunc(yeniHedefLeft2,yeniHedefTop2);
                          }
-                        if(solHiza2==yeniHedefLeft2 && topHiza2==yeniHedefTop2)
-                        {
-                            yeniHedefBool2=false;
-                        }
-
-                        document.getElementById("buradasinizRota").style["left"] = solHiza2+"px";
-                        document.getElementById("buradasinizRota").style["top"] = topHiza2+"px"; 
+                        caprazGit=true; 
                         break;  
                     }
                     else if(sinifListe[i].son=='son')
                     {
-                        if(hedefLeft!=solHiza2) solHiza2=solHiza2+leftArtir*leftIsaret;
-                        if(hedefTop!=topHiza2) topHiza2=topHiza2+topArtir*topIsaret;
+                        if(caprazGit)
+                        {
+                            topArtir=1;
+                            leftArtir=1;
+                            caprazGit=false;
+                        }
+                        else if(topArtirBool)
+                        {
+                            topArtir=1;
+                            leftArtir=0;
+                        }
+                        else if(leftArtirBool) 
+                        {
+                            topArtir=0;
+                            leftArtir=1;
+                        }
+                        if(hedefLeft!=solHiza2) 
+                        {
+                            solHiza2=solHiza2+leftArtir*leftIsaret;
+                        }
+                        if(hedefTop!=topHiza2) 
+                        {
+                            topHiza2=topHiza2+topArtir*topIsaret;
+                        }
                         document.getElementById("buradasinizRota").style["left"] = solHiza2+"px";
                         document.getElementById("buradasinizRota").style["top"] = topHiza2+"px"; 
                         break;
@@ -362,10 +417,10 @@ function denemeHK(solHiza2,topHiza2)
         sinifListe.push({sinifAdi:'ofis2', x1:376,x2:1000,y1:114,y2:1000});
         sinifListe.push({sinifAdi:'bolumBaskanligi', x1:686,x2:740,y1:0,y2:162});
         sinifListe.push({sinifAdi:'galeriBoslugu', x1:100,x2:234,y1:130,y2:208});
-        sinifListe.push({sinifAdi:'elektronikLab', x1:254,x2:350,y1:134,y2:206});
-        sinifListe.push({sinifAdi:'obss', x1:280,x2:350,y1:194,y2:282});
+        sinifListe.push({sinifAdi:'elektronikLab', x1:254,x2:350,y1:134,y2:282});
+        // sinifListe.push({sinifAdi:'obss', x1:280,x2:350,y1:194,y2:282});
         sinifListe.push({sinifAdi:'amfiAB', x1:254,x2:350,y1:0,y2:128});
-        sinifListe.push({sinifAdi:'bayWC', x1:290,x2:364,y1:308,y2:1000});
+        sinifListe.push({sinifAdi:'bayWC', x1:285,x2:364,y1:308,y2:1000});
         sinifListe.push({sinifAdi:'goruntuIslemeKablosuzIletisi', x1:0,x2:80,y1:104,y2:1000});
         sinifListe.push({sinifAdi:'bilgisayarDekanlikLab', x1:0,x2:236,y1:254,y2:1000});
         sinifListe.push({sinifAdi:'WConu', x1:0,x2:274,y1:314,y2:1000});
@@ -416,8 +471,8 @@ function sinifKoordinat(sinif)
     }
     else if(sinif=='307') //BMamfiB
     {
-        hedefLeft=254;
-        hedefTop=116;
+        hedefLeft=244;
+        hedefTop=118;
     }
     else if(sinif=='308') //BMelektronikLab
     {
@@ -446,7 +501,7 @@ function sinifKoordinat(sinif)
     }
     else if(sinif=='313') //BMgomuluSistemLab
     {
-        hedefLeft=376;
+        hedefLeft=372;
         hedefTop=272;
     }
     else if(sinif=='314') //BMofis
@@ -476,3 +531,41 @@ function sinifKoordinat(sinif)
 //       {s_id:'BMofis', s_name:'BM Öğretim Üyeleri Ofis'},  
 //       {s_id:'BMbolumBaskanligi', s_name:'BM Bölüm Başlanlığı'}  
 //   ];
+var merdivenlerListe=[];
+    
+    function merdivenEkle()
+    {
+        var merdivenListe=[];
+        merdivenListe.push({merdivenAdi:'ogretmenlerMerdiven', x1:456,y1:111});
+        merdivenListe.push({merdivenAdi:'BgirisMerdiven', x1:367,y1:399});
+        merdivenListe.push({merdivenAdi:'FgirisYanMerdiven', x1:24,y1:91});
+        merdivenListe.push({son:'son'});
+
+        merdivenlerListe.push({kat:'3',merdivenListe:merdivenListe});
+        console.log(merdivenListe);
+        
+    } 
+function merdivenGit(solHiza3,topHiza3)
+{
+    var enKucuk={deger:9999,index:99};
+    for(var i=0;i<merdivenlerListe.length;i++)
+    {
+        for(var k=0;k<merdivenlerListe[i].merdivenListe.length;k++)
+        {
+            console.log(merdivenlerListe[i].merdivenListe[k].x1+"--"+merdivenlerListe[i].merdivenListe[k].y1);
+            var a=solHiza3-merdivenlerListe[i].merdivenListe[k].x1;
+            var b=topHiza3-merdivenlerListe[i].merdivenListe[k].y1;
+            var c = Math.sqrt( a*a + b*b );
+            console.log("C= "+c);            
+            if(c<enKucuk.deger)
+            {
+                enKucuk.deger=c;
+                enKucuk.index=k;
+            }
+            console.log("En Kucuk= "+enKucuk.deger+" index = "+enKucuk.index);
+        }
+    }
+    hedefLeft=merdivenlerListe[0].merdivenListe[enKucuk.index].x1;
+    hedefTop=merdivenlerListe[0].merdivenListe[enKucuk.index].y1;
+    denemeHK(solHiza3,topHiza3);
+}
