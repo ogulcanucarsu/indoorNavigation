@@ -1,11 +1,21 @@
 <ion-view view-title="Harita">
+    <ion-nav-buttons side="secondary">
+      <button class="button" ng-click="barcode()" style="border-radius: 30px; background-color:#b72131; color:white;">
+        <i class="icon icon-left ion-ios-barcode-outline" style="color:white;">
+                </i>
+        QR Tara
+      </button>
+    </ion-nav-buttons>
   <ion-content class="padding">
-      <ion-scroll zooming="true" direction="xy" >
+      <ion-scroll zooming="true" delegate-handle="scroller" direction="xy" >
       <div id="harita" class="parent">
-          <img class="image1" src="img/yeniRota.png" />
+          <img class="image1" id="rota" src="img/yeniRota.png" />
           <img class="image2" id="buradasinizRota" src="img/buradasinizRota.png"  />
           <img class="image3" id="buradasinizKonum" src="img/buradasinizKonum.png"  />
       </div>
+       <!--<button  class="button button-positive" onclick="hedefFunc(1391,357);konumGuncelle(1391,357);">K0</button> 
+       <button  class="button button-positive" onclick="hedefFunc(1381,235);konumGuncelle(1381,235);">K1</button>
+       <button  class="button button-positive" onclick="baslangicBelirle()">Baslangic b.</button>      -->
       </ion-scroll>
   </ion-content>
 </ion-view>
