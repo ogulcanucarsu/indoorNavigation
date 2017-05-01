@@ -39,33 +39,33 @@ angular.module('starter.services', [])
 var kendiKonumuX;
 var kendiKonumuY;
 
-var hedefLeft;
-var hedefTop;
+var hedefX;
+var hedefY;
 var caprazGit = false;
 var caprazIkinciDefa = 3;
-function hedefFunc(solHiza2, topHiza2) {
+function hedefFunc(rotaX, rotaY) {
 
-    var yeniHedefLeft;
-    var yeniHedefTop;
-    var yeniHedefLeft2; //top cakisirsa
-    var yeniHedefTop2;
+    var yeniHedefX;
+    var yeniHedefY;
+    var yeniHedefX; //top cakisirsa
+    var yeniHedefY;
     var yeniHedefBool = false;
     var yeniHedefBool2 = false;
 
-    function yeniHedefFunc(hedefLeft, hedefTop) {
-        var leftIsaret;
-        if (hedefLeft >= solHiza2) leftIsaret = 1;
-        else { leftIsaret = -1; }
+    function yeniHedefFunc(hedefX, hedefY) {
+        var xIsaret;
+        if (hedefX >= rotaX) xIsaret = 1;
+        else { xIsaret = -1; }
 
-        var topIsaret;
-        if (hedefTop >= topHiza2) topIsaret = 1;
-        else { topIsaret = -1; }
+        var yIsaret;
+        if (hedefY >= rotaY) yIsaret = 1;
+        else { yIsaret = -1; }
 
 
         var img = new Image();
         img.src = 'img/buradasinizRota.png';
-        img.style["left"] = solHiza2 + "px";
-        img.style["top"] = topHiza2 + "px";
+        img.style["left"] = rotaX + "px";
+        img.style["top"] = rotaY + "px";
         img.style["position"] = "absolute";
 
         var div = document.getElementById('harita');
@@ -74,21 +74,21 @@ function hedefFunc(solHiza2, topHiza2) {
             div.appendChild(img);
         };
 
-        var leftKalan = Math.abs(hedefLeft - solHiza2);
-        var topKalan = Math.abs(hedefTop - topHiza2);
-        var leftArtir = 1;
-        var topArtir = 1;
-        var leftArtirBool = false;
-        var topArtirBool = false;
-        // console.log("Top Kalan: "+(topKalan)+" Left Kalan: "+(leftKalan));
-        if (topKalan > leftKalan) {
-            // topArtir=2;
-            topArtirBool = true;
+        var xKalanMesafe = Math.abs(hedefX - rotaX);
+        var yKalanMesafe = Math.abs(hedefY - rotaY);
+        var xArtir = 1;
+        var yArtir = 1;
+        var xArtirBool = false;
+        var yArtirBool = false;
+        // console.log("Top Kalan: "+(yKalanMesafe)+" Left Kalan: "+(xKalanMesafe));
+        if (yKalanMesafe > xKalanMesafe) {
+            // yArtir=2;
+            yArtirBool = true;
             // console.log("topBuyuk");
         }
-        else if (topKalan < leftKalan) {
-            // leftArtir=2;
-            leftArtirBool = true;
+        else if (yKalanMesafe < xKalanMesafe) {
+            // xArtir=2;
+            xArtirBool = true;
             // console.log("leftBuyuk");            
         }
         // if(caprazIkinciDefa<=2)
@@ -104,131 +104,131 @@ function hedefFunc(solHiza2, topHiza2) {
         //         }                                           
         //     }
         for (var i = 0; i < sinifListe.length; i++) {
-            // if((solHiza2==sinifListe[i].x1 || solHiza2==sinifListe[i].x2) && (topHiza2==sinifListe[i].y1 || topHiza2==sinifListe[i].y2))
+            // if((rotaX==sinifListe[i].x1 || rotaX==sinifListe[i].x2) && (rotaY==sinifListe[i].y1 || rotaY==sinifListe[i].y2))
             // {
-            //     solHiza2=solHiza2+1*leftIsaret*(-1);
-            //     topHiza2=topHiza2+1*topIsaret*(-1);
-            //     document.getElementById("buradasinizRota").style["left"] = solHiza2+"px";
-            //     document.getElementById("buradasinizRota").style["top"] = topHiza2+"px";  
+            //     rotaX=rotaX+1*xIsaret*(-1);
+            //     rotaY=rotaY+1*yIsaret*(-1);
+            //     document.getElementById("buradasinizRota").style["left"] = rotaX+"px";
+            //     document.getElementById("buradasinizRota").style["top"] = rotaY+"px";  
             //     caprazIkinciDefa=2;
-            //     yeniHedefFunc(hedefLeft-5,hedefTop);                      
+            //     yeniHedefFunc(hedefX-5,hedefY);                      
             //     break;
             // }
-            if (solHiza2 > sinifListe[i].x1 && solHiza2 < sinifListe[i].x2 && (topHiza2 == sinifListe[i].y1 || topHiza2 == sinifListe[i].y2)) {
-                solHiza2 = solHiza2 + 1 * leftIsaret;
-                topHiza2 = topHiza2 + 0;
+            if (rotaX > sinifListe[i].x1 && rotaX < sinifListe[i].x2 && (rotaY == sinifListe[i].y1 || rotaY == sinifListe[i].y2)) {
+                rotaX = rotaX + 1 * xIsaret;
+                rotaY = rotaY + 0;
 
-                if (solHiza2 == hedefLeft && Math.abs((sinifListe[i].x1 - solHiza2)) < Math.abs((sinifListe[i].x2 - solHiza2))) {
-                    yeniHedefLeft = sinifListe[i].x1;
+                if (rotaX == hedefX && Math.abs((sinifListe[i].x1 - rotaX)) < Math.abs((sinifListe[i].x2 - rotaX))) {
+                    yeniHedefX = sinifListe[i].x1;
                     //sola Yakın X1
-                    if (Math.abs((sinifListe[i].y1 - topHiza2)) > Math.abs((sinifListe[i].y2 - topHiza2))) {
-                        yeniHedefTop = sinifListe[i].y1;
+                    if (Math.abs((sinifListe[i].y1 - rotaY)) > Math.abs((sinifListe[i].y2 - rotaY))) {
+                        yeniHedefY = sinifListe[i].y1;
                     }
                     else {
-                        yeniHedefTop = sinifListe[i].y2;
+                        yeniHedefY = sinifListe[i].y2;
                     }
                     yeniHedefBool = true;
                 }
-                else if (solHiza2 == hedefLeft && Math.abs((sinifListe[i].x1 - solHiza2)) > Math.abs((sinifListe[i].x2 - solHiza2))) {
-                    yeniHedefLeft = sinifListe[i].x2;
+                else if (rotaX == hedefX && Math.abs((sinifListe[i].x1 - rotaX)) > Math.abs((sinifListe[i].x2 - rotaX))) {
+                    yeniHedefX = sinifListe[i].x2;
                     //sola Yakın X1
-                    if (Math.abs((sinifListe[i].y1 - topHiza2)) > Math.abs((sinifListe[i].y2 - topHiza2))) {
-                        yeniHedefTop = sinifListe[i].y1;
+                    if (Math.abs((sinifListe[i].y1 - rotaY)) > Math.abs((sinifListe[i].y2 - rotaY))) {
+                        yeniHedefY = sinifListe[i].y1;
                     }
                     else {
-                        yeniHedefTop = sinifListe[i].y2;
+                        yeniHedefY = sinifListe[i].y2;
                     }
                     yeniHedefBool = true;
                 }
 
-                if (solHiza2 == yeniHedefLeft && topHiza2 == yeniHedefTop) {
+                if (rotaX == yeniHedefX && rotaY == yeniHedefY) {
                     yeniHedefBool = false;
                     alert("hedeftamamlandı");
                 }
 
-
-                document.getElementById("buradasinizRota").style["left"] = solHiza2 + "px";
-                document.getElementById("buradasinizRota").style["top"] = topHiza2 + "px";
+                document.getElementById("buradasinizRota").style["left"] = rotaX + "px";
+                document.getElementById("buradasinizRota").style["top"] = rotaY + "px";
+                
                 if (yeniHedefBool) {
                     console.log("yeni hedef 1 calisti");
-                    yeniHedefFunc(yeniHedefLeft, yeniHedefTop);
+                    yeniHedefFunc(yeniHedefX, yeniHedefY);
                 }
                 caprazGit = true;
                 break;
             }
-            else if (topHiza2 > sinifListe[i].y1 && topHiza2 < sinifListe[i].y2 && (solHiza2 == sinifListe[i].x1 || solHiza2 == sinifListe[i].x2)) {
-                solHiza2 = solHiza2 + 0;
-                topHiza2 = topHiza2 + 1 * topIsaret;
+            else if (rotaY > sinifListe[i].y1 && rotaY < sinifListe[i].y2 && (rotaX == sinifListe[i].x1 || rotaX == sinifListe[i].x2)) {
+                rotaX = rotaX + 0;
+                rotaY = rotaY + 1 * yIsaret;
 
-                if (topHiza2 == hedefTop && Math.abs((sinifListe[i].y1 - topHiza2)) < Math.abs((sinifListe[i].y2 - topHiza2))) {
-                    yeniHedefTop2 = sinifListe[i].y1;
+                if (rotaY == hedefY && Math.abs((sinifListe[i].y1 - rotaY)) < Math.abs((sinifListe[i].y2 - rotaY))) {
+                    yeniHedefY = sinifListe[i].y1;
                     //yukarı yakin y1
-                    if (Math.abs((sinifListe[i].x1 - solHiza2)) > Math.abs((sinifListe[i].x2 - solHiza2))) {
-                        yeniHedefLeft2 = sinifListe[i].x1;
+                    if (Math.abs((sinifListe[i].x1 - rotaX)) > Math.abs((sinifListe[i].x2 - rotaX))) {
+                        yeniHedefX = sinifListe[i].x1;
                     }
                     else {
-                        yeniHedefLeft2 = sinifListe[i].x2;
+                        yeniHedefX = sinifListe[i].x2;
                     }
                     yeniHedefBool2 = true;
                 }
-                else if (topHiza2 == hedefTop && Math.abs((sinifListe[i].y1 - topHiza2)) > Math.abs((sinifListe[i].y2 - topHiza2))) {
-                    yeniHedefTop2 = sinifListe[i].y2;
+                else if (rotaY == hedefY && Math.abs((sinifListe[i].y1 - rotaY)) > Math.abs((sinifListe[i].y2 - rotaY))) {
+                    yeniHedefY = sinifListe[i].y2;
                     //asagi Yakın y2
-                    if (Math.abs((sinifListe[i].x1 - solHiza2)) > Math.abs((sinifListe[i].x2 - solHiza2))) {
-                        yeniHedefLeft2 = sinifListe[i].x1;
+                    if (Math.abs((sinifListe[i].x1 - rotaX)) > Math.abs((sinifListe[i].x2 - rotaX))) {
+                        yeniHedefX = sinifListe[i].x1;
                     }
                     else {
-                        yeniHedefLeft2 = sinifListe[i].x2;
+                        yeniHedefX = sinifListe[i].x2;
                     }
                     yeniHedefBool2 = true;
                 }
 
-                if (solHiza2 == yeniHedefLeft2 && topHiza2 == yeniHedefTop2) {
+                if (rotaX == yeniHedefX && rotaY == yeniHedefY) {
                     yeniHedefBool2 = false;
                     alert("hedeftamamlandı");
                 }
 
-                document.getElementById("buradasinizRota").style["left"] = solHiza2 + "px";
-                document.getElementById("buradasinizRota").style["top"] = topHiza2 + "px";
+                document.getElementById("buradasinizRota").style["left"] = rotaX + "px";
+                document.getElementById("buradasinizRota").style["top"] = rotaY + "px";
                 if (yeniHedefBool2) {
                     console.log("yeni hedef 2 calisti");
-                    yeniHedefFunc(yeniHedefLeft2, yeniHedefTop2);
+                    yeniHedefFunc(yeniHedefX, yeniHedefY);
                 }
                 caprazGit = true;
                 break;
             }
             else if (sinifListe[i].son == 'son') {
                 if (caprazGit) {
-                    topArtir = 1;
-                    leftArtir = 1;
+                    yArtir = 1;
+                    xArtir = 1;
                     caprazGit = false;
                 }
-                else if (topArtirBool) {
-                    topArtir = 1;
-                    leftArtir = 0;
+                else if (yArtirBool) {
+                    yArtir = 1;
+                    xArtir = 0;
                 }
-                else if (leftArtirBool) {
-                    topArtir = 0;
-                    leftArtir = 1;
+                else if (xArtirBool) {
+                    yArtir = 0;
+                    xArtir = 1;
                 }
-                if (hedefLeft != solHiza2) {
-                    solHiza2 = solHiza2 + leftArtir * leftIsaret;
+                if (hedefX != rotaX) {
+                    rotaX = rotaX + xArtir * xIsaret;
                 }
-                if (hedefTop != topHiza2) {
-                    topHiza2 = topHiza2 + topArtir * topIsaret;
+                if (hedefY != rotaY) {
+                    rotaY = rotaY + yArtir * yIsaret;
                 }
-                document.getElementById("buradasinizRota").style["left"] = solHiza2 + "px";
-                document.getElementById("buradasinizRota").style["top"] = topHiza2 + "px";
+                document.getElementById("buradasinizRota").style["left"] = rotaX + "px";
+                document.getElementById("buradasinizRota").style["top"] = rotaY + "px";
                 break;
             }
         }
 
     }
 
-    yeniHedefFunc(hedefLeft, hedefTop);
+    yeniHedefFunc(hedefX, hedefY);
 
-    if (hedefTop == topHiza2 && hedefLeft == solHiza2) console.log("tamamlandı");
-    else hedefFunc(solHiza2, topHiza2);
+    if (hedefY == rotaY && hedefX == rotaX) console.log("tamamlandı");
+    else hedefFunc(rotaX, rotaY);
 
 }
 
@@ -276,78 +276,78 @@ function ekle() {
 function sinifKoordinat(sinif) {
     if (sinif == '300') //BM301
     {
-        hedefLeft = 854;
-        hedefTop = 95;
+        hedefX = 854;
+        hedefY = 95;
     }
     if (sinif == '301') //BM301
     {
-        hedefLeft = 1236;
-        hedefTop = 98;
+        hedefX = 1236;
+        hedefY = 98;
     }
     else if (sinif == '303') //BM303
     {
-        hedefLeft = 1206;
-        hedefTop = 98;
+        hedefX = 1206;
+        hedefY = 98;
     }
     else if (sinif == '305') //BM305
     {
-        hedefLeft = 1170;
-        hedefTop = 99;
+        hedefX = 1170;
+        hedefY = 99;
     }
     else if (sinif == '306') //BMamfiA
     {
-        hedefLeft = 358;
-        hedefTop = 116;
+        hedefX = 358;
+        hedefY = 116;
     }
     else if (sinif == '307') //BMamfiB
     {
-        hedefLeft = 244;
-        hedefTop = 118;
+        hedefX = 244;
+        hedefY = 118;
     }
     else if (sinif == '308') //BMelektronikLab
     {
-        hedefLeft = 294;
-        hedefTop = 132;
+        hedefX = 294;
+        hedefY = 132;
     }
     else if (sinif == '309') //BMkablosuzLab
     {
-        hedefLeft = 86;
-        hedefTop = 128;
+        hedefX = 86;
+        hedefY = 128;
     }
     else if (sinif == '310') //BMgoruntuLab
     {
-        hedefLeft = 86;
-        hedefTop = 216;
+        hedefX = 86;
+        hedefY = 216;
     }
     else if (sinif == '311') //BMbilgisayarLab
     {
-        hedefLeft = 86;
-        hedefTop = 250;
+        hedefX = 86;
+        hedefY = 250;
     }
     else if (sinif == '312') //BMdekanlikLab
     {
-        hedefLeft = 164;
-        hedefTop = 250;
+        hedefX = 164;
+        hedefY = 250;
     }
     else if (sinif == '313') //BMgomuluSistemLab
     {
-        hedefLeft = 372;
-        hedefTop = 272;
+        hedefX = 372;
+        hedefY = 272;
     }
     else if (sinif == '314') //BMofis
     {
-        hedefLeft = 560;
-        hedefTop = 110;
+        hedefX = 560;
+        hedefY = 110;
     }
     else if (sinif == '315') //BMbolumBaskanligi
     {
-        hedefLeft = 678;
-        hedefTop = 108;
+        hedefX = 678;
+        hedefY = 108;
     }
     else if (sinif == '333') //DENEME
     {
-        hedefLeft = 854;
-        hedefTop = 95;
+        hedefX = 854;
+        hedefY = 95;
     }
 }
 
@@ -380,8 +380,8 @@ function merdivenGit(solHiza3, topHiza3) {
             console.log("En Kucuk= " + enKucuk.deger + " index = " + enKucuk.index);
         }
     }
-    hedefLeft = merdivenlerListe[0].merdivenListe[enKucuk.index].x1;
-    hedefTop = merdivenlerListe[0].merdivenListe[enKucuk.index].y1;
+    hedefX = merdivenlerListe[0].merdivenListe[enKucuk.index].x1;
+    hedefY = merdivenlerListe[0].merdivenListe[enKucuk.index].y1;
     hedefFunc(solHiza3, topHiza3);
 }
 
@@ -406,4 +406,10 @@ function kendiKonumuKoordinat(barcodeSonuc) {
 
 function iecompattest() {
     return (document.compatMode && document.compatMode != "BackCompat") ? document.documentElement : document.body
+}
+
+function tarayici()
+{
+        barcodeSonuc = 1;
+        kendiKonumuKoordinat(barcodeSonuc);
 }

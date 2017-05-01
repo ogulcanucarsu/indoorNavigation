@@ -29,16 +29,19 @@ angular.module('starter.controllers', [])
     $scope.bulundugunYer = barcodeSonuc;
 })
 .controller('haritaCtrl', function ($scope, $stateParams, Chats, $ionicScrollDelegate, $state, $cordovaBarcodeScanner) {
+    tarayici(); //Telefona atarken kapat
     $scope.ekranHeight = iecompattest().clientHeight - 80;
-    
+
     $scope.secilenYer = Chats.get($stateParams.haritaId);
     sinifKoordinat($scope.secilenYer.s_id);
-    hedefFunc(kendiKonumuX, kendiKonumuY);
+    hedefFunc(konumX, konumY);
     $scope.harita = 'img/rota2.png';
     $scope.buradasiniz = 'img/buradasinizKonum.png';
+
     setTimeout(function () {
-        $ionicScrollDelegate.$getByHandle('scroller').scrollTo(kendiKonumuX - (iecompattest().clientWidth) / 2, 0, true);
+        $ionicScrollDelegate.$getByHandle('scroller').scrollTo(konumX - (iecompattest().clientWidth) / 2, 0, true);
     }, 10);
+    
     document.addEventListener("deviceready", function () {
         ///PUSULA
         var pusulaDegeri = 0;
@@ -77,6 +80,7 @@ angular.module('starter.controllers', [])
         pedometer.startPedometerUpdates(successHandler, onError);
         ///ADIM SAYAR
     }, false);
+    
     $scope.barcode = function () {
         $cordovaBarcodeScanner
             .scan()
@@ -94,10 +98,10 @@ angular.module('starter.controllers', [])
                 setTimeout(function () {
                     kendiKonumuKoordinat(barcodeSonuc);
                     // sinifKoordinat('300');                    
-                    hedefFunc(kendiKonumuX, kendiKonumuY);
+                    hedefFunc(konumX, konumY);
                 }, 10);
                 setTimeout(function () {
-                    $ionicScrollDelegate.$getByHandle('scroller').scrollTo(kendiKonumuX - (iecompattest().clientWidth) / 2, 0, true);
+                    $ionicScrollDelegate.$getByHandle('scroller').scrollTo(konumX - (iecompattest().clientWidth) / 2, 0, true);
                 }, 20);
             }, function (error) {
                 console.log("error");
