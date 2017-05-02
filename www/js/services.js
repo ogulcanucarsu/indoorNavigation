@@ -44,7 +44,7 @@ var hedefY;
 var caprazGit = false;
 var caprazIkinciDefa = 3;
 function hedefFunc(rotaX, rotaY) {
-
+console.log("calisiyor");
     var yeniHedefX;
     var yeniHedefY;
     var yeniHedefX; //top cakisirsa
@@ -80,40 +80,16 @@ function hedefFunc(rotaX, rotaY) {
         var yArtir = 1;
         var xArtirBool = false;
         var yArtirBool = false;
-        // console.log("Top Kalan: "+(yKalanMesafe)+" Left Kalan: "+(xKalanMesafe));
+        
         if (yKalanMesafe > xKalanMesafe) {
-            // yArtir=2;
             yArtirBool = true;
-            // console.log("topBuyuk");
         }
         else if (yKalanMesafe < xKalanMesafe) {
-            // xArtir=2;
-            xArtirBool = true;
-            // console.log("leftBuyuk");            
+            xArtirBool = true;          
         }
-        // if(caprazIkinciDefa<=2)
-        //     {
-        //         if(caprazIkinciDefa==1)
-        //         {
-        //             caprazGit=true;
-        //             caprazIkinciDefa=3;
-        //         }
-        //         else
-        //         {
-        //             caprazIkinciDefa--;                            
-        //         }                                           
-        //     }
+        
         for (var i = 0; i < sinifListe.length; i++) {
-            // if((rotaX==sinifListe[i].x1 || rotaX==sinifListe[i].x2) && (rotaY==sinifListe[i].y1 || rotaY==sinifListe[i].y2))
-            // {
-            //     rotaX=rotaX+1*xIsaret*(-1);
-            //     rotaY=rotaY+1*yIsaret*(-1);
-            //     document.getElementById("buradasinizRota").style["left"] = rotaX+"px";
-            //     document.getElementById("buradasinizRota").style["top"] = rotaY+"px";  
-            //     caprazIkinciDefa=2;
-            //     yeniHedefFunc(hedefX-5,hedefY);                      
-            //     break;
-            // }
+
             if (rotaX > sinifListe[i].x1 && rotaX < sinifListe[i].x2 && (rotaY == sinifListe[i].y1 || rotaY == sinifListe[i].y2)) {
                 rotaX = rotaX + 1 * xIsaret;
                 rotaY = rotaY + 0;
@@ -227,9 +203,35 @@ function hedefFunc(rotaX, rotaY) {
 
     yeniHedefFunc(hedefX, hedefY);
 
-    if (hedefY == rotaY && hedefX == rotaX) console.log("tamamlandı");
-    else hedefFunc(rotaX, rotaY);
+    
+     if(durdurD)
+    {
+        setTimeout(function()
+        {
+            if(rotaX<853 && rotaY<398)
+            {
+                hedefX=854;
+                hedefY=98;
+            }
+            else
+            {
+                sinifKoordinat(333);
+            }
+            
+            if (hedefY == rotaY && hedefX == rotaX) 
+            {
+                alert("tamamlandı");
+            }
+            else
+            hedefFunc(rotaX, rotaY);  
+        },1);
+    }
 
+}
+var durdurD=true;
+function durdur()
+{
+    durdurD=false;
 }
 
 
@@ -238,20 +240,22 @@ var sinifListe = [];
 
 function ekle() {
     sinifListe = [];
-    sinifListe.push({ sinifAdi: 'jeoFizikSolUst', x1: 0, x2: 633, y1: 0, y2: 94 });
-    sinifListe.push({ sinifAdi: 'fenBilimleri', x1: 650, x2: 1054, y1: 0, y2: 94 });
-    sinifListe.push({ sinifAdi: '301_303_305', x1: 1072, x2: 1286, y1: 0, y2: 94 });
-    sinifListe.push({ sinifAdi: 'amfiAB', x1: 1286, x2: 1381, y1: 0, y2: 128 });
-    sinifListe.push({ sinifAdi: 'ogretimUyeleri', x1: 1410, x2: 1687, y1: 0, y2: 104 });
-    sinifListe.push({ sinifAdi: 'fenBilim', x1: 649, x2: 883, y1: 105, y2: 10000 });  //
-    sinifListe.push({ sinifAdi: 'elektronikHaberlesme', x1: 883, x2: 1131, y1: 95, y2: 10000 });
-    sinifListe.push({ sinifAdi: 'jeoFizikGaleriBosluguSagi', x1: 586, x2: 701, y1: 135, y2: 10000 });
-    sinifListe.push({ sinifAdi: 'GaleriJEO', x1: 438, x2: 559, y1: 136, y2: 198 });
-    sinifListe.push({ sinifAdi: 'GaleriBilgisayar', x1: 1149, x2: 1270, y1: 128, y2: 202 });
-    sinifListe.push({ sinifAdi: 'JeoDerslikler', x1: 0, x2: 412, y1: 0, y2: 202 });
-    sinifListe.push({ sinifAdi: 'BilgisayarLablar', x1: 1114, x2: 1274, y1: 230, y2: 10000 });
-    sinifListe.push({ sinifAdi: 'obss', x1: 1296, x2: 1381, y1: 129, y2: 271 });
-    sinifListe.push({ sinifAdi: 'wc', x1: 1324, x2: 1391, y1: 295, y2: 373 });
+    sinifListe.push({ sinifAdi: 'jeoDerslikler',            sinifId:'1',    x1: 0,      x2: 633,         y1: 0,       y2: 94 });
+    sinifListe.push({ sinifAdi: 'fenElektrikUstSiniflar',   sinifId:'2',    x1: 650,    x2: 1054,        y1: 0,       y2: 94 });
+    sinifListe.push({ sinifAdi: 'bilgisayar301_303_305',    sinifId:'3',    x1: 1072,   x2: 1297,        y1: 0,       y2: 94 });
+    sinifListe.push({ sinifAdi: 'bilgisayarAmfiAB',         sinifId:'4',    x1: 1290,   x2: 1381,        y1: 0,       y2: 128 });
+    sinifListe.push({ sinifAdi: 'bilgisayarOgretimUyeleri', sinifId:'5',    x1: 1410,   x2: 1687,        y1: 0,       y2: 104 });
+    sinifListe.push({ sinifAdi: 'fenElektrikAltSiniflar',   sinifId:'6',    x1: 644,    x2: 1122,        y1: 98,     y2: 10000 });  //
+    sinifListe.push({ sinifAdi: 'jeoSagdakiDerslikler',     sinifId:'7',    x1: 580,    x2: 660,         y1: 132,     y2: 10000 });
+    sinifListe.push({ sinifAdi: 'jeoGALERI',                sinifId:'8',    x1: 436,    x2: 559,         y1: 136,     y2: 199 });
+    sinifListe.push({ sinifAdi: 'GaleriBilgisayar',         sinifId:'9',    x1: 1149,   x2: 1270,        y1: 128,     y2: 202 });
+    sinifListe.push({ sinifAdi: 'JeoSoldakiDerslikler',     sinifId:'10',   x1: 0,      x2: 412,         y1: 0,       y2: 202 });
+    sinifListe.push({ sinifAdi: 'bilgisayarLablar',         sinifId:'11',   x1: 1112,   x2: 1272,        y1: 240,     y2: 10000 });
+    sinifListe.push({ sinifAdi: 'bilgisayarObss',           sinifId:'12',   x1: 1296,   x2: 1381,        y1: 134,     y2: 271 });
+    sinifListe.push({ sinifAdi: 'bilgisayarWC',             sinifId:'13',   x1: 1324,   x2: 1391,        y1: 295,     y2: 10000 });
+    sinifListe.push({ sinifAdi: 'bilgisayarSagLab',         sinifId:'14',   x1: 1412,   x2: 1686,        y1: 112,     y2: 10000 });
+    sinifListe.push({ sinifAdi: 'bilgisayarLablarSag',      sinifId:'15',   x1: 1260,   x2: 1307,        y1: 303,     y2: 10000 });
+    sinifListe.push({ sinifAdi: 'jeoAltLablar',             sinifId:'16',   x1: 366,    x2: 597,         y1: 243,     y2: 10000 });
 
     sinifListe.push({ son: 'son' });
     console.log(sinifListe);
@@ -346,8 +350,8 @@ function sinifKoordinat(sinif) {
     }
     else if (sinif == '333') //DENEME
     {
-        hedefX = 854;
-        hedefY = 95;
+        hedefX = 1400;
+        hedefY = 366;
     }
 }
 
