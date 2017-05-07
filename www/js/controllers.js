@@ -2,7 +2,8 @@ angular.module('starter.controllers', [])
 
 .controller('anaSayfaCtrl', function ($scope, $cordovaBarcodeScanner, $state) {
     var basarili = true;
-    $scope.barcode = function () {
+    $scope.barcode = function (engelliModel) {
+        engelliBool=engelliModel;
         document.addEventListener("deviceready", function () {
             $cordovaBarcodeScanner
                 .scan()
@@ -18,7 +19,8 @@ angular.module('starter.controllers', [])
                 });
         }, false);
     }
-    $scope.deneme = function () {
+    $scope.deneme = function (engelliModel) {
+        engelliBool=engelliModel;
         barcodeSonuc = 1;
         $state.go('tab.dropDown');
     }
@@ -38,7 +40,9 @@ angular.module('starter.controllers', [])
     sonHedefX=$scope.secilenYer.s_x;
     sonHedefY=$scope.secilenYer.s_y;
     gitBolgeIndex=0;
-    gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat);    
+    if(engelliBool) EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat); 
+    else gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat); 
+
     hedefFunc(konumX, konumY);
     $scope.harita = 'img/rota2.png';
     $scope.buradasiniz = 'img/buradasinizKonum.png';
@@ -102,7 +106,11 @@ angular.module('starter.controllers', [])
                 };
                 setTimeout(function () {
                     kendiKonumuKoordinat(barcodeSonuc);
-                    // sinifKoordinat('300');                    
+                    // sinifKoordinat('300');
+                    gitBolgeIndex=0;
+                    if(engelliBool) EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat); 
+                    else gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat); 
+
                     hedefFunc(konumX, konumY);
                 }, 10);
                 setTimeout(function () {
@@ -115,158 +123,158 @@ angular.module('starter.controllers', [])
 })
 .controller('hakkimizdaCtrl', function ($scope) {
 
-    $scope.sonuc='';
-    document.addEventListener("deviceready", function () {
-        var pusulaDegeri = 0;
+    // $scope.sonuc='';
+    // document.addEventListener("deviceready", function () {
+    //     var pusulaDegeri = 0;
         
-        function onSuccess(heading) {
-            pusulaDegeri = heading.magneticHeading;
-            pusulaDegeri = pusulaDegeri.toFixed(2);
-            pusulaDegeri = parseFloat(pusulaDegeri);
+    //     function onSuccess(heading) {
+    //         pusulaDegeri = heading.magneticHeading;
+    //         pusulaDegeri = pusulaDegeri.toFixed(2);
+    //         pusulaDegeri = parseFloat(pusulaDegeri);
             
-            pusulaHareketi(pusulaDegeri);
-            console.log(pusulaDegeri);
-        };
-        function onError(compassError) {
-            alert('Compass error: ' + compassError.code);
-        };
-        var options = {
-            frequency: 100
-        };
-        navigator.compass.watchHeading(onSuccess, onError, options);
+    //         pusulaHareketi(pusulaDegeri);
+    //         console.log(pusulaDegeri);
+    //     };
+    //     function onError(compassError) {
+    //         alert('Compass error: ' + compassError.code);
+    //     };
+    //     var options = {
+    //         frequency: 100
+    //     };
+    //     navigator.compass.watchHeading(onSuccess, onError, options);
 
-    },false);
+    // },false);
 
-    function pusulaHareketi(pusulaDegeri)
-    {
-        var fark = 200;
-        if (pusulaDegeri >= (11.25 + fark) % 360 && pusulaDegeri <= (33.75 + fark) % 360) {       //211 233
-            // solaGit();
-            // yukariGit();
-            $scope.$apply(function () 
-            {
-                $scope.sonuc="sol sol yukarı";                
-            })
-        }
-        else if (pusulaDegeri >= (33.75 + fark) % 360 && pusulaDegeri <= (56.25 + fark) % 360) { //233 256
-            // yukariGit();
-            $scope.$apply(function () 
-            {            
-                $scope.sonuc="sol sol yukarı yukarı";
-            })
-        }
-        else if (pusulaDegeri >= (56.25 + fark) % 360 && pusulaDegeri <= (78.75 + fark) % 360) { //256 278
-            // sagaGit();
-            // yukariGit();
-            $scope.$apply(function () 
-            {            
-            $scope.sonuc="sol yukarı yukarı";
-            })            
-        }
-        else if (pusulaDegeri >= (78.75 + fark) % 360 && pusulaDegeri <= (101.25 + fark) % 360) { //278 301
-            // sagaGit();
-            $scope.$apply(function () 
-            {            
-            $scope.sonuc="yukarı yukarı";    
-            })        
-        }
-        else if (pusulaDegeri >= (101.25 + fark) % 360 && pusulaDegeri <= (123.75 + fark) % 360) { //301 323
-            // sagaGit();
-            // asagiGit();
-            $scope.$apply(function () 
-            {            
-            $scope.sonuc="sağ yukarı yukarı"; 
-            })
-        }
-        else if (pusulaDegeri >= (123.75 + fark) % 360 && pusulaDegeri <= (146.25 + fark) % 360) { //323 346
-            // asagiGit();
-            $scope.$apply(function () 
-            {            
-            $scope.sonuc="sağ sağ yukarı yukarı";
-            })
-        }
-        else if (pusulaDegeri >= (146.25 + fark) % 360 && pusulaDegeri <= (159.99 + fark) % 360) { //346 368
-            // solaGit();
-            // asagiGit();
-            $scope.$apply(function () 
-            {            
-            $scope.sonuc="sağ sağ yukarı";
-            })
-        }
-        else if (pusulaDegeri >= (160.01 + fark) % 360 && pusulaDegeri <= (168.75 + fark) % 360) { //346 368
-            // solaGit();
-            // asagiGit();
-            $scope.$apply(function () 
-            {            
-            $scope.sonuc="sağ sağ yukarı";
-            })
-        }
-        else if (pusulaDegeri >= (168.75 + fark) % 360 && pusulaDegeri <= (191.25 + fark) % 360) { //368 391
-            // solaGit();
-            $scope.$apply(function () 
-            {            
-            $scope.sonuc="sağ sağ";
-            })
-        }
-        else if (pusulaDegeri >= (191.25 + fark) % 360 && pusulaDegeri <= (213.75 + fark) % 360) { //391 413
-            // solaGit();
-            $scope.$apply(function () 
-            {            
-            $scope.sonuc="sağ sağ aşağı";  
-            })         
-        }
-        else if (pusulaDegeri >= (213.75 + fark) % 360 && pusulaDegeri <= (236.25 + fark) % 360) { //413 - 436
-            // solaGit();
-            // yukariGit();
-            $scope.$apply(function () 
-            {
-                $scope.sonuc="sağ sağ aşağı aşağı";                
-            })
-        }
-        else if (pusulaDegeri >= (236.25 + fark) % 360 && pusulaDegeri <= (258.75 + fark) % 360) { //267 - 312
-            // yukariGit();
-            $scope.$apply(function () 
-            {            
-                $scope.sonuc="sağ aşağı aşağı";
-            })
-        }
-        else if (pusulaDegeri >= (258.75 + fark) % 360 && pusulaDegeri <= (281.25 + fark) % 360) { //312 - 357
-            // sagaGit();
-            // yukariGit();
-            $scope.$apply(function () 
-            {            
-            $scope.sonuc="aşağı aşağı";
-            })            
-        }
-        else if (pusulaDegeri >= (281.25 + fark) % 360 && pusulaDegeri <= (303.75 + fark) % 360) { //0.5 - 42.5 
-            // sagaGit();
-            $scope.$apply(function () 
-            {            
-            $scope.sonuc="sol aşağı aşağı";    
-            })        
-        }
-        else if (pusulaDegeri >= (303.75 + fark) % 360 && pusulaDegeri <= (326.25 + fark) % 360) { //42.5 - 87
-            // sagaGit();
-            // asagiGit();
-            $scope.$apply(function () 
-            {            
-            $scope.sonuc="sol sol aşağı aşağı"; 
-            })
-        }
-        else if (pusulaDegeri >= (326.25 + fark) % 360 && pusulaDegeri <= (348.75 + fark) % 360) { //87 - 132
-            // asagiGit();
-            $scope.$apply(function () 
-            {            
-            $scope.sonuc="sol sol aşağı";
-            })
-        }
-        else if (pusulaDegeri >= (348.75 + fark) % 360 && pusulaDegeri <= (371.25 + fark) % 360) { //132 - 177
-            // solaGit();
-            // asagiGit();
-            $scope.$apply(function () 
-            {            
-            $scope.sonuc="sol sol";
-            })
-        }
-    }
+    // function pusulaHareketi(pusulaDegeri)
+    // {
+    //     var fark = 200;
+    //     if (pusulaDegeri >= (11.25 + fark) % 360 && pusulaDegeri <= (33.75 + fark) % 360) {       //211 233
+    //         // solaGit();
+    //         // yukariGit();
+    //         $scope.$apply(function () 
+    //         {
+    //             $scope.sonuc="sol sol yukarı";                
+    //         })
+    //     }
+    //     else if (pusulaDegeri >= (33.75 + fark) % 360 && pusulaDegeri <= (56.25 + fark) % 360) { //233 256
+    //         // yukariGit();
+    //         $scope.$apply(function () 
+    //         {            
+    //             $scope.sonuc="sol sol yukarı yukarı";
+    //         })
+    //     }
+    //     else if (pusulaDegeri >= (56.25 + fark) % 360 && pusulaDegeri <= (78.75 + fark) % 360) { //256 278
+    //         // sagaGit();
+    //         // yukariGit();
+    //         $scope.$apply(function () 
+    //         {            
+    //         $scope.sonuc="sol yukarı yukarı";
+    //         })            
+    //     }
+    //     else if (pusulaDegeri >= (78.75 + fark) % 360 && pusulaDegeri <= (101.25 + fark) % 360) { //278 301
+    //         // sagaGit();
+    //         $scope.$apply(function () 
+    //         {            
+    //         $scope.sonuc="yukarı yukarı";    
+    //         })        
+    //     }
+    //     else if (pusulaDegeri >= (101.25 + fark) % 360 && pusulaDegeri <= (123.75 + fark) % 360) { //301 323
+    //         // sagaGit();
+    //         // asagiGit();
+    //         $scope.$apply(function () 
+    //         {            
+    //         $scope.sonuc="sağ yukarı yukarı"; 
+    //         })
+    //     }
+    //     else if (pusulaDegeri >= (123.75 + fark) % 360 && pusulaDegeri <= (146.25 + fark) % 360) { //323 346
+    //         // asagiGit();
+    //         $scope.$apply(function () 
+    //         {            
+    //         $scope.sonuc="sağ sağ yukarı yukarı";
+    //         })
+    //     }
+    //     else if (pusulaDegeri >= (146.25 + fark) % 360 && pusulaDegeri <= (159.99 + fark) % 360) { //346 368
+    //         // solaGit();
+    //         // asagiGit();
+    //         $scope.$apply(function () 
+    //         {            
+    //         $scope.sonuc="sağ sağ yukarı";
+    //         })
+    //     }
+    //     else if (pusulaDegeri >= (160.01 + fark) % 360 && pusulaDegeri <= (168.75 + fark) % 360) { //346 368
+    //         // solaGit();
+    //         // asagiGit();
+    //         $scope.$apply(function () 
+    //         {            
+    //         $scope.sonuc="sağ sağ yukarı";
+    //         })
+    //     }
+    //     else if (pusulaDegeri >= (168.75 + fark) % 360 && pusulaDegeri <= (191.25 + fark) % 360) { //368 391
+    //         // solaGit();
+    //         $scope.$apply(function () 
+    //         {            
+    //         $scope.sonuc="sağ sağ";
+    //         })
+    //     }
+    //     else if (pusulaDegeri >= (191.25 + fark) % 360 && pusulaDegeri <= (213.75 + fark) % 360) { //391 413
+    //         // solaGit();
+    //         $scope.$apply(function () 
+    //         {            
+    //         $scope.sonuc="sağ sağ aşağı";  
+    //         })         
+    //     }
+    //     else if (pusulaDegeri >= (213.75 + fark) % 360 && pusulaDegeri <= (236.25 + fark) % 360) { //413 - 436
+    //         // solaGit();
+    //         // yukariGit();
+    //         $scope.$apply(function () 
+    //         {
+    //             $scope.sonuc="sağ sağ aşağı aşağı";                
+    //         })
+    //     }
+    //     else if (pusulaDegeri >= (236.25 + fark) % 360 && pusulaDegeri <= (258.75 + fark) % 360) { //267 - 312
+    //         // yukariGit();
+    //         $scope.$apply(function () 
+    //         {            
+    //             $scope.sonuc="sağ aşağı aşağı";
+    //         })
+    //     }
+    //     else if (pusulaDegeri >= (258.75 + fark) % 360 && pusulaDegeri <= (281.25 + fark) % 360) { //312 - 357
+    //         // sagaGit();
+    //         // yukariGit();
+    //         $scope.$apply(function () 
+    //         {            
+    //         $scope.sonuc="aşağı aşağı";
+    //         })            
+    //     }
+    //     else if (pusulaDegeri >= (281.25 + fark) % 360 && pusulaDegeri <= (303.75 + fark) % 360) { //0.5 - 42.5 
+    //         // sagaGit();
+    //         $scope.$apply(function () 
+    //         {            
+    //         $scope.sonuc="sol aşağı aşağı";    
+    //         })        
+    //     }
+    //     else if (pusulaDegeri >= (303.75 + fark) % 360 && pusulaDegeri <= (326.25 + fark) % 360) { //42.5 - 87
+    //         // sagaGit();
+    //         // asagiGit();
+    //         $scope.$apply(function () 
+    //         {            
+    //         $scope.sonuc="sol sol aşağı aşağı"; 
+    //         })
+    //     }
+    //     else if (pusulaDegeri >= (326.25 + fark) % 360 && pusulaDegeri <= (348.75 + fark) % 360) { //87 - 132
+    //         // asagiGit();
+    //         $scope.$apply(function () 
+    //         {            
+    //         $scope.sonuc="sol sol aşağı";
+    //         })
+    //     }
+    //     else if (pusulaDegeri >= (348.75 + fark) % 360 && pusulaDegeri <= (371.25 + fark) % 360) { //132 - 177
+    //         // solaGit();
+    //         // asagiGit();
+    //         $scope.$apply(function () 
+    //         {            
+    //         $scope.sonuc="sol sol";
+    //         })
+    //     }
+    // }
 });

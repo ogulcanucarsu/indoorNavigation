@@ -1,21 +1,36 @@
 <ion-view view-title="Ana Sayfa">
-  <ion-content class="padding">
+  <ion-content>
     <br>
         <div style="text-align: center;">
             <img src="img/amblem.png" >    
         </div>
 <br>
-    <button class="button button-positive button-block" ng-click="barcode()" style="border-radius: 30px;">
+<ul class="list">
+
+  <li class="item item-toggle">
+     Engelli Misiniz?
+     <label class="toggle toggle-assertive">
+       <input type="checkbox" ng-model="engelliModel" ng-init="engelliModel=false">
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </li>
+
+</ul>
+<div class="padding" >
+    <button class="button button-positive button-block" ng-click="barcode(engelliModel)" style="border-radius: 30px;">
 QR Kod Okut
     </button>
     
-    <button class="button button-positive button-block" ng-click="deneme()" style="border-radius: 30px;">
-Deneme
+    <button class="button button-positive button-block" ng-click="deneme(engelliModel)" style="border-radius: 30px;">
+Harita
     </button>
 
     <button class="button button-assertive button-block" style="border-radius: 30px;">
 ÇIKIŞ
     </button>
+    </div>
 
   </ion-content>
 </ion-view>
