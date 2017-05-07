@@ -38,6 +38,7 @@ function EbolgeKontrol(bolgeX,bolgeY,kat)
 //var gitBolgeler=[];
 function EgidilecekBolgeler(kendiBolgesi,hedefBolgesi,kat)
 {
+    gitBolgeler=[];
     console.log("E "+kendiBolgesi,hedefBolgesi);    
     var isaret=-1;
     var fark=hedefBolgesi-kendiBolgesi;

@@ -20,8 +20,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova','starter.
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-    ekle();
-    merdivenEkle();
   });
 })
 

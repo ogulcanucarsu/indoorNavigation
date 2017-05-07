@@ -276,6 +276,7 @@ function bolgeKontrol(bolgeX,bolgeY,kat)
 var gitBolgeler=[];
 function gidilecekBolgeler(kendiBolgesi,hedefBolgesi,kat)
 {
+    gitBolgeler=[];
     console.log(kendiBolgesi,hedefBolgesi);    
     var isaret=-1;
     var fark=hedefBolgesi-kendiBolgesi;
@@ -307,60 +308,36 @@ function durdur()
 }
 
 
-
 var sinifListe = [];
+sinifListe.push({ sinifAdi: 'jeoDerslikler',            sinifId:'1',    x1: 0,      x2: 633,         y1: 0,       y2: 94 });
+sinifListe.push({ sinifAdi: 'fenElektrikUstSiniflar',   sinifId:'2',    x1: 650,    x2: 1054,        y1: 0,       y2: 94 });
+sinifListe.push({ sinifAdi: 'bilgisayar301_303_305',    sinifId:'3',    x1: 1072,   x2: 1297,        y1: 0,       y2: 94 });
+sinifListe.push({ sinifAdi: 'bilgisayarAmfiAB',         sinifId:'4',    x1: 1290,   x2: 1381,        y1: 0,       y2: 128 });
+sinifListe.push({ sinifAdi: 'bilgisayarOgretimUyeleri', sinifId:'5',    x1: 1410,   x2: 1687,        y1: 0,       y2: 104 });
+sinifListe.push({ sinifAdi: 'fenElektrikAltSiniflar',   sinifId:'6',    x1: 644,    x2: 1122,        y1: 98,     y2: 10000 });  //
+sinifListe.push({ sinifAdi: 'jeoSagdakiDerslikler',     sinifId:'7',    x1: 580,    x2: 660,         y1: 132,     y2: 10000 });
+sinifListe.push({ sinifAdi: 'jeoGALERI',                sinifId:'8',    x1: 436,    x2: 559,         y1: 136,     y2: 199 });
+sinifListe.push({ sinifAdi: 'GaleriBilgisayar',         sinifId:'9',    x1: 1149,   x2: 1270,        y1: 128,     y2: 202 });
+sinifListe.push({ sinifAdi: 'JeoSoldakiDerslikler',     sinifId:'10',   x1: 0,      x2: 412,         y1: 0,       y2: 202 });
+sinifListe.push({ sinifAdi: 'bilgisayarLablar',         sinifId:'11',   x1: 1112,   x2: 1272,        y1: 240,     y2: 10000 });
+sinifListe.push({ sinifAdi: 'bilgisayarObss',           sinifId:'12',   x1: 1296,   x2: 1381,        y1: 134,     y2: 271 });
+sinifListe.push({ sinifAdi: 'bilgisayarWC',             sinifId:'13',   x1: 1316,   x2: 1391,        y1: 295,     y2: 10000 });
+sinifListe.push({ sinifAdi: 'bilgisayarSagLab',         sinifId:'14',   x1: 1412,   x2: 1686,        y1: 112,     y2: 10000 });
+sinifListe.push({ sinifAdi: 'bilgisayarLablarSag',      sinifId:'15',   x1: 1260,   x2: 1307,        y1: 303,     y2: 10000 });
+sinifListe.push({ sinifAdi: 'jeoAltLablar',             sinifId:'16',   x1: 366,    x2: 597,         y1: 243,     y2: 10000 });
 
-function ekle() {
-    sinifListe = [];
-    sinifListe.push({ sinifAdi: 'jeoDerslikler',            sinifId:'1',    x1: 0,      x2: 633,         y1: 0,       y2: 94 });
-    sinifListe.push({ sinifAdi: 'fenElektrikUstSiniflar',   sinifId:'2',    x1: 650,    x2: 1054,        y1: 0,       y2: 94 });
-    sinifListe.push({ sinifAdi: 'bilgisayar301_303_305',    sinifId:'3',    x1: 1072,   x2: 1297,        y1: 0,       y2: 94 });
-    sinifListe.push({ sinifAdi: 'bilgisayarAmfiAB',         sinifId:'4',    x1: 1290,   x2: 1381,        y1: 0,       y2: 128 });
-    sinifListe.push({ sinifAdi: 'bilgisayarOgretimUyeleri', sinifId:'5',    x1: 1410,   x2: 1687,        y1: 0,       y2: 104 });
-    sinifListe.push({ sinifAdi: 'fenElektrikAltSiniflar',   sinifId:'6',    x1: 644,    x2: 1122,        y1: 98,     y2: 10000 });  //
-    sinifListe.push({ sinifAdi: 'jeoSagdakiDerslikler',     sinifId:'7',    x1: 580,    x2: 660,         y1: 132,     y2: 10000 });
-    sinifListe.push({ sinifAdi: 'jeoGALERI',                sinifId:'8',    x1: 436,    x2: 559,         y1: 136,     y2: 199 });
-    sinifListe.push({ sinifAdi: 'GaleriBilgisayar',         sinifId:'9',    x1: 1149,   x2: 1270,        y1: 128,     y2: 202 });
-    sinifListe.push({ sinifAdi: 'JeoSoldakiDerslikler',     sinifId:'10',   x1: 0,      x2: 412,         y1: 0,       y2: 202 });
-    sinifListe.push({ sinifAdi: 'bilgisayarLablar',         sinifId:'11',   x1: 1112,   x2: 1272,        y1: 240,     y2: 10000 });
-    sinifListe.push({ sinifAdi: 'bilgisayarObss',           sinifId:'12',   x1: 1296,   x2: 1381,        y1: 134,     y2: 271 });
-    sinifListe.push({ sinifAdi: 'bilgisayarWC',             sinifId:'13',   x1: 1316,   x2: 1391,        y1: 295,     y2: 10000 });
-    sinifListe.push({ sinifAdi: 'bilgisayarSagLab',         sinifId:'14',   x1: 1412,   x2: 1686,        y1: 112,     y2: 10000 });
-    sinifListe.push({ sinifAdi: 'bilgisayarLablarSag',      sinifId:'15',   x1: 1260,   x2: 1307,        y1: 303,     y2: 10000 });
-    sinifListe.push({ sinifAdi: 'jeoAltLablar',             sinifId:'16',   x1: 366,    x2: 597,         y1: 243,     y2: 10000 });
+sinifListe.push({ son: 'son' });
+console.log(sinifListe);
 
-    sinifListe.push({ son: 'son' });
-    console.log(sinifListe);
-}
-
-// ESKİ SINIRLAR
-// sinifListe.push({sinifAdi:'301_303_305', x1:28,x2:270,y1:0,y2:92});
-// sinifListe.push({sinifAdi:'ofis', x1:376,x2:674,y1:0,y2:104});
-// sinifListe.push({sinifAdi:'ofis2', x1:376,x2:1000,y1:114,y2:1000});
-// sinifListe.push({sinifAdi:'bolumBaskanligi', x1:686,x2:740,y1:0,y2:162});
-// sinifListe.push({sinifAdi:'galeriBoslugu', x1:100,x2:234,y1:130,y2:208});
-// sinifListe.push({sinifAdi:'elektronikLab', x1:254,x2:350,y1:134,y2:282});
-// // sinifListe.push({sinifAdi:'obss', x1:280,x2:350,y1:194,y2:282});
-// sinifListe.push({sinifAdi:'amfiAB', x1:254,x2:350,y1:0,y2:128});
-// sinifListe.push({sinifAdi:'bayWC', x1:285,x2:364,y1:308,y2:1000});
-// sinifListe.push({sinifAdi:'goruntuIslemeKablosuzIletisi', x1:0,x2:80,y1:104,y2:1000});
-// sinifListe.push({sinifAdi:'bilgisayarDekanlikLab', x1:0,x2:236,y1:254,y2:1000});
-// sinifListe.push({sinifAdi:'WConu', x1:0,x2:274,y1:314,y2:1000});
-// ESKİ SINIRLAR  
 
 var merdivenlerListe = [];
+merdivenListe.push({ merdivenAdi: 'ogretmenlerMerdiven', x1: 456, y1: 111 });
+merdivenListe.push({ merdivenAdi: 'BgirisMerdiven', x1: 367, y1: 399 });
+merdivenListe.push({ merdivenAdi: 'FgirisYanMerdiven', x1: 24, y1: 91 });
+merdivenListe.push({ son: 'son' });
+merdivenlerListe.push({ kat: '3', merdivenListe: merdivenListe });
+console.log(merdivenListe);
 
-function merdivenEkle() {
-    var merdivenListe = [];
-    merdivenListe.push({ merdivenAdi: 'ogretmenlerMerdiven', x1: 456, y1: 111 });
-    merdivenListe.push({ merdivenAdi: 'BgirisMerdiven', x1: 367, y1: 399 });
-    merdivenListe.push({ merdivenAdi: 'FgirisYanMerdiven', x1: 24, y1: 91 });
-    merdivenListe.push({ son: 'son' });
-
-    merdivenlerListe.push({ kat: '3', merdivenListe: merdivenListe });
-    console.log(merdivenListe);
-
-}
 function merdivenGit(solHiza3, topHiza3) {
     var enKucuk = { deger: 9999, index: 99 };
     for (var i = 0; i < merdivenlerListe.length; i++) {
