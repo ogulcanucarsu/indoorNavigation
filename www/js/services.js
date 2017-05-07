@@ -1,24 +1,27 @@
 var barcodeSonuc;
+var gitBolgeIndex=0;
+var sonHedefX;
+var sonHedefY;
 angular.module('starter.services', [])
 
     .factory('Chats', function () {
 
         var liste = [
-            { s_id: 301, s_kat: 3, s_name: 'BM 301' },
-            { s_id: 303, s_kat: 3, s_name: 'BM 303' },
-            { s_id: 305, s_kat: 3, s_name: 'BM 305' },
-            { s_id: 300, s_kat: 3, s_name: 'F Giriş Asansör' },
-            { s_id: 333, s_kat: 3, s_name: 'DENEMEEEE' }
-            //  {s_id:306, s_kat:3, s_name:'BM Amfi A'}
-            //   {s_id:307, s_kat:3, s_name:'BM Amfi B'},  
-            //   {s_id:308, s_kat:3, s_name:'BM Elektronik Lab.'},  
-            //   {s_id:309, s_kat:3, s_name:'BM Kablosuz İletisim Lab.'},  
-            //   {s_id:310, s_kat:3, s_name:'BM Görüntü İşleme Lab.'},  
-            //   {s_id:311, s_kat:3, s_name:'BM Bilgisayar Lab.'},  
-            //   {s_id:312, s_kat:3, s_name:'BM Dekanlık Lab.'},  
-            //   {s_id:313, s_kat:3, s_name:'BM Gömülü Sistem Lab.'},  
-            //   {s_id:314, s_kat:3, s_name:'BM Öğretim Üyeleri Ofis'},  
-            //   {s_id:315, s_kat:3, s_name:'BM Bölüm Başlanlığı'}  
+            { s_id:301,  s_kat:3,  s_name:'BM 301',                   s_x:1232, s_y:96},
+            { s_id:303,  s_kat:3,  s_name:'BM 303',                   s_x:1211, s_y:96},
+            { s_id:305,  s_kat:3,  s_name:'BM 305',                   s_x:1141, s_y:96},
+            { s_id:306,  s_kat:3,  s_name:'BM Amfi A',                s_x:1283, s_y:111},
+            { s_id:307,  s_kat:3,  s_name:'BM Amfi B',                s_x:1387, s_y:111},  
+            { s_id:308,  s_kat:3,  s_name:'BM Elektronik Lab.',       s_x:1320, s_y:127},  
+            { s_id:309,  s_kat:3,  s_name:'BM Kablosuz İletisim Lab.',s_x:1128, s_y:120},  
+            { s_id:310,  s_kat:3,  s_name:'BM Görüntü İşleme Lab.',   s_x:1128, s_y:205},  
+            { s_id:311,  s_kat:3,  s_name:'BM Bilgisayar Lab.',       s_x:1130, s_y:237},  
+            { s_id:312,  s_kat:3,  s_name:'BM Dekanlık Lab.',         s_x:1202, s_y:238},  
+            { s_id:313,  s_kat:3,  s_name:'BM Gömülü Sistem Lab.',    s_x:1402, s_y:257},  
+            { s_id:314,  s_kat:3,  s_name:'BM Öğretim Üyeleri Ofis',  s_x:1578, s_y:108},  
+            { s_id:315,  s_kat:3,  s_name:'BM Bölüm Başlanlığı',      s_x:1688, s_y:106},
+            { s_id:300,  s_kat:3,  s_name:'F Giriş Asansör',          s_x:865,  s_y:97},
+            { s_id:333,  s_kat:3,  s_name:'DENEMEEEE',                s_x:445,  s_y:228}                
         ];
 
         return {
@@ -35,9 +38,6 @@ angular.module('starter.services', [])
             }
         };
     });
-
-var kendiKonumuX;
-var kendiKonumuY;
 
 var hedefX;
 var hedefY;
@@ -208,25 +208,72 @@ console.log("calisiyor");
     {
         setTimeout(function()
         {
-            if(rotaX<853 && rotaY<398)
+            if (hedefY == rotaY && hedefX == rotaX) 
             {
-                hedefX=854;
-                hedefY=98;
+                gitBolgeIndex++;
+            }
+            
+            if(gitBolgeIndex!=gitBolgeler.length)
+            {
+                hedefX=gitBolgeler[gitBolgeIndex].x;
+                hedefY=gitBolgeler[gitBolgeIndex].y;    
             }
             else
             {
-                sinifKoordinat(333);
+                hedefX=sonHedefX;
+                hedefY=sonHedefY;
             }
             
             if (hedefY == rotaY && hedefX == rotaX) 
             {
-                alert("tamamlandı");
+                console.log("tamamlandı");
             }
             else
             hedefFunc(rotaX, rotaY);  
         },1);
     }
 
+}
+
+var kat3Koordinatlar=[];
+kat3Koordinatlar.push({}); //bos
+kat3Koordinatlar.push({name:'1',x:854,y:95}); //kuzey
+kat3Koordinatlar.push({}); //bos
+kat3Koordinatlar.push({name:'3',x:0,y:0}); //doğu
+kat3Koordinatlar.push({}); //bos
+kat3Koordinatlar.push({name:'5',x:0,y:0}); //güney
+kat3Koordinatlar.push({}); //bos
+kat3Koordinatlar.push({name:'7',x:0,y:0}); //batı
+
+var bolgeler=[];
+bolgeler.push({kat:'0',x:0,y:0});
+bolgeler.push({kat:'1',x:0,y:0});
+bolgeler.push({kat:'2',x:0,y:0});
+bolgeler.push({kat:'3',x:853,y:398,gitKoordinat:kat3Koordinatlar});
+
+function bolgeKontrol(bolgeX,bolgeY,kat)
+{
+    if(bolgeX<bolgeler[kat].x && bolgeY<bolgeler[kat].y)      { return 0;}
+    else if(bolgeX>bolgeler[kat].x && bolgeY<bolgeler[kat].y) { return 2;}
+    else if(bolgeX<bolgeler[kat].x && bolgeY>bolgeler[kat].y) { return 4;}
+    else if(bolgeX>bolgeler[kat].x && bolgeY>bolgeler[kat].y) { return 6;}
+}
+var gitBolgeler=[];
+function gidilecekBolgeler(kendiBolgesi,hedefBolgesi,kat)
+{
+    var isaret=-1;
+    var fark=hedefBolgesi-kendiBolgesi;
+    if(fark>0) isaret=1;
+    if(fark==0) {  //cikis 
+    }
+    else
+    {
+        while(kendiBolgesi!=hedefBolgesi)
+        {
+            gitBolgeler.push({x:bolgeler[kat].gitKoordinat[kendiBolgesi+1*isaret].x,y:bolgeler[kat].gitKoordinat[kendiBolgesi+1*isaret].y});
+            kendiBolgesi+=2*isaret;
+        }
+    }
 }
 var durdurD=true;
 function durdur()
@@ -276,85 +323,6 @@ function ekle() {
 // sinifListe.push({sinifAdi:'WConu', x1:0,x2:274,y1:314,y2:1000});
 // ESKİ SINIRLAR  
 
-
-function sinifKoordinat(sinif) {
-    if (sinif == '300') //BM301
-    {
-        hedefX = 854;
-        hedefY = 95;
-    }
-    if (sinif == '301') //BM301
-    {
-        hedefX = 1236;
-        hedefY = 98;
-    }
-    else if (sinif == '303') //BM303
-    {
-        hedefX = 1206;
-        hedefY = 98;
-    }
-    else if (sinif == '305') //BM305
-    {
-        hedefX = 1170;
-        hedefY = 99;
-    }
-    else if (sinif == '306') //BMamfiA
-    {
-        hedefX = 358;
-        hedefY = 116;
-    }
-    else if (sinif == '307') //BMamfiB
-    {
-        hedefX = 244;
-        hedefY = 118;
-    }
-    else if (sinif == '308') //BMelektronikLab
-    {
-        hedefX = 294;
-        hedefY = 132;
-    }
-    else if (sinif == '309') //BMkablosuzLab
-    {
-        hedefX = 86;
-        hedefY = 128;
-    }
-    else if (sinif == '310') //BMgoruntuLab
-    {
-        hedefX = 86;
-        hedefY = 216;
-    }
-    else if (sinif == '311') //BMbilgisayarLab
-    {
-        hedefX = 86;
-        hedefY = 250;
-    }
-    else if (sinif == '312') //BMdekanlikLab
-    {
-        hedefX = 164;
-        hedefY = 250;
-    }
-    else if (sinif == '313') //BMgomuluSistemLab
-    {
-        hedefX = 372;
-        hedefY = 272;
-    }
-    else if (sinif == '314') //BMofis
-    {
-        hedefX = 560;
-        hedefY = 110;
-    }
-    else if (sinif == '315') //BMbolumBaskanligi
-    {
-        hedefX = 678;
-        hedefY = 108;
-    }
-    else if (sinif == '333') //DENEME
-    {
-        hedefX = 1400;
-        hedefY = 366;
-    }
-}
-
 var merdivenlerListe = [];
 
 function merdivenEkle() {
@@ -395,8 +363,8 @@ function kendiKonumuKoordinat(barcodeSonuc) {
         konumY = 357;
     }
     else if (barcodeSonuc == 1) {
-        konumX = 427;
-        konumY = 223;
+        konumX = 1400;
+        konumY = 366;
     }
     else if (barcodeSonuc == 2) {
         konumX = 1388;
