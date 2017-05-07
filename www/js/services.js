@@ -7,22 +7,22 @@ angular.module('starter.services', [])
 
     .factory('Chats', function () {
 
-        var liste = [
+        var hedefler = [
             { s_id:301,  s_kat:3,  s_name:'BM 301',                   s_x:1232, s_y:96},
             { s_id:303,  s_kat:3,  s_name:'BM 303',                   s_x:1211, s_y:96},
             { s_id:305,  s_kat:3,  s_name:'BM 305',                   s_x:1141, s_y:96},
             { s_id:306,  s_kat:3,  s_name:'BM Amfi A',                s_x:1283, s_y:111},
             { s_id:307,  s_kat:3,  s_name:'BM Amfi B',                s_x:1387, s_y:111},  
-            { s_id:308,  s_kat:3,  s_name:'BM Elektronik Lab.',       s_x:1320, s_y:127},  
+            { s_id:308,  s_kat:3,  s_name:'BM Elektronik Lab.',       s_x:1320, s_y:125},  
             { s_id:309,  s_kat:3,  s_name:'BM Kablosuz İletisim Lab.',s_x:1128, s_y:120},  
             { s_id:310,  s_kat:3,  s_name:'BM Görüntü İşleme Lab.',   s_x:1128, s_y:205},  
             { s_id:311,  s_kat:3,  s_name:'BM Bilgisayar Lab.',       s_x:1130, s_y:237},  
             { s_id:312,  s_kat:3,  s_name:'BM Dekanlık Lab.',         s_x:1202, s_y:238},  
-            { s_id:313,  s_kat:3,  s_name:'BM Gömülü Sistem Lab.',    s_x:1402, s_y:257},  
-            { s_id:314,  s_kat:3,  s_name:'BM Öğretim Üyeleri Ofis',  s_x:1578, s_y:108},  
+            { s_id:313,  s_kat:3,  s_name:'BM Gömülü Sistem Lab.',    s_x:1400, s_y:257},  
+            { s_id:314,  s_kat:3,  s_name:'BM Öğretim Üyeleri Ofis',  s_x:1578, s_y:105},  
             { s_id:315,  s_kat:3,  s_name:'BM Bölüm Başlanlığı',      s_x:1688, s_y:106},
-            { s_id:316,  s_kat:3,  s_name:'BM BAY WC',                s_x:1317, s_y:360},
-            { s_id:317,  s_kat:3,  s_name:'BM BAYAN WC',              s_x:1316, s_y:447},
+            { s_id:316,  s_kat:3,  s_name:'BM BAY WC',                s_x:1315, s_y:349},
+            { s_id:317,  s_kat:3,  s_name:'BM BAYAN WC',              s_x:1315, s_y:447},
 
             { s_id:300,  s_kat:3,  s_name:'F Giriş Asansör',          s_x:865,  s_y:97},
 
@@ -41,12 +41,12 @@ angular.module('starter.services', [])
 
         return {
             all: function () {
-                return liste;
+                return hedefler;
             },
             get: function (chatId) {
-                for (var i = 0; i < liste.length; i++) {
-                    if (liste[i].s_id === parseInt(chatId)) {
-                        return liste[i];
+                for (var i = 0; i < hedefler.length; i++) {
+                    if (hedefler[i].s_id === parseInt(chatId)) {
+                        return hedefler[i];
                     }
                 }
                 return null;
@@ -57,11 +57,8 @@ angular.module('starter.services', [])
 var hedefX;
 var hedefY;
 var caprazGit = false;
-var caprazIkinciDefa = 3;
 function hedefFunc(rotaX, rotaY) {
 // console.log("calisiyor");
-    var yeniHedefX;
-    var yeniHedefY;
     var yeniHedefX; //top cakisirsa
     var yeniHedefY;
     var yeniHedefBool = false;
@@ -221,8 +218,7 @@ function hedefFunc(rotaX, rotaY) {
     
      if(durdurD)
     {
-        setTimeout(function()
-        {
+        // setTimeout(function(){
             if (hedefY == rotaY && hedefX == rotaX) 
             {
                 gitBolgeIndex++;
@@ -245,7 +241,7 @@ function hedefFunc(rotaX, rotaY) {
             }
             else
             hedefFunc(rotaX, rotaY);  
-        },1);
+        // },1);
     }
 
 }
@@ -301,28 +297,23 @@ function gidilecekBolgeler(kendiBolgesi,hedefBolgesi,kat)
     }
     console.log(gitBolgeler);
 }
-var durdurD=true;
-function durdur()
-{
-    durdurD=false;
-}
-
 
 var sinifListe = [];
 sinifListe.push({ sinifAdi: 'jeoDerslikler',            sinifId:'1',    x1: 0,      x2: 633,         y1: 0,       y2: 94 });
 sinifListe.push({ sinifAdi: 'fenElektrikUstSiniflar',   sinifId:'2',    x1: 650,    x2: 1054,        y1: 0,       y2: 94 });
 sinifListe.push({ sinifAdi: 'bilgisayar301_303_305',    sinifId:'3',    x1: 1072,   x2: 1297,        y1: 0,       y2: 94 });
-sinifListe.push({ sinifAdi: 'bilgisayarAmfiAB',         sinifId:'4',    x1: 1290,   x2: 1381,        y1: 0,       y2: 128 });
+sinifListe.push({ sinifAdi: 'bilgisayarAmfiAB',         sinifId:'4',    x1: 1290,   x2: 1381,        y1: 0,       y2: 124 });
 sinifListe.push({ sinifAdi: 'bilgisayarOgretimUyeleri', sinifId:'5',    x1: 1410,   x2: 1687,        y1: 0,       y2: 104 });
-sinifListe.push({ sinifAdi: 'fenElektrikAltSiniflar',   sinifId:'6',    x1: 644,    x2: 1122,        y1: 98,     y2: 10000 });  //
+sinifListe.push({ sinifAdi: 'fenElektrikAltSiniflar',   sinifId:'6',    x1: 644,    x2: 1122,        y1: 98,      y2: 10000 });  //
 sinifListe.push({ sinifAdi: 'jeoSagdakiDerslikler',     sinifId:'7',    x1: 580,    x2: 660,         y1: 132,     y2: 10000 });
-sinifListe.push({ sinifAdi: 'jeoGALERI',                sinifId:'8',    x1: 436,    x2: 559,         y1: 136,     y2: 199 });
-sinifListe.push({ sinifAdi: 'GaleriBilgisayar',         sinifId:'9',    x1: 1149,   x2: 1270,        y1: 128,     y2: 202 });
+sinifListe.push({ sinifAdi: 'jeoGALERI',                sinifId:'8',    x1: 430,    x2: 559,         y1: 128,     y2: 199 });
+sinifListe.push({ sinifAdi: 'GaleriBilgisayar',         sinifId:'9',    x1: 1141,   x2: 1270,        y1: 128,     y2: 202 });
 sinifListe.push({ sinifAdi: 'JeoSoldakiDerslikler',     sinifId:'10',   x1: 0,      x2: 412,         y1: 0,       y2: 202 });
-sinifListe.push({ sinifAdi: 'bilgisayarLablar',         sinifId:'11',   x1: 1112,   x2: 1272,        y1: 240,     y2: 10000 });
-sinifListe.push({ sinifAdi: 'bilgisayarObss',           sinifId:'12',   x1: 1296,   x2: 1381,        y1: 134,     y2: 271 });
+sinifListe.push({ sinifAdi: 'bilgisayarLablar',         sinifId:'11',   x1: 1112,   x2: 1270,        y1: 238 ,     y2: 10000 });
+sinifListe.push({ sinifAdi: 'bilgisayarObssSol',        sinifId:'12',   x1: 1294,   x2: 1333,        y1: 126,     y2: 198 });
+sinifListe.push({ sinifAdi: 'bilgisayarObss',           sinifId:'12',   x1: 1319,   x2: 1381,        y1: 126,     y2: 271 });
 sinifListe.push({ sinifAdi: 'bilgisayarWC',             sinifId:'13',   x1: 1316,   x2: 1391,        y1: 295,     y2: 10000 });
-sinifListe.push({ sinifAdi: 'bilgisayarSagLab',         sinifId:'14',   x1: 1412,   x2: 1686,        y1: 112,     y2: 10000 });
+sinifListe.push({ sinifAdi: 'bilgisayarSagLab',         sinifId:'14',   x1: 1401,   x2: 1686,        y1: 106,     y2: 10000 });
 sinifListe.push({ sinifAdi: 'bilgisayarLablarSag',      sinifId:'15',   x1: 1260,   x2: 1307,        y1: 303,     y2: 10000 });
 sinifListe.push({ sinifAdi: 'jeoAltLablar',             sinifId:'16',   x1: 366,    x2: 597,         y1: 243,     y2: 10000 });
 
@@ -331,12 +322,27 @@ console.log(sinifListe);
 
 
 var merdivenlerListe = [];
-merdivenListe.push({ merdivenAdi: 'ogretmenlerMerdiven', x1: 456, y1: 111 });
-merdivenListe.push({ merdivenAdi: 'BgirisMerdiven', x1: 367, y1: 399 });
-merdivenListe.push({ merdivenAdi: 'FgirisYanMerdiven', x1: 24, y1: 91 });
-merdivenListe.push({ son: 'son' });
-merdivenlerListe.push({ kat: '3', merdivenListe: merdivenListe });
-console.log(merdivenListe);
+var merdivenListe=[];
+function altKataInıs()
+{
+    merdivenListe=[];
+    merdivenlerListe = [];
+    merdivenListe.push({ merdivenAdi: 'ogretmenlerMerdiven', x1: 456, y1: 111 });
+    merdivenListe.push({ merdivenAdi: 'BgirisMerdiven', x1: 367, y1: 399 });
+    merdivenListe.push({ merdivenAdi: 'FgirisYanMerdiven', x1: 24, y1: 91 });
+    merdivenListe.push({ son: 'son' });
+    merdivenlerListe.push({ kat: 3, merdivenListe: merdivenListe });   
+    console.log(merdivenlerListe);     
+}
+function EaltKataInıs()
+{
+    merdivenListe=[];
+    merdivenlerListe = [];
+    merdivenListe.push({ merdivenAdi: 'asansor', x1: 877, y1: 96 });
+    merdivenListe.push({ son: 'son' });
+    merdivenlerListe.push({ kat: 3, merdivenListe: merdivenListe });   
+    console.log(merdivenlerListe); 
+}
 
 function merdivenGit(solHiza3, topHiza3) {
     var enKucuk = { deger: 9999, index: 99 };
@@ -365,7 +371,7 @@ function kendiKonumuKoordinat(barcodeSonuc) {
         konumY = 357;
     }
     else if (barcodeSonuc == 1) {
-        konumX = 1400;
+        konumX = 1396;
         konumY = 366;
     }
     else if (barcodeSonuc == 2) {
@@ -386,4 +392,9 @@ function tarayici()
 {
         barcodeSonuc = 1;
         kendiKonumuKoordinat(barcodeSonuc);
+}
+var durdurD=true;
+function durdur()
+{
+    durdurD=false;
 }

@@ -40,10 +40,19 @@ angular.module('starter.controllers', [])
     sonHedefX=$scope.secilenYer.s_x;
     sonHedefY=$scope.secilenYer.s_y;
     gitBolgeIndex=0;
-    if(engelliBool) EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat); 
-    else gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat); 
-
+    if(engelliBool) 
+    {
+        EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat);
+        EaltKataInıs();
+    } 
+    else 
+    {
+        gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat); 
+        altKataInıs();
+    }
+setTimeout(function(){
     hedefFunc(konumX, konumY);
+    },10);
     $scope.harita = 'img/rota2.png';
     $scope.buradasiniz = 'img/buradasinizKonum.png';
 
@@ -108,10 +117,20 @@ angular.module('starter.controllers', [])
                     kendiKonumuKoordinat(barcodeSonuc);
                     // sinifKoordinat('300');
                     gitBolgeIndex=0;
-                    if(engelliBool) EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat); 
-                    else gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat); 
+                    if(engelliBool) 
+                    {
+                        EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat);
+                        EaltKataInıs();
+                    } 
+                    else 
+                    {
+                        gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat); 
+                        altKataInıs();
+                    }
 
-                    hedefFunc(konumX, konumY);
+                    setTimeout(function(){
+                        hedefFunc(konumX, konumY);
+                    },10);
                 }, 10);
                 setTimeout(function () {
                     $ionicScrollDelegate.$getByHandle('scroller').scrollTo(konumX - (iecompattest().clientWidth) / 2, 0, true);
