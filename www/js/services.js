@@ -245,7 +245,7 @@ function hedefFunc(rotaX, rotaY) {
     }
 
 }
-
+//Begin bölgeler arası yönlendirme
 var kat3Koordinatlar=[];
 kat3Koordinatlar.push({}); //bos
 kat3Koordinatlar.push({name:'1',x:854,y:95}); //kuzey
@@ -297,7 +297,9 @@ function gidilecekBolgeler(kendiBolgesi,hedefBolgesi,kat)
     }
     console.log(gitBolgeler);
 }
+//End bölgeler arası yönlendirme
 
+//Begin sınıf duvarları koordinat belirleme
 var sinifListe = [];
 sinifListe.push({ sinifAdi: 'jeoDerslikler',            sinifId:'1',    x1: 0,      x2: 633,         y1: 0,       y2: 94 });
 sinifListe.push({ sinifAdi: 'fenElektrikUstSiniflar',   sinifId:'2',    x1: 650,    x2: 1054,        y1: 0,       y2: 94 });
@@ -320,7 +322,9 @@ sinifListe.push({ sinifAdi: 'jeoAltLablar',             sinifId:'16',   x1: 366,
 sinifListe.push({ son: 'son' });
 console.log(sinifListe);
 
+//End sınıf duvarları koordinat belirleme
 
+//Begin merdiven ve asansör koordinat belirleme
 var merdivenlerListe = [];
 var merdivenListe=[];
 function altKataInıs()
@@ -365,24 +369,39 @@ function merdivenGit(solHiza3, topHiza3) {
     hedefFunc(solHiza3, topHiza3);
 }
 
+//End merdiven ve asansör koordinat belirleme
+
+//Begin baslangic konumunu belirleme
 function kendiKonumuKoordinat(barcodeSonuc) {
-    if (barcodeSonuc == 0) {
-        konumX = 1391;
-        konumY = 357;
+    barcodeSonuc=barcodeSonuc.toString();
+    var katKod=barcodeSonuc.charAt(0);
+    var sinifKod=barcodeSonuc.charAt(1)+barcodeSonuc.charAt(2);
+    katKod=parseInt(katKod);
+    sinifKod=parseInt(sinifKod);
+
+    try
+    {
+        konumX=baslangicKonumlari[katKod].katKonum[sinifKod].x;
+        konumY=baslangicKonumlari[katKod].katKonum[sinifKod].y;
     }
-    else if (barcodeSonuc == 1) {
-        konumX = 1396;
-        konumY = 366;
-    }
-    else if (barcodeSonuc == 2) {
-        konumX = 1388;
-        konumY = 99;
-    }
-    else if (barcodeSonuc == 3) {
-        konumX = 1132;
-        konumY = 222;
+    catch(Exception)
+    {
+        alert("Konum hatalı");
     }
 }
+var kat3BK=[];
+kat3BK.push({ konumAdi: '0', x: 1391, y: 357 });
+kat3BK.push({ konumAdi: '1', x: 1396, y: 366 });
+kat3BK.push({ konumAdi: '2', x: 1388, y: 99 });
+kat3BK.push({ konumAdi: '3', x: 1132, y: 222 });
+
+var baslangicKonumlari=[];
+baslangicKonumlari.push({ kat: '0', katKonum:0 });
+baslangicKonumlari.push({ kat: '1', katKonum:0 });
+baslangicKonumlari.push({ kat: '2', katKonum:0 });
+baslangicKonumlari.push({ kat: '3', katKonum:kat3BK });
+
+//End baslangic konumunu belirleme
 
 function iecompattest() {
     return (document.compatMode && document.compatMode != "BackCompat") ? document.documentElement : document.body
@@ -390,7 +409,7 @@ function iecompattest() {
 
 function tarayici()
 {
-        barcodeSonuc = 1;
+        barcodeSonuc = 301;
         kendiKonumuKoordinat(barcodeSonuc);
 }
 var durdurD=true;

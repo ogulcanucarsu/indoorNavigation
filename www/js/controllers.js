@@ -21,7 +21,7 @@ angular.module('starter.controllers', [])
     }
     $scope.deneme = function (engelliModel) {
         engelliBool=engelliModel;
-        barcodeSonuc = 1;
+        barcodeSonuc = 301;
         $state.go('tab.dropDown');
     }
 })
