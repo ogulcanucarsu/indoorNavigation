@@ -6,7 +6,7 @@ var engelliBool=false;
 angular.module('starter.services', [])
 
     .factory('Chats', function () {
-
+ 
         var hedefler = [
             { s_id:301,  s_kat:3,  s_name:'BM 301',                   s_x:1232, s_y:96},
             { s_id:303,  s_kat:3,  s_name:'BM 303',                   s_x:1211, s_y:96},
@@ -43,10 +43,53 @@ angular.module('starter.services', [])
             all: function () {
                 return hedefler;
             },
+            allBolum: function (bolumId) {
+                var yeniListe=[];
+                for (var i = 0; i < hedefler.length; i++) {
+                    var _id=(hedefler[i].s_id).toString();
+                    var _id=_id.charAt(0);
+                    if (_id == bolumId) {
+                        yeniListe.push(hedefler[i]);
+                    }
+                }
+                return yeniListe;
+            },
             get: function (chatId) {
                 for (var i = 0; i < hedefler.length; i++) {
                     if (hedefler[i].s_id === parseInt(chatId)) {
                         return hedefler[i];
+                    }
+                }
+                return null;
+            }
+        };
+    })
+    .factory('Bolumler', function () {
+
+        var bolumHedefler = [
+            { s_id:3,  s_name:'Bilgisayar Mühendisliği' },
+            { s_id:1,  s_name:'Jeofizik Mühendisliği' },  
+            { s_id:2,  s_name:'Çevre Mühendisliği' },  
+            { s_id:4,  s_name:'Elektronik ve Haberleşme Mühendisliği', },  
+            { s_id:5,  s_name:'Endüstri Mühendisliği' },  
+            { s_id:6,  s_name:'Harita Mühendisliği' },  
+            { s_id:7,  s_name:'İnşaat Mühendisliği' },  
+            { s_id:8,  s_name:'Elektrik Mühendisliği' },  
+            { s_id:9,  s_name:'Jeoloji Mühendisliği' },  
+            { s_id:10, s_name:'Kimya Mühendisliği' },  
+            { s_id:11, s_name:'Makine Mühendisliği' },  
+            { s_id:12, s_name:'Metalurji ve Malzeme Mühendisliği' },  
+            { s_id:13, s_name:'Diğer' },  
+        ];
+
+        return {
+            all: function () {
+                return bolumHedefler;
+            },
+            get: function (chatId) {
+                for (var i = 0; i < bolumHedefler.length; i++) {
+                    if (bolumHedefler[i].s_id === parseInt(chatId)) {
+                        return bolumHedefler[i];
                     }
                 }
                 return null;
@@ -394,6 +437,13 @@ kat3BK.push({ konumAdi: '0', x: 1391, y: 357 });
 kat3BK.push({ konumAdi: '1', x: 1396, y: 366 });
 kat3BK.push({ konumAdi: '2', x: 1388, y: 99 });
 kat3BK.push({ konumAdi: '3', x: 1132, y: 222 });
+kat3BK.push({ konumAdi: '4', x: 1391, y: 357 });
+kat3BK.push({ konumAdi: '5', x: 1396, y: 366 });
+kat3BK.push({ konumAdi: '6', x: 1388, y: 99 });
+kat3BK.push({ konumAdi: '7', x: 1132, y: 222 });
+kat3BK.push({ konumAdi: '8', x: 1391, y: 357 });
+kat3BK.push({ konumAdi: '9', x: 1396, y: 366 });
+kat3BK.push({ konumAdi: '10', x: 1388, y: 99 });
 
 var baslangicKonumlari=[];
 baslangicKonumlari.push({ kat: '0', katKonum:0 });

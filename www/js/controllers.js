@@ -2,6 +2,11 @@ angular.module('starter.controllers', [])
 
 .controller('anaSayfaCtrl', function ($scope, $cordovaBarcodeScanner, $state) {
     var basarili = true;
+    $scope.engelli=false;
+    $scope.engelliDegistir=function()
+    {
+        $scope.engelli=!$scope.engelli;
+    }
     $scope.barcode = function (engelliModel) {
         engelliBool=engelliModel;
         document.addEventListener("deviceready", function () {
@@ -10,7 +15,7 @@ angular.module('starter.controllers', [])
                 .then(function (barcodeData) {
                     if (basarili) {
                         barcodeSonuc = barcodeData.text;
-                        $state.go('tab.dropDown');
+                        $state.go('tab.bolumler');
                     }
                     else {
                     }
@@ -21,14 +26,32 @@ angular.module('starter.controllers', [])
     }
     $scope.deneme = function (engelliModel) {
         engelliBool=engelliModel;
-        barcodeSonuc = 301;
-        $state.go('tab.dropDown');
+        barcodeSonuc = 308;
+        $state.go('tab.bolumler');
     }
+})
+.controller('bolumlerCtrl',function($scope,Bolumler, $stateParams,Chats)
+{
+    var _barcodeSonuc=barcodeSonuc.toString();
+    var katKod=_barcodeSonuc.charAt(0);
+
+    $scope.bolumHedeflerListe = Bolumler.all();
+    $scope.bulundugunYerBolum =Bolumler.get(katKod);
+    $scope.bulundugunYerBolum =$scope.bulundugunYerBolum.s_name;  
+    
+    $scope.git="dropDown";
+    $scope.listeDegistir=function()
+    {
+        $scope.bolumHedeflerListe=Chats.all();
+        $scope.git="harita";
+    } 
+
 })
 .controller('dropDownCtrl', function ($scope, $stateParams, Chats) {
     kendiKonumuKoordinat(barcodeSonuc);
-    $scope.liste = Chats.all();
-    $scope.bulundugunYer = barcodeSonuc;
+    $scope.liste = Chats.allBolum($stateParams.bolumId);
+    $scope.bulundugunYer =Chats.get(barcodeSonuc);
+    $scope.bulundugunYer =$scope.bulundugunYer.s_name;    
 })
 .controller('haritaCtrl', function ($scope, $stateParams, Chats, $ionicScrollDelegate, $state, $cordovaBarcodeScanner) {
     tarayici(); //Telefona atarken kapat

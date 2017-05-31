@@ -51,7 +51,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova','starter.
   })
   
   .state('tab.dropDown', {
-    url: '/dropDown',
+    url: '/dropDown/:bolumId',
     views: {
       'view-anaSayfa': {
         templateUrl: 'templates/dropDown.html',
@@ -75,6 +75,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova','starter.
         'view-hakkimizda': {
           templateUrl: 'templates/hakkimizda.html',
           controller: 'hakkimizdaCtrl'
+        }
+      }
+    })
+
+    .state('tab.bolumler', {
+      url: '/bolumler',
+      views: {
+        'view-anaSayfa': {
+          templateUrl: 'templates/bolumler.html',
+          controller: 'bolumlerCtrl'
         }
       }
     })
