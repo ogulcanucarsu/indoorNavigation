@@ -3,6 +3,8 @@ var gitBolgeIndex=0;
 var sonHedefX;
 var sonHedefY;
 var engelliBool=false;
+var yazdirmaAdim=0;
+var adimAralik=5;
 angular.module('starter.services', [])
 
     .factory('Chats', function () {
@@ -100,6 +102,8 @@ angular.module('starter.services', [])
 var hedefX;
 var hedefY;
 var caprazGit = false;
+var oncekiRotaX;
+var oncekiRotaY;
 function hedefFunc(rotaX, rotaY) {
 // console.log("calisiyor");
     var yeniHedefX; //top cakisirsa
@@ -108,6 +112,7 @@ function hedefFunc(rotaX, rotaY) {
     var yeniHedefBool2 = false;
 
     function yeniHedefFunc(hedefX, hedefY) {
+        yazdirmaAdim++;
         var xIsaret;
         if (hedefX >= rotaX) xIsaret = 1;
         else { xIsaret = -1; }
@@ -122,12 +127,25 @@ function hedefFunc(rotaX, rotaY) {
         img.style["left"] = rotaX + "px";
         img.style["top"] = rotaY + "px";
         img.style["position"] = "absolute";
-
+        
+        //#region Rotate
+            if(rotaX<oncekiRotaX && rotaY<oncekiRotaY)
+            {img.className='rotate-45';} //sol üst
+            else if(rotaX<oncekiRotaX && rotaY>oncekiRotaY)
+            {img.className='rotate-135';} //sol alt
+            else if(rotaX>oncekiRotaX && rotaY>oncekiRotaY)
+            {img.className='rotate135';} //sağ alt
+            else if(rotaX>oncekiRotaX && rotaY<oncekiRotaY)
+            {img.className='rotate45';} //sağ üst
+            else if(rotaX>oncekiRotaX && rotaY==oncekiRotaY)
+            {img.className='rotate90';}
+            else if(rotaX<oncekiRotaX && rotaY==oncekiRotaY)
+            {img.className='rotate-90';}
+            else if(rotaX==oncekiRotaX && rotaY>oncekiRotaY)
+            {img.className='rotate-180';}
+            else {img.className='rotate0';}
+        //#endregion Rotate
         var div = document.getElementById('harita');
-
-        img.onload = function () {
-            div.appendChild(img);
-        };
 
         var xKalanMesafe = Math.abs(hedefX - rotaX);
         var yKalanMesafe = Math.abs(hedefY - rotaY);
@@ -144,6 +162,8 @@ function hedefFunc(rotaX, rotaY) {
         }
         
         for (var i = 0; i < sinifListe.length; i++) {
+            oncekiRotaX=rotaX;
+            oncekiRotaY=rotaY;  
 
             if (rotaX > sinifListe[i].x1 && rotaX < sinifListe[i].x2 && (rotaY == sinifListe[i].y1 || rotaY == sinifListe[i].y2)) {
                 rotaX = rotaX + 1 * xIsaret;
@@ -177,9 +197,14 @@ function hedefFunc(rotaX, rotaY) {
                     alert("hedeftamamlandı");
                 }
 
-                document.getElementById("buradasinizRota").style["left"] = rotaX + "px";
-                document.getElementById("buradasinizRota").style["top"] = rotaY + "px";
-                
+                if(yazdirmaAdim%adimAralik==0){
+                    img.onload = function () {
+                            div.appendChild(img);
+                    };
+                    document.getElementById("buradasinizRota").style["left"] = rotaX + "px";
+                    document.getElementById("buradasinizRota").style["top"] = rotaY + "px";
+                }
+
                 if (yeniHedefBool) {
                     // console.log("yeni hedef 1 calisti");
                     yeniHedefFunc(yeniHedefX, yeniHedefY);
@@ -218,9 +243,14 @@ function hedefFunc(rotaX, rotaY) {
                     yeniHedefBool2 = false;
                     alert("hedeftamamlandı");
                 }
-
-                document.getElementById("buradasinizRota").style["left"] = rotaX + "px";
-                document.getElementById("buradasinizRota").style["top"] = rotaY + "px";
+                if(yazdirmaAdim%adimAralik==0)
+                {
+                    img.onload = function () {
+                        div.appendChild(img);
+                    };
+                    document.getElementById("buradasinizRota").style["left"] = rotaX + "px";
+                    document.getElementById("buradasinizRota").style["top"] = rotaY + "px";
+                }
                 if (yeniHedefBool2) {
                     // console.log("yeni hedef 2 calisti");
                     yeniHedefFunc(yeniHedefX, yeniHedefY);
@@ -228,7 +258,7 @@ function hedefFunc(rotaX, rotaY) {
                 caprazGit = true;
                 break;
             }
-            else if (sinifListe[i].son == 'son') {
+            else if (sinifListe[i].son == 'son') {              
                 if (caprazGit) {
                     yArtir = 1;
                     xArtir = 1;
@@ -248,8 +278,14 @@ function hedefFunc(rotaX, rotaY) {
                 if (hedefY != rotaY) {
                     rotaY = rotaY + yArtir * yIsaret;
                 }
-                document.getElementById("buradasinizRota").style["left"] = rotaX + "px";
-                document.getElementById("buradasinizRota").style["top"] = rotaY + "px";
+                if(yazdirmaAdim%adimAralik==0)
+                {
+                    img.onload = function () {
+                        div.appendChild(img);
+                    };
+                    document.getElementById("buradasinizRota").style["left"] = rotaX + "px";
+                    document.getElementById("buradasinizRota").style["top"] = rotaY + "px";
+                }
                 break;
             }
         }
@@ -259,9 +295,9 @@ function hedefFunc(rotaX, rotaY) {
     yeniHedefFunc(hedefX, hedefY);
 
     
-     if(durdurD)
+    if(durdurD)
     {
-        // setTimeout(function(){
+        //  setTimeout(function(){
             if (hedefY == rotaY && hedefX == rotaX) 
             {
                 gitBolgeIndex++;
@@ -284,7 +320,7 @@ function hedefFunc(rotaX, rotaY) {
             }
             else
             hedefFunc(rotaX, rotaY);  
-        // },1);
+        //  },1);
     }
 
 }
