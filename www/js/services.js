@@ -25,8 +25,10 @@ angular.module('starter.services', [])
             { s_id:315,  s_kat:3,  s_name:'BM Bölüm Başlanlığı',      s_x:1688, s_y:106},
             { s_id:316,  s_kat:3,  s_name:'BM BAY WC',                s_x:1315, s_y:349},
             { s_id:317,  s_kat:3,  s_name:'BM BAYAN WC',              s_x:1315, s_y:447},
-
+            { s_id:318,  s_kat:3,  s_name:'BM Giriş',                 s_x:1396, s_y:366},
             { s_id:300,  s_kat:3,  s_name:'F Giriş Asansör',          s_x:865,  s_y:97},
+
+            { s_id:399,  s_kat:2,  s_name:'Sismoloji DENEME',        s_x:577,  s_y:226},                           
 
             { s_id:102,  s_kat:3,  s_name:'Jeofizik 102',              s_x:421,  s_y:97},                           
             { s_id:104,  s_kat:3,  s_name:'Jeofizik 104',              s_x:421,  s_y:97},                           
@@ -127,7 +129,6 @@ function hedefFunc(rotaX, rotaY) {
         img.style["left"] = rotaX + "px";
         img.style["top"] = rotaY + "px";
         img.style["position"] = "absolute";
-        
         //#region Rotate
             if(rotaX<oncekiRotaX && rotaY<oncekiRotaY)
             {img.className='rotate-45';} //sol üst
@@ -305,8 +306,15 @@ function hedefFunc(rotaX, rotaY) {
             
             if(gitBolgeIndex!=gitBolgeler.length)
             {
-                hedefX=gitBolgeler[gitBolgeIndex].x;
-                hedefY=gitBolgeler[gitBolgeIndex].y;    
+                try
+                {
+                    hedefX=gitBolgeler[gitBolgeIndex].x;
+                    hedefY=gitBolgeler[gitBolgeIndex].y;    
+                }
+                catch(err)
+                {
+
+                }
             }
             else
             {
@@ -324,180 +332,180 @@ function hedefFunc(rotaX, rotaY) {
     }
 
 }
-//Begin bölgeler arası yönlendirme
-var kat3Koordinatlar=[];
-kat3Koordinatlar.push({}); //bos
-kat3Koordinatlar.push({name:'1',x:854,y:95}); //kuzey
-kat3Koordinatlar.push({}); //bos
-kat3Koordinatlar.push({name:'3',x:1314,y:365}); //doğu
-kat3Koordinatlar.push({}); //bos
-kat3Koordinatlar.push({name:'5',x:0,y:0}); //güney
-kat3Koordinatlar.push({}); //bos
-kat3Koordinatlar.push({name:'7',x:0,y:0}); //batı
 
-var bolgeler=[];
-bolgeler.push({kat:'0',x:0,y:0});
-bolgeler.push({kat:'1',x:0,y:0});
-bolgeler.push({kat:'2',x:0,y:0});
-bolgeler.push({kat:'3',x:853,y:398,gitKoordinat:kat3Koordinatlar});
+//#region Bölgeler Arası Yönlendirme
+    var kat3Koordinatlar=[];
+    kat3Koordinatlar.push({}); //bos
+    kat3Koordinatlar.push({name:'1',x:854,y:95}); //kuzey
+    kat3Koordinatlar.push({}); //bos
+    kat3Koordinatlar.push({name:'3',x:1314,y:365}); //doğu
+    kat3Koordinatlar.push({}); //bos
+    kat3Koordinatlar.push({name:'5',x:0,y:0}); //güney
+    kat3Koordinatlar.push({}); //bos
+    kat3Koordinatlar.push({name:'7',x:0,y:0}); //batı
 
-function bolgeKontrol(bolgeX,bolgeY,kat)
-{
-    if(bolgeX<bolgeler[kat].x && bolgeY<bolgeler[kat].y)      { return 0;}
-    else if(bolgeX>bolgeler[kat].x && bolgeY<bolgeler[kat].y) { return 2;}
-    else if(bolgeX>bolgeler[kat].x && bolgeY>bolgeler[kat].y) { return 4;}
-    else if(bolgeX<bolgeler[kat].x && bolgeY>bolgeler[kat].y) { return 6;}
-}
-var gitBolgeler=[];
-function gidilecekBolgeler(kendiBolgesi,hedefBolgesi,kat)
-{
-    gitBolgeler=[];
-    console.log(kendiBolgesi,hedefBolgesi);    
-    var isaret=-1;
-    var fark=hedefBolgesi-kendiBolgesi;
-    if(fark>0) isaret=1;
-    if(fark>2) isaret=isaret*(-1);
-    if(fark==0) {  //cikis 
-    }
-    else
+    var kat2Koordinatlar=[];
+    kat2Koordinatlar.push({}); //bos
+    kat2Koordinatlar.push({name:'1',x:854,y:95}); //kuzey
+    kat2Koordinatlar.push({}); //bos
+    kat2Koordinatlar.push({name:'3',x:1404,y:365}); //doğu
+    kat2Koordinatlar.push({}); //bos
+    kat2Koordinatlar.push({name:'5',x:854,y:694}); //güney
+    kat2Koordinatlar.push({}); //bos
+    kat2Koordinatlar.push({name:'7',x:307,y:365}); //batı
+
+    var bolgeler=[];
+    bolgeler.push({kat:'0',x:0,y:0});
+    bolgeler.push({kat:'1',x:0,y:0});
+    bolgeler.push({kat:'2',x:853,y:398,gitKoordinat:kat2Koordinatlar});
+    bolgeler.push({kat:'3',x:853,y:398,gitKoordinat:kat3Koordinatlar});
+
+    function bolgeKontrol(bolgeX,bolgeY,kat)
     {
-        while(kendiBolgesi!=hedefBolgesi)
+        if(bolgeX<bolgeler[kat].x && bolgeY<bolgeler[kat].y)      { return 0;}
+        else if(bolgeX>bolgeler[kat].x && bolgeY<bolgeler[kat].y) { return 2;}
+        else if(bolgeX>bolgeler[kat].x && bolgeY>bolgeler[kat].y) { return 4;}
+        else if(bolgeX<bolgeler[kat].x && bolgeY>bolgeler[kat].y) { return 6;}
+    }
+    var gitBolgeler=[];
+    function gidilecekBolgeler(kendiBolgesi,hedefBolgesi,kat)
+    {
+        gitBolgeler=[];
+        console.log(kendiBolgesi,hedefBolgesi);    
+        var isaret=-1;
+        var fark=hedefBolgesi-kendiBolgesi;
+        if(fark>0) isaret=1;
+        if(fark>2) isaret=isaret*(-1);
+        if(fark==0) {  //cikis 
+        }
+        else
         {
-            var katIndex=kendiBolgesi+1*isaret;
-            kendiBolgesi+=2*isaret;
-            if(katIndex==-1) katIndex=7;
-            else if(katIndex==9) katIndex=1;          
-            if(kendiBolgesi==-2) kendiBolgesi=6;
-            else if(kendiBolgesi==8) kendiBolgesi=0;  
+            while(kendiBolgesi!=hedefBolgesi)
+            {
+                var katIndex=kendiBolgesi+1*isaret;
+                kendiBolgesi+=2*isaret;
+                if(katIndex==-1) katIndex=7;
+                else if(katIndex==9) katIndex=1;          
+                if(kendiBolgesi==-2) kendiBolgesi=6;
+                else if(kendiBolgesi==8) kendiBolgesi=0;  
 
-            gitBolgeler.push({x:bolgeler[kat].gitKoordinat[katIndex].x,y:bolgeler[kat].gitKoordinat[katIndex].y});
-            
-        }
-    }
-    console.log(gitBolgeler);
-}
-//End bölgeler arası yönlendirme
+                gitBolgeler.push({x:bolgeler[kat].gitKoordinat[katIndex].x,y:bolgeler[kat].gitKoordinat[katIndex].y});
 
-//Begin sınıf duvarları koordinat belirleme
-var sinifListe = [];
-sinifListe.push({ sinifAdi: 'jeoDerslikler',            sinifId:'1',    x1: 0,      x2: 633,         y1: 0,       y2: 94 });
-sinifListe.push({ sinifAdi: 'fenElektrikUstSiniflar',   sinifId:'2',    x1: 650,    x2: 1054,        y1: 0,       y2: 94 });
-sinifListe.push({ sinifAdi: 'bilgisayar301_303_305',    sinifId:'3',    x1: 1072,   x2: 1297,        y1: 0,       y2: 94 });
-sinifListe.push({ sinifAdi: 'bilgisayarAmfiAB',         sinifId:'4',    x1: 1290,   x2: 1381,        y1: 0,       y2: 124 });
-sinifListe.push({ sinifAdi: 'bilgisayarOgretimUyeleri', sinifId:'5',    x1: 1410,   x2: 1687,        y1: 0,       y2: 104 });
-sinifListe.push({ sinifAdi: 'fenElektrikAltSiniflar',   sinifId:'6',    x1: 644,    x2: 1122,        y1: 98,      y2: 10000 });  //
-sinifListe.push({ sinifAdi: 'jeoSagdakiDerslikler',     sinifId:'7',    x1: 580,    x2: 660,         y1: 132,     y2: 10000 });
-sinifListe.push({ sinifAdi: 'jeoGALERI',                sinifId:'8',    x1: 430,    x2: 559,         y1: 128,     y2: 199 });
-sinifListe.push({ sinifAdi: 'GaleriBilgisayar',         sinifId:'9',    x1: 1141,   x2: 1270,        y1: 128,     y2: 202 });
-sinifListe.push({ sinifAdi: 'JeoSoldakiDerslikler',     sinifId:'10',   x1: 0,      x2: 412,         y1: 0,       y2: 202 });
-sinifListe.push({ sinifAdi: 'bilgisayarLablar',         sinifId:'11',   x1: 1112,   x2: 1270,        y1: 238 ,     y2: 10000 });
-sinifListe.push({ sinifAdi: 'bilgisayarObssSol',        sinifId:'12',   x1: 1294,   x2: 1333,        y1: 126,     y2: 198 });
-sinifListe.push({ sinifAdi: 'bilgisayarObss',           sinifId:'12',   x1: 1319,   x2: 1381,        y1: 126,     y2: 271 });
-sinifListe.push({ sinifAdi: 'bilgisayarWC',             sinifId:'13',   x1: 1316,   x2: 1391,        y1: 295,     y2: 10000 });
-sinifListe.push({ sinifAdi: 'bilgisayarSagLab',         sinifId:'14',   x1: 1401,   x2: 1686,        y1: 106,     y2: 10000 });
-sinifListe.push({ sinifAdi: 'bilgisayarLablarSag',      sinifId:'15',   x1: 1260,   x2: 1307,        y1: 303,     y2: 10000 });
-sinifListe.push({ sinifAdi: 'jeoAltLablar',             sinifId:'16',   x1: 366,    x2: 597,         y1: 243,     y2: 10000 });
-
-sinifListe.push({ son: 'son' });
-console.log(sinifListe);
-
-//End sınıf duvarları koordinat belirleme
-
-//Begin merdiven ve asansör koordinat belirleme
-var merdivenlerListe = [];
-var merdivenListe=[];
-function altKataInıs()
-{
-    merdivenListe=[];
-    merdivenlerListe = [];
-    merdivenListe.push({ merdivenAdi: 'ogretmenlerMerdiven', x1: 456, y1: 111 });
-    merdivenListe.push({ merdivenAdi: 'BgirisMerdiven', x1: 367, y1: 399 });
-    merdivenListe.push({ merdivenAdi: 'FgirisYanMerdiven', x1: 24, y1: 91 });
-    merdivenListe.push({ son: 'son' });
-    merdivenlerListe.push({ kat: 3, merdivenListe: merdivenListe });   
-    console.log(merdivenlerListe);     
-}
-function EaltKataInıs()
-{
-    merdivenListe=[];
-    merdivenlerListe = [];
-    merdivenListe.push({ merdivenAdi: 'asansor', x1: 877, y1: 96 });
-    merdivenListe.push({ son: 'son' });
-    merdivenlerListe.push({ kat: 3, merdivenListe: merdivenListe });   
-    console.log(merdivenlerListe); 
-}
-
-function merdivenGit(solHiza3, topHiza3) {
-    var enKucuk = { deger: 9999, index: 99 };
-    for (var i = 0; i < merdivenlerListe.length; i++) {
-        for (var k = 0; k < merdivenlerListe[i].merdivenListe.length; k++) {
-            console.log(merdivenlerListe[i].merdivenListe[k].x1 + "--" + merdivenlerListe[i].merdivenListe[k].y1);
-            var a = solHiza3 - merdivenlerListe[i].merdivenListe[k].x1;
-            var b = topHiza3 - merdivenlerListe[i].merdivenListe[k].y1;
-            var c = Math.sqrt(a * a + b * b);
-            console.log("C= " + c);
-            if (c < enKucuk.deger) {
-                enKucuk.deger = c;
-                enKucuk.index = k;
             }
-            console.log("En Kucuk= " + enKucuk.deger + " index = " + enKucuk.index);
         }
+        console.log(gitBolgeler);
     }
-    hedefX = merdivenlerListe[0].merdivenListe[enKucuk.index].x1;
-    hedefY = merdivenlerListe[0].merdivenListe[enKucuk.index].y1;
-    hedefFunc(solHiza3, topHiza3);
-}
+//#endregion Bölgeler Arası Yönlendirme
 
-//End merdiven ve asansör koordinat belirleme
+//#region Sınıf Duvarları Koordinat Belirleme
+    var sinifListe = [];
+    sinifListe.push({ sinifAdi: 'jeoDerslikler',            sinifId:'1',    x1: 0,      x2: 633,         y1: 0,       y2: 94 });
+    sinifListe.push({ sinifAdi: 'fenElektrikUstSiniflar',   sinifId:'2',    x1: 650,    x2: 1054,        y1: 0,       y2: 94 });
+    sinifListe.push({ sinifAdi: 'bilgisayar301_303_305',    sinifId:'3',    x1: 1072,   x2: 1297,        y1: 0,       y2: 94 });
+    sinifListe.push({ sinifAdi: 'bilgisayarAmfiAB',         sinifId:'4',    x1: 1290,   x2: 1381,        y1: 0,       y2: 124 });
+    sinifListe.push({ sinifAdi: 'bilgisayarOgretimUyeleri', sinifId:'5',    x1: 1410,   x2: 1687,        y1: 0,       y2: 104 });
+    sinifListe.push({ sinifAdi: 'fenElektrikAltSiniflar',   sinifId:'6',    x1: 644,    x2: 1122,        y1: 98,      y2: 10000 });  //
+    sinifListe.push({ sinifAdi: 'jeoSagdakiDerslikler',     sinifId:'7',    x1: 580,    x2: 660,         y1: 132,     y2: 10000 });
+    sinifListe.push({ sinifAdi: 'jeoGALERI',                sinifId:'8',    x1: 430,    x2: 559,         y1: 128,     y2: 199 });
+    sinifListe.push({ sinifAdi: 'GaleriBilgisayar',         sinifId:'9',    x1: 1141,   x2: 1270,        y1: 128,     y2: 202 });
+    sinifListe.push({ sinifAdi: 'JeoSoldakiDerslikler',     sinifId:'10',   x1: 0,      x2: 412,         y1: 0,       y2: 202 });
+    sinifListe.push({ sinifAdi: 'bilgisayarLablar',         sinifId:'11',   x1: 1112,   x2: 1270,        y1: 238 ,     y2: 10000 });
+    sinifListe.push({ sinifAdi: 'bilgisayarObssSol',        sinifId:'12',   x1: 1294,   x2: 1333,        y1: 126,     y2: 198 });
+    sinifListe.push({ sinifAdi: 'bilgisayarObss',           sinifId:'12',   x1: 1319,   x2: 1381,        y1: 126,     y2: 271 });
+    sinifListe.push({ sinifAdi: 'bilgisayarWC',             sinifId:'13',   x1: 1316,   x2: 1391,        y1: 295,     y2: 10000 });
+    sinifListe.push({ sinifAdi: 'bilgisayarSagLab',         sinifId:'14',   x1: 1401,   x2: 1686,        y1: 106,     y2: 10000 });
+    sinifListe.push({ sinifAdi: 'bilgisayarLablarSag',      sinifId:'15',   x1: 1260,   x2: 1307,        y1: 303,     y2: 10000 });
+    sinifListe.push({ sinifAdi: 'jeoAltLablar',             sinifId:'16',   x1: 366,    x2: 597,         y1: 243,     y2: 10000 });
 
-//Begin baslangic konumunu belirleme
-function kendiKonumuKoordinat(barcodeSonuc) {
-    barcodeSonuc=barcodeSonuc.toString();
-    var katKod=barcodeSonuc.charAt(0);
-    var sinifKod=barcodeSonuc.charAt(1)+barcodeSonuc.charAt(2);
-    katKod=parseInt(katKod);
-    sinifKod=parseInt(sinifKod);
+    sinifListe.push({ son: 'son' });
+    console.log(sinifListe);
+//#endregion Sınıf Duvarları Koordinat Belirleme
 
-    try
+//#region Merdiven ve Asansör Koordinat Belirleme
+    var merdivenlerListe = [];
+    var merdivenListeKat3=[];
+    var merdivenListeKat2=[];    
+    function altKataInıs()
     {
-        konumX=baslangicKonumlari[katKod].katKonum[sinifKod].x;
-        konumY=baslangicKonumlari[katKod].katKonum[sinifKod].y;
+        merdivenlerListe = [];
+
+        merdivenListeKat2=[];    
+        merdivenListeKat3=[];
+        
+        //Kat 3 merdiven koordinatlar
+            merdivenListeKat3.push({ merdivenAdi: 'ogretmenlerMerdiven', x1: 1480, y1: 105 });
+            merdivenListeKat3.push({ merdivenAdi: 'BilgisayarGirisMerdiven', x1: 1398, y1: 394 });
+            merdivenListeKat3.push({ merdivenAdi: 'bilgisayarYanMerdiven', x1: 1063, y1: 97 });
+            merdivenListeKat3.push({ merdivenAdi: 'FgirisYanMerdiven', x1: 852, y1: 97 });
+            // merdivenListeKat3.push({ merdivenAdi: 'jeoFizikMerdiven', x1: 641, y1: 97 });
+            merdivenListeKat3.push({ merdivenAdi: 'jeoFizikGirisMerdiven', x1: 306, y1: 483 });
+            merdivenListeKat3.push({ son: 'son' });
+        //Kat 3 merdiven koordinatlar
+
+        //Kat 2 merdiven koorinatlar
+            merdivenListeKat2.push({ merdivenAdi: 'bilgisayarYanMerdiven', x1: 1063, y1: 97 });
+            merdivenListeKat2.push({ merdivenAdi: 'ogretmenlerMerdiven', x1: 1480, y1: 105 });
+            merdivenListeKat2.push({ merdivenAdi: 'jeoFizikGirisMerdiven', x1: 306, y1: 483 });
+            merdivenListeKat2.push({ merdivenAdi: 'BGirisMerdiven', x1: 1398, y1: 394 });
+            merdivenListeKat2.push({ merdivenAdi: 'FgirisYanMerdiven', x1: 852, y1: 97 });            
+            merdivenListeKat2.push({ son: 'son' });
+        //Kat 2 merdiven koorinatlar
+
+        merdivenlerListe.push({ kat: 3, merdivenListe: merdivenListeKat3 });   
     }
-    catch(Exception)
+    function EaltKataInıs()
     {
-        alert("Konum hatalı");
+        merdivenlerListe = [];
+        merdivenListeKat3=[];
+        merdivenListeKat2=[];  
+
+        //Kat 3 asansor koordinatlar
+            merdivenListeKat3.push({ merdivenAdi: 'asansor', x1: 852, y1: 97 });
+            merdivenListeKat3.push({ merdivenAdi: 'jeoFizikGirisMerdiven', x1: 306, y1: 483 });
+            merdivenListeKat3.push({ son: 'son' });
+        //Kat 3 asansor koordinatlar
+
+        //Kat 2 asansor koordinatlar
+            merdivenListeKat2.push({ merdivenAdi: 'asansor', x1: 852, y1: 97 });
+            merdivenListeKat2.push({ merdivenAdi: 'jeoFizikGirisMerdiven', x1: 306, y1: 483 });
+            merdivenListeKat2.push({ son: 'son' });
+        //Kat 2 asansor koordinatlar
+
+
+        merdivenlerListe.push({ kat: 3, merdivenListe: merdivenListeKat3 });   
+        console.log(merdivenlerListe); 
     }
-}
-var kat3BK=[];
-kat3BK.push({ konumAdi: '0', x: 1391, y: 357 });
-kat3BK.push({ konumAdi: '1', x: 1396, y: 366 });
-kat3BK.push({ konumAdi: '2', x: 1388, y: 99 });
-kat3BK.push({ konumAdi: '3', x: 1132, y: 222 });
-kat3BK.push({ konumAdi: '4', x: 1391, y: 357 });
-kat3BK.push({ konumAdi: '5', x: 1396, y: 366 });
-kat3BK.push({ konumAdi: '6', x: 1388, y: 99 });
-kat3BK.push({ konumAdi: '7', x: 1132, y: 222 });
-kat3BK.push({ konumAdi: '8', x: 1391, y: 357 });
-kat3BK.push({ konumAdi: '9', x: 1396, y: 366 });
-kat3BK.push({ konumAdi: '10', x: 1388, y: 99 });
+    
+    function enYakinMerdiven(solHiza3, topHiza3) {
+        var enKucuk = { deger: 9999, index: 99 };
+        for (var i = 0; i < merdivenlerListe.length; i++) {
+            for (var k = 0; k < merdivenlerListe[i].merdivenListe.length; k++) {
+                console.log(merdivenlerListe[i].merdivenListe[k].x1 + "--" + merdivenlerListe[i].merdivenListe[k].y1);
+                var a = solHiza3 - merdivenlerListe[i].merdivenListe[k].x1;
+                var b = topHiza3 - merdivenlerListe[i].merdivenListe[k].y1;
+                var c = Math.sqrt(a * a + b * b);
+                console.log("C= " + c);
+                if (c < enKucuk.deger) {
+                    enKucuk.deger = c;
+                    enKucuk.index = k;
+                }
+                console.log("En Kucuk= " + enKucuk.deger + " index = " + enKucuk.index);
+            }
+        }
+        hedefX = merdivenlerListe[0].merdivenListe[enKucuk.index].x1;
+        hedefY = merdivenlerListe[0].merdivenListe[enKucuk.index].y1;
+        sonHedefX = hedefX;
+        sonHedefY = hedefY;
+    }
 
-var baslangicKonumlari=[];
-baslangicKonumlari.push({ kat: '0', katKonum:0 });
-baslangicKonumlari.push({ kat: '1', katKonum:0 });
-baslangicKonumlari.push({ kat: '2', katKonum:0 });
-baslangicKonumlari.push({ kat: '3', katKonum:kat3BK });
+//#endregion Merdiven ve Asansör Koordinat Belirleme
 
-//End baslangic konumunu belirleme
 
 function iecompattest() {
     return (document.compatMode && document.compatMode != "BackCompat") ? document.documentElement : document.body
 }
 
-function tarayici()
-{
-        barcodeSonuc = 301;
-        kendiKonumuKoordinat(barcodeSonuc);
-}
+
 var durdurD=true;
 function durdur()
 {

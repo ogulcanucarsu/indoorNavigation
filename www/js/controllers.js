@@ -26,12 +26,11 @@ angular.module('starter.controllers', [])
     }
     $scope.deneme = function (engelliModel) {
         engelliBool=engelliModel;
-        barcodeSonuc = 308;
+        barcodeSonuc = 318;
         $state.go('tab.bolumler');
     }
 })
-.controller('bolumlerCtrl',function($scope,Bolumler, $stateParams,Chats)
-{
+.controller('bolumlerCtrl',function($scope,Bolumler, $stateParams,Chats){
     var _barcodeSonuc=barcodeSonuc.toString();
     var katKod=_barcodeSonuc.charAt(0);
 
@@ -48,13 +47,16 @@ angular.module('starter.controllers', [])
 
 })
 .controller('dropDownCtrl', function ($scope, $stateParams, Chats) {
-    kendiKonumuKoordinat(barcodeSonuc);
     $scope.liste = Chats.allBolum($stateParams.bolumId);
     $scope.bulundugunYer =Chats.get(barcodeSonuc);
     $scope.bulundugunYer =$scope.bulundugunYer.s_name;    
 })
 .controller('haritaCtrl', function ($scope, $stateParams, Chats, $ionicScrollDelegate, $state, $cordovaBarcodeScanner) {
-    tarayici(); //Telefona atarken kapat
+    barcodeSonuc = 318; //Telefona atarken kapat sil
+    $scope.kendiKonumu = Chats.get(barcodeSonuc);    
+    konumX=$scope.kendiKonumu.s_x;
+    konumY=$scope.kendiKonumu.s_y;
+
     $scope.ekranHeight = iecompattest().clientHeight - 80;
 
     $scope.secilenYer = Chats.get($stateParams.haritaId);
@@ -65,15 +67,23 @@ angular.module('starter.controllers', [])
     gitBolgeIndex=0;
     if(engelliBool) 
     {
+        EaltKataInıs();        
+        if($scope.secilenYer.s_kat!=$scope.kendiKonumu.s_kat)
+        {
+            enYakinMerdiven(konumX,konumY);
+        }
         EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat);
-        EaltKataInıs();
     } 
     else 
     {
+        altKataInıs();        
+        if($scope.secilenYer.s_kat!=$scope.kendiKonumu.s_kat)
+        {
+            enYakinMerdiven(konumX,konumY);
+        }
         gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat); 
-        altKataInıs();
     }
-setTimeout(function(){
+    setTimeout(function(){
     hedefFunc(konumX, konumY);
     },10);
     $scope.harita = 'img/rota2.png';
