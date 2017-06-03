@@ -16,10 +16,29 @@ Ekat3Koordinatlar.push({name:'13',x:0,y:0}); //
 Ekat3Koordinatlar.push({}); //bos
 Ekat3Koordinatlar.push({name:'15',x:429,y:150}); //
 
+var Ekat2Koordinatlar=[];
+Ekat2Koordinatlar.push({}); //bos
+Ekat2Koordinatlar.push({name:'1',x:854,y:107}); //
+Ekat2Koordinatlar.push({}); //bos
+Ekat2Koordinatlar.push({name:'3',x:1284,y:201}); //
+Ekat2Koordinatlar.push({}); //bos
+Ekat2Koordinatlar.push({name:'5',x:1400,y:403}); //
+Ekat2Koordinatlar.push({}); //bos
+Ekat2Koordinatlar.push({name:'7',x:1282,y:614}); //
+Ekat2Koordinatlar.push({}); //bos
+Ekat2Koordinatlar.push({name:'9',x:852,y:698}); //
+Ekat2Koordinatlar.push({}); //bos
+Ekat2Koordinatlar.push({name:'11',x:576,y:649}); //
+Ekat2Koordinatlar.push({}); //bos
+Ekat2Koordinatlar.push({name:'13',x:0,y:0}); //
+Ekat2Koordinatlar.push({}); //bos
+Ekat2Koordinatlar.push({name:'15',x:429,y:150}); //
+
+
 var Ebolgeler=[];
 Ebolgeler.push({kat:'0',x:0,y:0});
 Ebolgeler.push({kat:'1',x:0,y:0});
-Ebolgeler.push({kat:'2',x:0,y:0});
+Ebolgeler.push({kat:'2',x:853,y1:150,y2:404,y3:654,gitKoordinat:Ekat2Koordinatlar});
 Ebolgeler.push({kat:'3',x:853,y1:142,y2:396,y3:1000,gitKoordinat:Ekat3Koordinatlar});
 
 function EbolgeKontrol(bolgeX,bolgeY,kat)
