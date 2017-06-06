@@ -28,7 +28,7 @@ angular.module('starter.services', [])
             { s_id:318,  s_kat:3,  s_name:'BM Giriş',                 s_x:1396, s_y:366},
             { s_id:300,  s_kat:3,  s_name:'F Giriş Asansör',          s_x:865,  s_y:97},
 
-            { s_id:399,  s_kat:2,  s_name:'Sismoloji DENEME',        s_x:577,  s_y:226},                           
+            // { s_id:399,  s_kat:2,  s_name:'Sismoloji DENEME',        s_x:577,  s_y:97},                           
 
             { s_id:102,  s_kat:3,  s_name:'Jeofizik 102',              s_x:421,  s_y:97},                           
             { s_id:104,  s_kat:3,  s_name:'Jeofizik 104',              s_x:421,  s_y:97},                           
@@ -39,8 +39,27 @@ angular.module('starter.services', [])
             { s_id:112,  s_kat:3,  s_name:'Jeofizik Lab',              s_x:604,  s_y:130},                           
             { s_id:113,  s_kat:3,  s_name:'Jeofizik Sismoloji Lab',    s_x:577,  s_y:226},                           
             { s_id:114,  s_kat:3,  s_name:'Jeofizik Dekanlik Lab',     s_x:541,  s_y:236},                           
-            { s_id:115,  s_kat:3,  s_name:'Jeofizik Veri işleme Lab',  s_x:462,  s_y:235}    
+            { s_id:115,  s_kat:3,  s_name:'Jeofizik Veri işleme Lab',  s_x:462,  s_y:235}, 
 
+            { s_id:201,  s_kat:2,  s_name:'Derslik 205',               s_x:918,   s_y:107}, 
+            { s_id:202,  s_kat:2,  s_name:'Derslik 207',               s_x:918,  s_y:107}, 
+            { s_id:203,  s_kat:2,  s_name:'Derslik 209',               s_x:971,  s_y:107}, 
+            { s_id:204,  s_kat:2,  s_name:'Kimya Kule',                s_x:945,  s_y:107}, 
+            { s_id:205,  s_kat:2,  s_name:'Kimya Yüksek Lisans',       s_x:996,  s_y:107}, 
+            { s_id:206,  s_kat:2,  s_name:'Kimya Lab.',                s_x:1158,  s_y:107}, 
+            { s_id:207,  s_kat:2,  s_name:'Derslik 203',               s_x:1244,  s_y:107}, 
+            { s_id:208,  s_kat:2,  s_name:'Kimya Membran',             s_x:1308,  s_y:107}, 
+            { s_id:209,  s_kat:2,  s_name:'Fiziko Kimya Lab.',         s_x:1128,  s_y:157}, 
+            { s_id:210,  s_kat:2,  s_name:'Derslik 201',               s_x:1128,  s_y:220}, 
+            { s_id:211,  s_kat:2,  s_name:'Kimya İşleme Lab.',         s_x:1330,  s_y:134}, 
+            { s_id:212,  s_kat:2,  s_name:'Polimer Atölyesi',          s_x:1283,  s_y:249}, 
+            { s_id:212,  s_kat:2,  s_name:'Kimyasal Madde Odası',      s_x:1336,  s_y:273}, 
+            { s_id:212,  s_kat:2,  s_name:'Karakterizasyon Lab.',      s_x:1393,  s_y:147}, 
+            { s_id:212,  s_kat:2,  s_name:'Reaksiyon Lab.',            s_x:1336,  s_y:228}, 
+            { s_id:212,  s_kat:2,  s_name:'Kimya Öğretim Üyeleri Ofis',s_x:1567,  s_y:118}, 
+            { s_id:212,  s_kat:2,  s_name:'Kimya Bölüm Başlanlığı',    s_x:1680,  s_y:118}
+            // { s_id:212,  s_kat:2,  s_name:'xxxxxx',  s_x:1336,  s_y:273}, 
+            
         ];
 
         return {
@@ -107,7 +126,7 @@ var hedefY;
 var caprazGit = false;
 var oncekiRotaX;
 var oncekiRotaY;
-function hedefFunc(rotaX, rotaY) {
+function hedefFunc(rotaX, rotaY,sinifKat) {
 // console.log("calisiyor");
     var yeniHedefX; //top cakisirsa
     var yeniHedefY;
@@ -166,33 +185,33 @@ function hedefFunc(rotaX, rotaY) {
             xArtirBool = true;          
         }
         
-        for (var i = 0; i < sinifListe.length; i++) {
+        for (var i = 0; i < siniflar[sinifKat].sinif.length; i++) {
             oncekiRotaX=rotaX;
             oncekiRotaY=rotaY;  
 
-            if (rotaX > sinifListe[i].x1 && rotaX < sinifListe[i].x2 && (rotaY == sinifListe[i].y1 || rotaY == sinifListe[i].y2)) {
+            if (rotaX > siniflar[sinifKat].sinif[i].x1 && rotaX < siniflar[sinifKat].sinif[i].x2 && (rotaY == siniflar[sinifKat].sinif[i].y1 || rotaY == siniflar[sinifKat].sinif[i].y2)) {
                 rotaX = rotaX + 1 * xIsaret;
                 rotaY = rotaY + 0;
 
-                if (rotaX == hedefX && Math.abs((sinifListe[i].x1 - rotaX)) < Math.abs((sinifListe[i].x2 - rotaX))) {
-                    yeniHedefX = sinifListe[i].x1;
+                if (rotaX == hedefX && Math.abs((siniflar[sinifKat].sinif[i].x1 - rotaX)) < Math.abs((siniflar[sinifKat].sinif[i].x2 - rotaX))) {
+                    yeniHedefX = siniflar[sinifKat].sinif[i].x1;
                     //sola Yakın X1
-                    if (Math.abs((sinifListe[i].y1 - rotaY)) > Math.abs((sinifListe[i].y2 - rotaY))) {
-                        yeniHedefY = sinifListe[i].y1;
+                    if (Math.abs((siniflar[sinifKat].sinif[i].y1 - rotaY)) > Math.abs((siniflar[sinifKat].sinif[i].y2 - rotaY))) {
+                        yeniHedefY = siniflar[sinifKat].sinif[i].y1;
                     }
                     else {
-                        yeniHedefY = sinifListe[i].y2;
+                        yeniHedefY = siniflar[sinifKat].sinif[i].y2;
                     }
                     yeniHedefBool = true;
                 }
-                else if (rotaX == hedefX && Math.abs((sinifListe[i].x1 - rotaX)) > Math.abs((sinifListe[i].x2 - rotaX))) {
-                    yeniHedefX = sinifListe[i].x2;
+                else if (rotaX == hedefX && Math.abs((siniflar[sinifKat].sinif[i].x1 - rotaX)) > Math.abs((siniflar[sinifKat].sinif[i].x2 - rotaX))) {
+                    yeniHedefX = siniflar[sinifKat].sinif[i].x2;
                     //sola Yakın X1
-                    if (Math.abs((sinifListe[i].y1 - rotaY)) > Math.abs((sinifListe[i].y2 - rotaY))) {
-                        yeniHedefY = sinifListe[i].y1;
+                    if (Math.abs((siniflar[sinifKat].sinif[i].y1 - rotaY)) > Math.abs((siniflar[sinifKat].sinif[i].y2 - rotaY))) {
+                        yeniHedefY = siniflar[sinifKat].sinif[i].y1;
                     }
                     else {
-                        yeniHedefY = sinifListe[i].y2;
+                        yeniHedefY = siniflar[sinifKat].sinif[i].y2;
                     }
                     yeniHedefBool = true;
                 }
@@ -217,29 +236,29 @@ function hedefFunc(rotaX, rotaY) {
                 caprazGit = true;
                 break;
             }
-            else if (rotaY > sinifListe[i].y1 && rotaY < sinifListe[i].y2 && (rotaX == sinifListe[i].x1 || rotaX == sinifListe[i].x2)) {
+            else if (rotaY > siniflar[sinifKat].sinif[i].y1 && rotaY < siniflar[sinifKat].sinif[i].y2 && (rotaX == siniflar[sinifKat].sinif[i].x1 || rotaX == siniflar[sinifKat].sinif[i].x2)) {
                 rotaX = rotaX + 0;
                 rotaY = rotaY + 1 * yIsaret;
 
-                if (rotaY == hedefY && Math.abs((sinifListe[i].y1 - rotaY)) < Math.abs((sinifListe[i].y2 - rotaY))) {
-                    yeniHedefY = sinifListe[i].y1;
+                if (rotaY == hedefY && Math.abs((siniflar[sinifKat].sinif[i].y1 - rotaY)) < Math.abs((siniflar[sinifKat].sinif[i].y2 - rotaY))) {
+                    yeniHedefY = siniflar[sinifKat].sinif[i].y1;
                     //yukarı yakin y1
-                    if (Math.abs((sinifListe[i].x1 - rotaX)) > Math.abs((sinifListe[i].x2 - rotaX))) {
-                        yeniHedefX = sinifListe[i].x1;
+                    if (Math.abs((siniflar[sinifKat].sinif[i].x1 - rotaX)) > Math.abs((siniflar[sinifKat].sinif[i].x2 - rotaX))) {
+                        yeniHedefX = siniflar[sinifKat].sinif[i].x1;
                     }
                     else {
-                        yeniHedefX = sinifListe[i].x2;
+                        yeniHedefX = siniflar[sinifKat].sinif[i].x2;
                     }
                     yeniHedefBool2 = true;
                 }
-                else if (rotaY == hedefY && Math.abs((sinifListe[i].y1 - rotaY)) > Math.abs((sinifListe[i].y2 - rotaY))) {
-                    yeniHedefY = sinifListe[i].y2;
+                else if (rotaY == hedefY && Math.abs((siniflar[sinifKat].sinif[i].y1 - rotaY)) > Math.abs((siniflar[sinifKat].sinif[i].y2 - rotaY))) {
+                    yeniHedefY = siniflar[sinifKat].sinif[i].y2;
                     //asagi Yakın y2
-                    if (Math.abs((sinifListe[i].x1 - rotaX)) > Math.abs((sinifListe[i].x2 - rotaX))) {
-                        yeniHedefX = sinifListe[i].x1;
+                    if (Math.abs((siniflar[sinifKat].sinif[i].x1 - rotaX)) > Math.abs((siniflar[sinifKat].sinif[i].x2 - rotaX))) {
+                        yeniHedefX = siniflar[sinifKat].sinif[i].x1;
                     }
                     else {
-                        yeniHedefX = sinifListe[i].x2;
+                        yeniHedefX = siniflar[sinifKat].sinif[i].x2;
                     }
                     yeniHedefBool2 = true;
                 }
@@ -263,7 +282,7 @@ function hedefFunc(rotaX, rotaY) {
                 caprazGit = true;
                 break;
             }
-            else if (sinifListe[i].son == 'son') {              
+            else if (siniflar[sinifKat].sinif[i].son == 'son') {              
                 if (caprazGit) {
                     yArtir = 1;
                     xArtir = 1;
@@ -302,7 +321,7 @@ function hedefFunc(rotaX, rotaY) {
     
     if(durdurD)
     {
-        //  setTimeout(function(){
+          setTimeout(function(){
             if (hedefY == rotaY && hedefX == rotaX) 
             {
                 gitBolgeIndex++;
@@ -331,8 +350,8 @@ function hedefFunc(rotaX, rotaY) {
                 console.log("tamamlandı");
             }
             else
-            hedefFunc(rotaX, rotaY);  
-      //  },1);
+            hedefFunc(rotaX, rotaY,sinifKat);
+        },1);
     }
 
 }
@@ -404,27 +423,35 @@ function hedefFunc(rotaX, rotaY) {
 //#region Sınıf Duvarları Koordinat Belirleme
     var siniflar=[];
     var sinifDuvarlariKat3=[];
-    var sinifListe = [];
-    sinifListe.push({ sinifAdi: 'jeoDerslikler',            sinifId:'1',    x1: 0,      x2: 633,         y1: 0,       y2: 94 });
-    sinifListe.push({ sinifAdi: 'fenElektrikUstSiniflar',   sinifId:'2',    x1: 650,    x2: 1054,        y1: 0,       y2: 94 });
-    sinifListe.push({ sinifAdi: 'bilgisayar301_303_305',    sinifId:'3',    x1: 1072,   x2: 1297,        y1: 0,       y2: 94 });
-    sinifListe.push({ sinifAdi: 'bilgisayarAmfiAB',         sinifId:'4',    x1: 1290,   x2: 1381,        y1: 0,       y2: 124 });
-    sinifListe.push({ sinifAdi: 'bilgisayarOgretimUyeleri', sinifId:'5',    x1: 1410,   x2: 1687,        y1: 0,       y2: 104 });
-    sinifListe.push({ sinifAdi: 'fenElektrikAltSiniflar',   sinifId:'6',    x1: 644,    x2: 1122,        y1: 98,      y2: 10000 });  //
-    sinifListe.push({ sinifAdi: 'jeoSagdakiDerslikler',     sinifId:'7',    x1: 580,    x2: 660,         y1: 132,     y2: 10000 });
-    sinifListe.push({ sinifAdi: 'jeoGALERI',                sinifId:'8',    x1: 430,    x2: 559,         y1: 128,     y2: 199 });
-    sinifListe.push({ sinifAdi: 'GaleriBilgisayar',         sinifId:'9',    x1: 1141,   x2: 1270,        y1: 128,     y2: 202 });
-    sinifListe.push({ sinifAdi: 'JeoSoldakiDerslikler',     sinifId:'10',   x1: 0,      x2: 412,         y1: 0,       y2: 202 });
-    sinifListe.push({ sinifAdi: 'bilgisayarLablar',         sinifId:'11',   x1: 1112,   x2: 1270,        y1: 238 ,     y2: 10000 });
-    sinifListe.push({ sinifAdi: 'bilgisayarObssSol',        sinifId:'12',   x1: 1294,   x2: 1333,        y1: 126,     y2: 198 });
-    sinifListe.push({ sinifAdi: 'bilgisayarObss',           sinifId:'12',   x1: 1319,   x2: 1381,        y1: 126,     y2: 271 });
-    sinifListe.push({ sinifAdi: 'bilgisayarWC',             sinifId:'13',   x1: 1316,   x2: 1391,        y1: 295,     y2: 10000 });
-    sinifListe.push({ sinifAdi: 'bilgisayarSagLab',         sinifId:'14',   x1: 1401,   x2: 1686,        y1: 106,     y2: 10000 });
-    sinifListe.push({ sinifAdi: 'bilgisayarLablarSag',      sinifId:'15',   x1: 1260,   x2: 1307,        y1: 303,     y2: 10000 });
-    sinifListe.push({ sinifAdi: 'jeoAltLablar',             sinifId:'16',   x1: 366,    x2: 597,         y1: 243,     y2: 10000 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'jeoDerslikler',            sinifId:'1',    x1: 0,      x2: 633,         y1: 0,       y2: 94 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'fenElektrikUstSiniflar',   sinifId:'2',    x1: 650,    x2: 1054,        y1: 0,       y2: 94 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'bilgisayar301_303_305',    sinifId:'3',    x1: 1072,   x2: 1297,        y1: 0,       y2: 94 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'bilgisayarAmfiAB',         sinifId:'4',    x1: 1290,   x2: 1381,        y1: 0,       y2: 124 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'bilgisayarOgretimUyeleri', sinifId:'5',    x1: 1410,   x2: 1687,        y1: 0,       y2: 104 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'fenElektrikAltSiniflar',   sinifId:'6',    x1: 644,    x2: 1122,        y1: 98,      y2: 10000 });  //
+    sinifDuvarlariKat3.push({ sinifAdi: 'jeoSagdakiDerslikler',     sinifId:'7',    x1: 580,    x2: 660,         y1: 132,     y2: 10000 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'jeoGALERI',                sinifId:'8',    x1: 430,    x2: 559,         y1: 128,     y2: 199 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'GaleriBilgisayar',         sinifId:'9',    x1: 1141,   x2: 1270,        y1: 128,     y2: 202 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'JeoSoldakiDerslikler',     sinifId:'10',   x1: 0,      x2: 412,         y1: 0,       y2: 202 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'bilgisayarLablar',         sinifId:'11',   x1: 1112,   x2: 1270,        y1: 238 ,     y2: 10000 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'bilgisayarObssSol',        sinifId:'12',   x1: 1294,   x2: 1333,        y1: 126,     y2: 198 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'bilgisayarObss',           sinifId:'12',   x1: 1319,   x2: 1381,        y1: 126,     y2: 271 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'bilgisayarWC',             sinifId:'13',   x1: 1316,   x2: 1391,        y1: 295,     y2: 10000 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'bilgisayarSagLab',         sinifId:'14',   x1: 1401,   x2: 1686,        y1: 106,     y2: 10000 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'bilgisayarLablarSag',      sinifId:'15',   x1: 1260,   x2: 1307,        y1: 303,     y2: 10000 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'jeoAltLablar',             sinifId:'16',   x1: 366,    x2: 597,         y1: 243,     y2: 10000 });
+    sinifDuvarlariKat3.push({ son: 'son' });
 
-    sinifListe.push({ son: 'son' });
-    console.log(sinifListe);
+    var sinifDuvarlariKat2=[];
+    sinifDuvarlariKat3.push({ sinifAdi: 'xxxx',            sinifId:'1',    x1: 0,      x2: 633,         y1: 0,       y2: 94 });
+    sinifDuvarlariKat2.push({ son: 'son' });
+
+
+    siniflar.push({sinif:''});
+    siniflar.push({sinif:''});
+    siniflar.push({sinif:sinifDuvarlariKat2});
+    siniflar.push({sinif:sinifDuvarlariKat3});
+
 //#endregion Sınıf Duvarları Koordinat Belirleme
 
 //#region Merdiven ve Asansör Koordinat Belirleme
@@ -442,7 +469,7 @@ function hedefFunc(rotaX, rotaY) {
             merdivenListeKat3.push({ merdivenAdi: 'ogretmenlerMerdiven', x1: 1480, y1: 105 });
             merdivenListeKat3.push({ merdivenAdi: 'BilgisayarGirisMerdiven', x1: 1398, y1: 394 });
             merdivenListeKat3.push({ merdivenAdi: 'bilgisayarYanMerdiven', x1: 1063, y1: 97 });
-            merdivenListeKat3.push({ merdivenAdi: 'FgirisYanMerdiven', x1: 852, y1: 97 });
+            merdivenListeKat3.push({ merdivenAdi: 'FgirisYanMerdiven', x1: 858, y1: 97 });
             // merdivenListeKat3.push({ merdivenAdi: 'jeoFizikMerdiven', x1: 641, y1: 97 });
             merdivenListeKat3.push({ merdivenAdi: 'jeoFizikGirisMerdiven', x1: 306, y1: 483 });
             merdivenListeKat3.push({ son: 'son' });

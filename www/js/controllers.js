@@ -66,27 +66,36 @@ angular.module('starter.controllers', [])
     sonHedefY=$scope.secilenYer.s_y;
     gitBolgeIndex=0;
     if(engelliBool) 
-    {
-        EaltKataInıs();        
+    {   
         if($scope.secilenYer.s_kat!=$scope.kendiKonumu.s_kat)
         {
-            enYakinMerdiven(konumX,konumY);
+            EaltKataInıs();   
+            enYakinMerdiven(hedefX,hedefY);
         }
         EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat);
     } 
     else 
-    {
-        altKataInıs();        
+    {       
         if($scope.secilenYer.s_kat!=$scope.kendiKonumu.s_kat)
         {
-            enYakinMerdiven(konumX,konumY);
+            altKataInıs(); 
+            enYakinMerdiven(hedefX,hedefY);
         }
         gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat); 
     }
     setTimeout(function(){
-    hedefFunc(konumX, konumY);
+    hedefFunc(konumX, konumY,$scope.kendiKonumu.s_kat);
     },10);
-    $scope.harita = 'img/rota2.png';
+
+    if($scope.kendiKonumu.s_kat==3)
+    {
+        $scope.harita = 'img/harita31.png';
+    }
+    else
+    {
+        $scope.harita = 'img/harita2.png';
+    }
+    
     $scope.buradasiniz = 'img/buradasinizKonum.png';
 
     setTimeout(function () {
