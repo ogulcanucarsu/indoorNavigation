@@ -53,13 +53,14 @@ angular.module('starter.services', [])
             { s_id:210,  s_kat:2,  s_name:'Derslik 201',               s_x:1128,  s_y:220}, 
             { s_id:211,  s_kat:2,  s_name:'Kimya İşleme Lab.',         s_x:1330,  s_y:134}, 
             { s_id:212,  s_kat:2,  s_name:'Polimer Atölyesi',          s_x:1283,  s_y:249}, 
-            { s_id:212,  s_kat:2,  s_name:'Kimyasal Madde Odası',      s_x:1336,  s_y:273}, 
-            { s_id:212,  s_kat:2,  s_name:'Karakterizasyon Lab.',      s_x:1393,  s_y:147}, 
-            { s_id:212,  s_kat:2,  s_name:'Reaksiyon Lab.',            s_x:1336,  s_y:228}, 
-            { s_id:212,  s_kat:2,  s_name:'Kimya Öğretim Üyeleri Ofis',s_x:1567,  s_y:118}, 
-            { s_id:212,  s_kat:2,  s_name:'Kimya Bölüm Başlanlığı',    s_x:1680,  s_y:118}
+            { s_id:213,  s_kat:2,  s_name:'Kimyasal Madde Odası',      s_x:1336,  s_y:273}, 
+            { s_id:214,  s_kat:2,  s_name:'Karakterizasyon Lab.',      s_x:1393,  s_y:147}, 
+            { s_id:215,  s_kat:2,  s_name:'Reaksiyon Lab.',            s_x:1336,  s_y:228}, 
+            { s_id:216,  s_kat:2,  s_name:'Kimya Öğretim Üyeleri Ofis',s_x:1567,  s_y:118}, 
+            { s_id:217,  s_kat:2,  s_name:'Kimya Bölüm Başlanlığı',    s_x:1680,  s_y:118},
+            { s_id:218,  s_kat:2,  s_name:'2. Kat Deneme',    s_x:912,  s_y:700}            
             // { s_id:212,  s_kat:2,  s_name:'xxxxxx',  s_x:1336,  s_y:273}, 
-            
+
         ];
 
         return {
@@ -443,7 +444,32 @@ function hedefFunc(rotaX, rotaY,sinifKat) {
     sinifDuvarlariKat3.push({ son: 'son' });
 
     var sinifDuvarlariKat2=[];
-    sinifDuvarlariKat3.push({ sinifAdi: 'xxxx',            sinifId:'1',    x1: 0,      x2: 633,         y1: 0,       y2: 94 });
+    sinifDuvarlariKat2.push({ sinifAdi: 'kimyaUstDerslikler',       sinifId:'1',    x1: 0,      x2: 1758,        y1: 0,       y2: 800 });
+    sinifDuvarlariKat2.push({ sinifAdi: 'haritaOrtaKisim',          sinifId:'2',    x1: 659,    x2: 1055,        y1: 112,     y2: 693 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaGaleriBoslugu',      sinifId:'3',    x1: 1138,   x2: 1264,        y1: 135,     y2: 213 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaFizikoLab',          sinifId:'4',    x1: 1054,   x2: 1120,        y1: 143,     y2: 665 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaEntAnaliz2',         sinifId:'5',    x1: 1119,   x2: 1303,        y1: 310,     y2: 558 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaEntAnaliz1',         sinifId:'6',    x1: 1119,   x2: 1267,        y1: 253,     y2: 322 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaWC',                 sinifId:'7',    x1: 1319,   x2: 1385,        y1: 310,     y2: 498 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaOgretimUyeleri',     sinifId:'8',    x1: 1397,   x2: 1675,        y1: 0,       y2: 114 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaOgretimUyeleri2',    sinifId:'9',    x1: 1397,   x2: 1675,        y1: 120,     y2: 320 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaIslemeLab',          sinifId:'10',   x1: 1287,   x2: 1370,        y1: 142,     y2: 265 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'elektrikAmfi1',           sinifId:'11',   x1: 1434,   x2: 10000,       y1: 310,     y2: 500 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'elektrikOgretimOfisleri', sinifId:'12',   x1: 1400,   x2: 10000,       y1: 488,     y2: 687 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'elektrikOgretimOfisleri2',sinifId:'13',   x1: 1400,      x2: 10000,         y1: 692,       y2: 10000 });
+     sinifDuvarlariKat2.push({ sinifAdi: '2.katHaritaEnAlt',        sinifId:'14',   x1: 0,      x2: 1374,         y1: 705,       y2: 10000 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'elektrikGaleri',          sinifId:'15',    x1: 1140,      x2: 1261,         y1: 597,       y2: 666 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'elektrikGaleriSagi',      sinifId:'16',    x1: 1285,      x2: 1372,         y1: 597,       y2: 666 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'genelJeolojiLab',         sinifId:'17',    x1: 582,      x2: 666,         y1: 0,       y2: 666 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'jeolojiMikroskob',        sinifId:'18',    x1: 437,      x2: 598,         y1: 0,       y2: 555 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'analitikJeoKimya',        sinifId:'19',    x1: 333,      x2: 411,         y1: 543,       y2: 10000 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'jeolojiOgretimUyeleri',   sinifId:'20',    x1: 0,      x2: 300,         y1: 489,       y2: 10000 });
+     sinifDuvarlariKat2.push({ sinifAdi:'jeolojiOgretimUyeleriYani',sinifId:'21',    x1: 291,      x2: 342,         y1: 570,       y2: 10000 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'jeolojiGaleriBosluk',     inifId:'22',    x1: 441,      x2: 559,         y1: 602,       y2: 663 });
+    // sinifDuvarlariKat2.push({ sinifAdi: 'xxxx',            sinifId:'1',    x1: 0,      x2: 0,         y1: 0,       y2: 0 });
+    // sinifDuvarlariKat2.push({ sinifAdi: 'xxxx',            sinifId:'1',    x1: 0,      x2: 0,         y1: 0,       y2: 0 });
+    // sinifDuvarlariKat2.push({ sinifAdi: 'xxxx',            sinifId:'1',    x1: 0,      x2: 0,         y1: 0,       y2: 0 });
+    // sinifDuvarlariKat2.push({ sinifAdi: 'xxxx',            sinifId:'1',    x1: 0,      x2: 0,         y1: 0,       y2: 0 });
     sinifDuvarlariKat2.push({ son: 'son' });
 
 

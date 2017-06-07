@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
     }
     $scope.deneme = function (engelliModel) {
         engelliBool=engelliModel;
-        barcodeSonuc = 318;
+        barcodeSonuc = 201;
         $state.go('tab.bolumler');
     }
 })
@@ -52,7 +52,7 @@ angular.module('starter.controllers', [])
     $scope.bulundugunYer =$scope.bulundugunYer.s_name;    
 })
 .controller('haritaCtrl', function ($scope, $stateParams, Chats, $ionicScrollDelegate, $state, $cordovaBarcodeScanner) {
-    barcodeSonuc = 318; //Telefona atarken kapat sil
+    barcodeSonuc = 201; //Telefona atarken kapat sil
     $scope.kendiKonumu = Chats.get(barcodeSonuc);    
     konumX=$scope.kendiKonumu.s_x;
     konumY=$scope.kendiKonumu.s_y;
@@ -83,6 +83,7 @@ angular.module('starter.controllers', [])
         }
         gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat); 
     }
+    
     setTimeout(function(){
     hedefFunc(konumX, konumY,$scope.kendiKonumu.s_kat);
     },10);
