@@ -6,7 +6,7 @@ Ekat3Koordinatlar.push({name:'3',x:1292,y:189}); //
 Ekat3Koordinatlar.push({}); //bos
 Ekat3Koordinatlar.push({name:'5',x:1314,y:394}); //
 Ekat3Koordinatlar.push({}); //bos
-Ekat3Koordinatlar.push({name:'7',x:0,y:0}); //
+Ekat3Koordinatlar.push({name:'7',x:854,y:95}); //
 Ekat3Koordinatlar.push({}); //bos
 Ekat3Koordinatlar.push({name:'9',x:0,y:0}); //
 Ekat3Koordinatlar.push({}); //bos
@@ -55,14 +55,18 @@ function EbolgeKontrol(bolgeX,bolgeY,kat)
     else if(bolgeX>Ebolgeler[kat].x && bolgeY>Ebolgeler[kat].y3)                                  { return 8;}
 }
 //var gitBolgeler=[];
-function EgidilecekBolgeler(kendiBolgesi,hedefBolgesi,kat)
+function EgidilecekBolgeler(kendiBolgesi,hedefBolgesi,kat,hedefX,katFarkli)
 {
     gitBolgeler=[];
     console.log("E "+kendiBolgesi,hedefBolgesi);    
     var isaret=-1;
     var fark=hedefBolgesi-kendiBolgesi;
     if(fark>0) isaret=1;
-    if(fark>6) isaret=isaret*(-1);
+   if(katFarkli=="true" || kat=='3') 
+        {
+            if(fark>6) 
+            isaret=isaret*(-1);
+         }
     if(fark==0) {  //cikis 
     }
     else
@@ -74,7 +78,17 @@ function EgidilecekBolgeler(kendiBolgesi,hedefBolgesi,kat)
             if(katIndex==-1) katIndex=15;
             else if(katIndex==17) katIndex=1;          
             if(kendiBolgesi==-2) kendiBolgesi=14;
-            else if(kendiBolgesi==16) kendiBolgesi=0;         
+            else if(kendiBolgesi==16) kendiBolgesi=0;  
+
+            if(Ebolgeler[kat].gitKoordinat[katIndex].x==1400 && Ebolgeler[kat].gitKoordinat[katIndex].y==403)
+                {
+                    if(hedefX<1378)
+                    {
+                        Ebolgeler[kat].gitKoordinat[katIndex].x=1307;
+                        Ebolgeler[kat].gitKoordinat[katIndex].y=404;
+                    }
+                }
+
                        
             gitBolgeler.push({x:Ebolgeler[kat].gitKoordinat[katIndex].x,y:Ebolgeler[kat].gitKoordinat[katIndex].y});
         }

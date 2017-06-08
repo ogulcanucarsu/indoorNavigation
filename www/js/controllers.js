@@ -1,7 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('anaSayfaCtrl', function ($scope, $cordovaBarcodeScanner, $state) {
-    var basarili = true;
+.controller('anaSayfaCtrl', function ($scope, $cordovaBarcodeScanner, $state,Chats,$ionicPopup) {
     $scope.engelli=false;
     $scope.engelliDegistir=function()
     {
@@ -13,22 +12,33 @@ angular.module('starter.controllers', [])
             $cordovaBarcodeScanner
                 .scan()
                 .then(function (barcodeData) {
-                    if (basarili) {
+                    if (Chats.sorgu(barcodeData.text)) {
                         barcodeSonuc = barcodeData.text;
                         $state.go('tab.bolumler');
                     }
                     else {
+                        var alertPopup = $ionicPopup.alert({
+                        title: 'Uyarı !',
+                        template: 'QR Kod Hatalı',
+                        okText:'Tamam'
+                        });
                     }
                 }, function (error) {
                     // An error occurred
                 });
         }, false);
     }
+
     $scope.deneme = function (engelliModel) {
         engelliBool=engelliModel;
-        barcodeSonuc = 201;
+        barcodeSonuc = 318;
         $state.go('tab.bolumler');
     }
+
+    $scope.yardim = function () {
+        $state.go('tab.yardim');
+    }
+
 })
 .controller('bolumlerCtrl',function($scope,Bolumler, $stateParams,Chats){
     var _barcodeSonuc=barcodeSonuc.toString();
@@ -51,8 +61,9 @@ angular.module('starter.controllers', [])
     $scope.bulundugunYer =Chats.get(barcodeSonuc);
     $scope.bulundugunYer =$scope.bulundugunYer.s_name;    
 })
-.controller('haritaCtrl', function ($scope, $stateParams, Chats, $ionicScrollDelegate, $state, $cordovaBarcodeScanner) {
-    barcodeSonuc = 201; //Telefona atarken kapat sil
+.controller('haritaCtrl', function ($scope, $stateParams, Chats, $ionicScrollDelegate, $state, $cordovaBarcodeScanner,$ionicPopup) {
+    var katFarkli=false;
+    //  barcodeSonuc = 201; //Telefona atarken kapat sil
     $scope.kendiKonumu = Chats.get(barcodeSonuc);    
     konumX=$scope.kendiKonumu.s_x;
     konumY=$scope.kendiKonumu.s_y;
@@ -69,19 +80,55 @@ angular.module('starter.controllers', [])
     {   
         if($scope.secilenYer.s_kat!=$scope.kendiKonumu.s_kat)
         {
+            if($scope.kendiKonumu.s_kat>$scope.secilenYer.s_kat)
+            {
+                var alertPopup = $ionicPopup.alert({
+                        title: 'Bilgilendirme !',
+                        template: 'Seçmiş olduğunuz konum 1 alt katta bulunmaktadır. Uygulama sizi en yakın merdivene götürmektedir. Merdiven kullandıktan sonra ekranın sağ üstünden tekrar QR kod taratmanız gerekmektedir.',
+                        okText:'Tamam'
+                    });
+            }  
+            else
+            {
+                var alertPopup = $ionicPopup.alert({
+                        title: 'Bilgilendirme !',
+                        template: 'Seçmiş olduğunuz konum 1 üst katta bulunmaktadır. Uygulama sizi en yakın merdivene götürmektedir. Merdiven kullandıktan sonra ekranın sağ üstünden tekrar QR kod taratmanız gerekmektedir.',
+                        okText:'Tamam'
+                    });
+            }
+            katFarkli=true;
             EaltKataInıs();   
-            enYakinMerdiven(hedefX,hedefY);
+            enYakinMerdiven(hedefX,hedefY,$scope.kendiKonumu.s_kat);
         }
-        EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat);
+        
+        EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.kendiKonumu.s_kat,hedefX,katFarkli);
     } 
     else 
     {       
         if($scope.secilenYer.s_kat!=$scope.kendiKonumu.s_kat)
         {
+            if($scope.kendiKonumu.s_kat>$scope.secilenYer.s_kat)
+            {
+                var alertPopup = $ionicPopup.alert({
+                        title: 'Bilgilendirme !',
+                        template: 'Seçmiş olduğunuz konum 1 alt katta bulunmaktadır. Uygulama sizi en yakın merdivene götürmektedir. Merdiven kullandıktan sonra ekranın sağ üstünden tekrar QR kod taratmanız gerekmektedir.',
+                        okText:'Tamam'
+                    });
+            }  
+            else
+            {
+                var alertPopup = $ionicPopup.alert({
+                        title: 'Bilgilendirme !',
+                        template: 'Seçmiş olduğunuz konum 1 üst katta bulunmaktadır. Uygulama sizi en yakın merdivene götürmektedir. Merdiven kullandıktan sonra ekranın sağ üstünden tekrar QR kod taratmanız gerekmektedir.',
+                        okText:'Tamam'
+                    });
+            }
+            katFarkli=true;
             altKataInıs(); 
-            enYakinMerdiven(hedefX,hedefY);
+            enYakinMerdiven(hedefX,hedefY,$scope.kendiKonumu.s_kat);
         }
-        gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat); 
+        
+        gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.kendiKonumu.s_kat,hedefX,katFarkli); 
     }
     
     setTimeout(function(){
@@ -100,7 +147,7 @@ angular.module('starter.controllers', [])
     $scope.buradasiniz = 'img/buradasinizKonum.png';
 
     setTimeout(function () {
-        $ionicScrollDelegate.$getByHandle('scroller').scrollTo(konumX - (iecompattest().clientWidth) / 2, 0, true);
+        $ionicScrollDelegate.$getByHandle('scroller').scrollTo(konumX - (iecompattest().clientWidth) / 2, konumY - (iecompattest().clientHeight) / 2, true);
     }, 10);
     
     document.addEventListener("deviceready", function () {
@@ -143,69 +190,137 @@ angular.module('starter.controllers', [])
     }, false);
     
     $scope.barcode = function () {
-        $cordovaBarcodeScanner
-            .scan()
-            .then(function (barcodeData) {
-                barcodeSonuc = barcodeData.text;
-                var img = new Image();
-                img.src = 'img/harita31.png';
-                img.style["left"] = 0 + "px";
-                img.style["top"] = 0 + "px";
-                img.style["position"] = "absolute";
-                var div = document.getElementById('harita');
-                img.onload = function () {
-                    div.appendChild(img);
-                };
-                setTimeout(function () {
-                    kendiKonumuKoordinat(barcodeSonuc);
-                    // sinifKoordinat('300');
-                    gitBolgeIndex=0;
-                    if(engelliBool) 
-                    {
-                        EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat);
-                        EaltKataInıs();
-                    } 
-                    else 
-                    {
-                        gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.secilenYer.s_kat); 
-                        altKataInıs();
-                    }
+         $cordovaBarcodeScanner
+                .scan()
+                .then(function (barcodeData) {
+                    if (Chats.sorgu(barcodeData.text)) {
+                        barcodeSonuc = barcodeData.text;
+                        katFarkli=false;
+                        // barcodeSonuc = 116; //Telefona atarken kapat sil
+                        $scope.kendiKonumu = Chats.get(barcodeSonuc);    
+                        konumX=$scope.kendiKonumu.s_x;
+                        konumY=$scope.kendiKonumu.s_y;
 
-                    setTimeout(function(){
-                        hedefFunc(konumX, konumY);
+                        var img = new Image();
+                        if($scope.kendiKonumu.s_kat==3)
+                        {
+                            img.src = 'img/harita31.png';
+                        }
+                        else
+                        {
+                            img.src = 'img/harita2.png';
+                        }
+
+                        img.style["left"] = 0 + "px";
+                        img.style["top"] = 0 + "px";
+                        img.style["position"] = "absolute";
+                        var div = document.getElementById('harita');
+                        img.onload = function () {
+                            div.appendChild(img);
+                        };
+                        
+                        gitBolgeIndex=0;
+                        if(engelliBool) 
+                        {   
+                            if($scope.secilenYer.s_kat!=$scope.kendiKonumu.s_kat)
+                            {
+                                katFarkli=true;
+                                EaltKataInıs();   
+                                enYakinMerdiven(hedefX,hedefY,$scope.kendiKonumu.s_kat);
+                            }
+                            else
+                            EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.kendiKonumu.s_kat,hedefX,katFarkli);
+                        } 
+                        else 
+                        {       
+                            if($scope.secilenYer.s_kat!=$scope.kendiKonumu.s_kat)
+                            {
+                                katFarkli=true;
+                                altKataInıs(); 
+                                enYakinMerdiven(hedefX,hedefY,$scope.kendiKonumu.s_kat);
+                            }
+                            else
+                            gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.kendiKonumu.s_kat,hedefX,katFarkli); 
+                        }
+                        
+                        setTimeout(function(){
+                        hedefFunc(konumX, konumY,$scope.kendiKonumu.s_kat);
                     },10);
-                }, 10);
-                setTimeout(function () {
-                    $ionicScrollDelegate.$getByHandle('scroller').scrollTo(konumX - (iecompattest().clientWidth) / 2, 0, true);
-                }, 20);
-            }, function (error) {
-                console.log("error");
-            });
+
+                        setTimeout(function () {
+                        $ionicScrollDelegate.$getByHandle('scroller').scrollTo(konumX - (iecompattest().clientWidth) / 2, konumY - (iecompattest().clientHeight) / 2, true);
+                    }, 10);
+
+                    }
+                    else {
+                        var alertPopup = $ionicPopup.alert({
+                        title: 'Uyarı !',
+                        template: 'QR Kod Hatalı',
+                        okText:'Tamam'
+                        });
+                    }
+                }, function (error) {
+                    // An error occurred
+                });
     }
+})
+.controller('yardimCtrl',function($scope){
+    $scope.groups = [];
+
+    $scope.groups.push ( {name: "Bu uygulama nerede kullanılır?", items: []}); 
+    $scope.groups[0].items.push("Uygulama yalnızca Kocaeli Üniversitesi Mühendislik Fakültesinde kullanılabilmektedir.");
+
+    $scope.groups.push ( {name: "Uygulama nasıl kullanılır?", items: []}); 
+    $scope.groups[1].items.push("1-) Yakınızdaki QR kodu okutmak için, 'QR Kod Okut' butonuna basınız.");
+    $scope.groups[1].items.push("2-) Butona bastıktan sonra açılan kamera ile QR kodu okutunuz.");
+    $scope.groups[1].items.push("3-) QR kodu okuttuktan sonra nerede olduğunuz tespit edilecek, karşınıza çıkacak listeden gitmek istediğiniz yeri seçiniz.");
+    $scope.groups[1].items.push("4-) Gitmek istediğiniz yeri seçtikten sonra karşınıza çıkan haritadaki rotayı takip ediniz.");
+
+    $scope.groups.push ( {name: "QR kodlar nerede bulunur?", items: []}); 
+    $scope.groups[2].items.push("QR kodlar fakülte girişlerinde, bölüm girişlerinde ve sınıfların kapı yanlarında bulunmaktadır.");
+    
+    $scope.groups.push ( {name: "Engelli kullanıcılar tarafından nasıl kullanılır?", items: []}); 
+    $scope.groups[3].items.push("Ana menüde ekranın sağ üst köşesinde bulunan simgeye tıkladıktan sonra engelli kullanıcı modu aktif olmaktadır.");
+  
+  /*
+   * if given group is the selected group, deselect it
+   * else, select the given group
+   */
+  $scope.toggleGroup = function(group) {
+    if ($scope.isGroupShown(group)) {
+      $scope.shownGroup = null;
+    } else {
+      $scope.shownGroup = group;
+    }
+  };
+  $scope.isGroupShown = function(group) {
+    return $scope.shownGroup === group;
+  };
+
 })
 .controller('hakkimizdaCtrl', function ($scope) {
 
-    // $scope.sonuc='';
-    // document.addEventListener("deviceready", function () {
-    //     var pusulaDegeri = 0;
+    $scope.sonuc='';
+    document.addEventListener("deviceready", function () {
+        var pusulaDegeri = 0;
         
-    //     function onSuccess(heading) {
-    //         pusulaDegeri = heading.magneticHeading;
-    //         pusulaDegeri = pusulaDegeri.toFixed(2);
-    //         pusulaDegeri = parseFloat(pusulaDegeri);
+        function onSuccess(heading) {
+            pusulaDegeri = heading.magneticHeading;
+            pusulaDegeri = pusulaDegeri.toFixed(2);
+            pusulaDegeri = parseFloat(pusulaDegeri);
             
-    //         pusulaHareketi(pusulaDegeri);
-    //         console.log(pusulaDegeri);
-    //     };
-    //     function onError(compassError) {
-    //         alert('Compass error: ' + compassError.code);
-    //     };
-    //     var options = {
-    //         frequency: 100
-    //     };
-    //     navigator.compass.watchHeading(onSuccess, onError, options);
+            pusulaHareketi(pusulaDegeri);
+            console.log(pusulaDegeri);
+        };
+        function onError(compassError) {
+            alert('Compass error: ' + compassError.code);
+        };
+        var options = {
+            frequency: 100
+        };
+        navigator.compass.watchHeading(onSuccess, onError, options);
 
-    // },false);
+    },false);
 
     // function pusulaHareketi(pusulaDegeri)
     // {
@@ -339,4 +454,70 @@ angular.module('starter.controllers', [])
     //         })
     //     }
     // }
+
+    function pusulaHareketi(pusulaDegeri)
+    {
+       var fark = 210;
+        if (pusulaDegeri >= (22.5 + fark) % 360 && pusulaDegeri <= (67.5 + fark) % 360) {
+            $scope.$apply(function () 
+            {            
+            $scope.sonuc="sol yukarı";
+            })
+        }
+        else if (pusulaDegeri >= (67.5 + fark) % 360 && pusulaDegeri <= (112.5 + fark) % 360) {//280 320
+            $scope.$apply(function () 
+            {            
+            $scope.sonuc="yukarı";
+            })
+        }
+        else if (pusulaDegeri >= (112.5 + fark) % 360 && pusulaDegeri <= (149.5 + fark) % 360) {
+            $scope.$apply(function () 
+            {            
+            $scope.sonuc="saga yukarı";
+            })
+        }
+        else if (pusulaDegeri >= (150.5 + fark) % 360 && pusulaDegeri <= (157.5 + fark) % 360) {
+            $scope.$apply(function () 
+            {            
+            $scope.sonuc="saga yukarı";
+            })
+        }
+        else if (pusulaDegeri >= (157.5 + fark) % 360 && pusulaDegeri <= (202.5 + fark) % 360) {
+            $scope.$apply(function () 
+            {            
+            $scope.sonuc="saga";
+            })
+        }
+        else if (pusulaDegeri >= (202.5 + fark) % 360 && pusulaDegeri <= (247.5 + fark) % 360) {
+            $scope.$apply(function () 
+            {            
+            $scope.sonuc="saga aşağı";
+            })
+        }
+        else if (pusulaDegeri >= (247.5 + fark) % 360 && pusulaDegeri <= (292.5 + fark) % 360) {
+            $scope.$apply(function () 
+            {            
+            $scope.sonuc="aşağı";
+            })
+        }
+        else if (pusulaDegeri >= (292.5 + fark) % 360 && pusulaDegeri <= (337.5 + fark) % 360) {
+            $scope.$apply(function () 
+            {            
+            $scope.sonuc="sol aşağı";
+            })
+        }
+        else if (pusulaDegeri >= (337.5 + fark) % 360 && pusulaDegeri <= (360 + fark) % 360) {
+            $scope.$apply(function () 
+            {            
+            $scope.sonuc="sol";
+            })
+        }
+        else if (pusulaDegeri >= (0 + fark) % 360 && pusulaDegeri <= (22.5 + fark) % 360) {
+            $scope.$apply(function () 
+            {            
+            $scope.sonuc="sol";
+            })
+        }
+    }
+
 });

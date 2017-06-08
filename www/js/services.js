@@ -19,7 +19,7 @@ angular.module('starter.services', [])
             { s_id:309,  s_kat:3,  s_name:'BM Kablosuz İletisim Lab.',s_x:1128, s_y:120},  
             { s_id:310,  s_kat:3,  s_name:'BM Görüntü İşleme Lab.',   s_x:1128, s_y:205},  
             { s_id:311,  s_kat:3,  s_name:'BM Bilgisayar Lab.',       s_x:1130, s_y:237},  
-            { s_id:312,  s_kat:3,  s_name:'BM Dekanlık Lab.',         s_x:1202, s_y:238},  
+            { s_id:312,  s_kat:3,  s_name:'BM Dekanlık Lab.',         s_x:1202, s_y:237},  
             { s_id:313,  s_kat:3,  s_name:'BM Gömülü Sistem Lab.',    s_x:1400, s_y:257},  
             { s_id:314,  s_kat:3,  s_name:'BM Öğretim Üyeleri Ofis',  s_x:1578, s_y:105},  
             { s_id:315,  s_kat:3,  s_name:'BM Bölüm Başlanlığı',      s_x:1688, s_y:106},
@@ -40,25 +40,71 @@ angular.module('starter.services', [])
             { s_id:113,  s_kat:3,  s_name:'Jeofizik Sismoloji Lab',    s_x:577,  s_y:226},                           
             { s_id:114,  s_kat:3,  s_name:'Jeofizik Dekanlik Lab',     s_x:541,  s_y:236},                           
             { s_id:115,  s_kat:3,  s_name:'Jeofizik Veri işleme Lab',  s_x:462,  s_y:235}, 
+            { s_id:116,  s_kat:3,  s_name:'Jeofizik Giriş',             s_x:307,  s_y:375}, 
 
-            { s_id:201,  s_kat:2,  s_name:'Derslik 205',               s_x:918,   s_y:107}, 
-            { s_id:202,  s_kat:2,  s_name:'Derslik 207',               s_x:918,  s_y:107}, 
-            { s_id:203,  s_kat:2,  s_name:'Derslik 209',               s_x:971,  s_y:107}, 
+
+            { s_id:401,  s_kat:2,  s_name:'Elektrik Derslik 202',  s_x:1127,  s_y:698}, 
+            { s_id:402,  s_kat:2,  s_name:'Elektrik Derslik 204',  s_x:1155,  s_y:698}, 
+            { s_id:403,  s_kat:2,  s_name:'Elektrik Derslik 206',  s_x:1247,  s_y:698}, 
+            { s_id:404,  s_kat:2,  s_name:'Elektrik Derslik 208',  s_x:1277,  s_y:698}, 
+            { s_id:405,  s_kat:2,  s_name:'Elektrik Derslik 210',  s_x:1198,  s_y:563}, 
+            { s_id:406,  s_kat:2,  s_name:'Elektrik Derslik 212',  s_x:1421,  s_y:420}, 
+            { s_id:407,  s_kat:2,  s_name:'Elektrik Derslik 214',  s_x:1121,  s_y:565}, 
+            { s_id:408,  s_kat:2,  s_name:'Elektrik Ent Analiz',  s_x:1133,  s_y:243}, 
+            { s_id:409,  s_kat:2,  s_name:'Elektrik Amfi 1',  s_x:1421,  s_y:388}, 
+            { s_id:410,  s_kat:2,  s_name:'Elektrik Tesisleri',  s_x:1311,  s_y:368}, 
+            { s_id:411,  s_kat:2,  s_name:'Güç Sistemleri Lab.',  s_x:1311,  s_y:439}, 
+            { s_id:412,  s_kat:2,  s_name:'Elektrik Pelsan',  s_x:1269,  s_y:566}, 
+            { s_id:413,  s_kat:2,  s_name:'Elektrik Tesisleri ABD Arş. Lab.',  s_x:1313,  s_y:673}, 
+            { s_id:414,  s_kat:2,  s_name:'Elektrik Makinaları ABD Arş. Lab.',  s_x:1350,  s_y:673},
+            { s_id:415,  s_kat:2,  s_name:'Elektrik Öğretim Üyeleri',  s_x:1569,  s_y:690},
+            { s_id:416,  s_kat:2,  s_name:'Elektrik Bay WC',  s_x:1308,  s_y:356}, 
+            { s_id:417,  s_kat:2,  s_name:'Elektrik Bayan WC',  s_x:1308,  s_y:450},  
+
+
+            { s_id:501,  s_kat:2,  s_name:'Jeoloji Derslik 101',  s_x:418,  s_y:698},
+            { s_id:502,  s_kat:2,  s_name:'Jeoloji Derslik 103',  s_x:442,  s_y:698},
+            { s_id:503,  s_kat:2,  s_name:'Jeoloji Derslik 105',  s_x:541,  s_y:698},
+            { s_id:504,  s_kat:2,  s_name:'Jeoloji Derslik 107',  s_x:597,  s_y:698},
+            { s_id:505,  s_kat:2,  s_name:'Analitik Jeokimya 1',  s_x:418,  s_y:667},
+            { s_id:506,  s_kat:2,  s_name:'Analitik Jeokimya 2',  s_x:418,  s_y:676},
+            { s_id:507,  s_kat:2,  s_name:'Jeoloji Lisans Üstü Öğrenci Odası',  s_x:610,  s_y:671},
+            { s_id:508,  s_kat:2,  s_name:'Genel Jeoloji Lab',  s_x:580,  s_y:563},
+            { s_id:509,  s_kat:2,  s_name:'Jeoloji Mikroskop Lab.',  s_x:461,  s_y:562},
+            { s_id:510,  s_kat:2,  s_name:'Jeoloji Maden Yatakları Lab.',  s_x:542,  s_y:562},
+            { s_id:511,  s_kat:2,  s_name:'Jeoloji Öğretim Üyeleri',  s_x:319,  s_y:538},
+            { s_id:512,  s_kat:2,  s_name:'Jeoloji Bölüm Başlanlığı',  s_x:319,  s_y:538},
+
+            { s_id:601,  s_kat:2,  s_name:'Mühendislik Dekan Yardımcısı',   s_x:721,  s_y:700},
+            { s_id:602,  s_kat:2,  s_name:'Mühendislik Dekan',              s_x:738,  s_y:700},
+            { s_id:603,  s_kat:2,  s_name:'Mühendislik Fakülte Sekreteri',  s_x:762,  s_y:700},
+            { s_id:604,  s_kat:2,  s_name:'Mühendislik Staj SGK Sorumlusu', s_x:947,  s_y:700},
+            { s_id:605,  s_kat:2,  s_name:'Mühendislik Teknisyen',          s_x:1008,  s_y:700},
+            { s_id:606,  s_kat:2,  s_name:'Mühendislik Muhasebe',           s_x:1023,  s_y:700},
+
+            // { s_id:600,  s_kat:2,  s_name:'xxxxxx',  s_x:0000,  s_y:000},
+            // { s_id:600,  s_kat:2,  s_name:'xxxxxx',  s_x:0000,  s_y:000},
+            // { s_id:600,  s_kat:2,  s_name:'xxxxxx',  s_x:0000,  s_y:000},
+
+            { s_id:210,  s_kat:2,  s_name:'Kimya Derslik 201',               s_x:1128,  s_y:220},             
+            { s_id:207,  s_kat:2,  s_name:'Kimya Derslik 203',               s_x:1244,  s_y:107}, 
+            { s_id:201,  s_kat:2,  s_name:'Kimya Derslik 205',               s_x:918,   s_y:106}, 
+            { s_id:202,  s_kat:2,  s_name:'Kimya Derslik 207',               s_x:918,  s_y:107}, 
+            { s_id:203,  s_kat:2,  s_name:'Kimya Derslik 209',               s_x:969,  s_y:107}, 
             { s_id:204,  s_kat:2,  s_name:'Kimya Kule',                s_x:945,  s_y:107}, 
             { s_id:205,  s_kat:2,  s_name:'Kimya Yüksek Lisans',       s_x:996,  s_y:107}, 
             { s_id:206,  s_kat:2,  s_name:'Kimya Lab.',                s_x:1158,  s_y:107}, 
-            { s_id:207,  s_kat:2,  s_name:'Derslik 203',               s_x:1244,  s_y:107}, 
             { s_id:208,  s_kat:2,  s_name:'Kimya Membran',             s_x:1308,  s_y:107}, 
             { s_id:209,  s_kat:2,  s_name:'Fiziko Kimya Lab.',         s_x:1128,  s_y:157}, 
-            { s_id:210,  s_kat:2,  s_name:'Derslik 201',               s_x:1128,  s_y:220}, 
             { s_id:211,  s_kat:2,  s_name:'Kimya İşleme Lab.',         s_x:1330,  s_y:134}, 
-            { s_id:212,  s_kat:2,  s_name:'Polimer Atölyesi',          s_x:1283,  s_y:249}, 
+            { s_id:212,  s_kat:2,  s_name:'Kimya Polimer Atölyesi',          s_x:1283,  s_y:249}, 
             { s_id:213,  s_kat:2,  s_name:'Kimyasal Madde Odası',      s_x:1336,  s_y:273}, 
-            { s_id:214,  s_kat:2,  s_name:'Karakterizasyon Lab.',      s_x:1393,  s_y:147}, 
-            { s_id:215,  s_kat:2,  s_name:'Reaksiyon Lab.',            s_x:1336,  s_y:228}, 
+            { s_id:214,  s_kat:2,  s_name:'Kimya Karakterizasyon Lab.',      s_x:1393,  s_y:147}, 
+            { s_id:215,  s_kat:2,  s_name:'Kimya Reaksiyon Lab.',            s_x:1336,  s_y:228}, 
             { s_id:216,  s_kat:2,  s_name:'Kimya Öğretim Üyeleri Ofis',s_x:1567,  s_y:118}, 
-            { s_id:217,  s_kat:2,  s_name:'Kimya Bölüm Başlanlığı',    s_x:1680,  s_y:118},
-            { s_id:218,  s_kat:2,  s_name:'2. Kat Deneme',    s_x:912,  s_y:700}            
+            { s_id:217,  s_kat:2,  s_name:'Kimya Bölüm Başlanlığı',    s_x:1680,  s_y:118}
+            // { s_id:218,  s_kat:2,  s_name:'2. Kat Deneme',    s_x:316,  s_y:536}    ,        
+            // { s_id:219,  s_kat:2,  s_name:'2. Kat Deneme2',    s_x:431,  s_y:684}            
             // { s_id:212,  s_kat:2,  s_name:'xxxxxx',  s_x:1336,  s_y:273}, 
 
         ];
@@ -85,6 +131,15 @@ angular.module('starter.services', [])
                     }
                 }
                 return null;
+            },
+            sorgu: function (chatId)
+            {
+                for (var i = 0; i < hedefler.length; i++) {
+                    if (hedefler[i].s_id === parseInt(chatId)) {
+                        return true;
+                    }
+                }
+                return false;
             }
         };
     })
@@ -364,15 +419,15 @@ function hedefFunc(rotaX, rotaY,sinifKat) {
     kat3Koordinatlar.push({}); //bos
     kat3Koordinatlar.push({name:'3',x:1314,y:365}); //doğu
     kat3Koordinatlar.push({}); //bos
-    kat3Koordinatlar.push({name:'5',x:0,y:0}); //güney
+    kat3Koordinatlar.push({name:'5',x:854,y:95}); //güney
     kat3Koordinatlar.push({}); //bos
-    kat3Koordinatlar.push({name:'7',x:0,y:0}); //batı
+    kat3Koordinatlar.push({name:'7',x:308,y:430}); //batı
 
     var kat2Koordinatlar=[];
     kat2Koordinatlar.push({}); //bos
     kat2Koordinatlar.push({name:'1',x:854,y:107}); //kuzey
     kat2Koordinatlar.push({}); //bos
-    kat2Koordinatlar.push({name:'3',x:1400,y:403}); //doğu
+    kat2Koordinatlar.push({name:'3',x:1400,y:385}); //doğu
     kat2Koordinatlar.push({}); //bos
     kat2Koordinatlar.push({name:'5',x:852,y:699}); //güney
     kat2Koordinatlar.push({}); //bos
@@ -392,14 +447,18 @@ function hedefFunc(rotaX, rotaY,sinifKat) {
         else if(bolgeX<bolgeler[kat].x && bolgeY>bolgeler[kat].y) { return 6;}
     }
     var gitBolgeler=[];
-    function gidilecekBolgeler(kendiBolgesi,hedefBolgesi,kat)
+    function gidilecekBolgeler(kendiBolgesi,hedefBolgesi,kat,hedefX,katFarkli)
     {
         gitBolgeler=[];
         console.log(kendiBolgesi,hedefBolgesi);    
         var isaret=-1;
         var fark=hedefBolgesi-kendiBolgesi;
         if(fark>0) isaret=1;
-        if(fark>2) isaret=isaret*(-1);
+        if(katFarkli=="true" || kat=='3') 
+        {
+            if(fark>2) 
+            isaret=isaret*(-1);
+        }
         if(fark==0) {  //cikis 
         }
         else
@@ -413,11 +472,27 @@ function hedefFunc(rotaX, rotaY,sinifKat) {
                 if(kendiBolgesi==-2) kendiBolgesi=6;
                 else if(kendiBolgesi==8) kendiBolgesi=0;  
 
+                if(bolgeler[kat].gitKoordinat[katIndex].x==1400 && bolgeler[kat].gitKoordinat[katIndex].y==385)
+                {
+                    if(hedefX<1378)
+                    {
+                        bolgeler[kat].gitKoordinat[katIndex].x=1307;
+                        bolgeler[kat].gitKoordinat[katIndex].y=404;
+                    }
+                }
+                //  if(bolgeler[kat].gitKoordinat[katIndex].x==1314 && bolgeler[kat].gitKoordinat[katIndex].y==365)
+                // {
+                //     if(hedefX>1378)
+                //     {
+                //         bolgeler[kat].gitKoordinat[katIndex].x=1397;
+                //         bolgeler[kat].gitKoordinat[katIndex].y=365;
+                //     }
+                // }
                 gitBolgeler.push({x:bolgeler[kat].gitKoordinat[katIndex].x,y:bolgeler[kat].gitKoordinat[katIndex].y});
-
+                
             }
         }
-        console.log(gitBolgeler);
+        console.log("Gidilen Bolgeler: "+gitBolgeler);
     }
 //#endregion Bölgeler Arası Yönlendirme
 
@@ -440,17 +515,19 @@ function hedefFunc(rotaX, rotaY,sinifKat) {
     sinifDuvarlariKat3.push({ sinifAdi: 'bilgisayarWC',             sinifId:'13',   x1: 1316,   x2: 1391,        y1: 295,     y2: 10000 });
     sinifDuvarlariKat3.push({ sinifAdi: 'bilgisayarSagLab',         sinifId:'14',   x1: 1401,   x2: 1686,        y1: 106,     y2: 10000 });
     sinifDuvarlariKat3.push({ sinifAdi: 'bilgisayarLablarSag',      sinifId:'15',   x1: 1260,   x2: 1307,        y1: 303,     y2: 10000 });
-    sinifDuvarlariKat3.push({ sinifAdi: 'jeoAltLablar',             sinifId:'16',   x1: 366,    x2: 597,         y1: 243,     y2: 10000 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'jeoAltLablar',             sinifId:'16',   x1: 366,    x2: 597,         y1: 238,     y2: 10000 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'jeoOgretimUyeleri',        sinifId:'17',   x1: 0,    x2: 298,         y1: 243,     y2: 10000 });
+    sinifDuvarlariKat3.push({ sinifAdi: 'jeoOgretimUyeleri',        sinifId:'18',   x1: 318,    x2: 385,         y1: 303,     y2: 493 });
     sinifDuvarlariKat3.push({ son: 'son' });
 
     var sinifDuvarlariKat2=[];
-    sinifDuvarlariKat2.push({ sinifAdi: 'kimyaUstDerslikler',       sinifId:'1',    x1: 0,      x2: 1758,        y1: 0,       y2: 800 });
-    sinifDuvarlariKat2.push({ sinifAdi: 'haritaOrtaKisim',          sinifId:'2',    x1: 659,    x2: 1055,        y1: 112,     y2: 693 });
+    sinifDuvarlariKat2.push({ sinifAdi: 'kimyaUstDerslikler',       sinifId:'1',    x1: 0,      x2: 1377,        y1: 0,       y2: 100 });
+    sinifDuvarlariKat2.push({ sinifAdi: 'haritaOrtaKisim',          sinifId:'2',    x1: 650,    x2: 1055,        y1: 108,     y2: 693 });
      sinifDuvarlariKat2.push({ sinifAdi: 'kimyaGaleriBoslugu',      sinifId:'3',    x1: 1138,   x2: 1264,        y1: 135,     y2: 213 });
-     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaFizikoLab',          sinifId:'4',    x1: 1054,   x2: 1120,        y1: 143,     y2: 665 });
-     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaEntAnaliz2',         sinifId:'5',    x1: 1119,   x2: 1303,        y1: 310,     y2: 558 });
-     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaEntAnaliz1',         sinifId:'6',    x1: 1119,   x2: 1267,        y1: 253,     y2: 322 });
-     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaWC',                 sinifId:'7',    x1: 1319,   x2: 1385,        y1: 310,     y2: 498 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaFizikoLab',          sinifId:'4',    x1: 1054,   x2: 1120,        y1: 140,     y2: 665 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaEntAnaliz2',         sinifId:'5',    x1: 1119,   x2: 1306,        y1: 306,     y2: 558 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaEntAnaliz1',         sinifId:'6',    x1: 1119,   x2: 1267,        y1: 247,     y2: 322 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'kimyaWC',                 sinifId:'7',    x1: 1319,   x2: 1385,        y1: 305,     y2: 498 });
      sinifDuvarlariKat2.push({ sinifAdi: 'kimyaOgretimUyeleri',     sinifId:'8',    x1: 1397,   x2: 1675,        y1: 0,       y2: 114 });
      sinifDuvarlariKat2.push({ sinifAdi: 'kimyaOgretimUyeleri2',    sinifId:'9',    x1: 1397,   x2: 1675,        y1: 120,     y2: 320 });
      sinifDuvarlariKat2.push({ sinifAdi: 'kimyaIslemeLab',          sinifId:'10',   x1: 1287,   x2: 1370,        y1: 142,     y2: 265 });
@@ -459,10 +536,10 @@ function hedefFunc(rotaX, rotaY,sinifKat) {
      sinifDuvarlariKat2.push({ sinifAdi: 'elektrikOgretimOfisleri2',sinifId:'13',   x1: 1400,      x2: 10000,         y1: 692,       y2: 10000 });
      sinifDuvarlariKat2.push({ sinifAdi: '2.katHaritaEnAlt',        sinifId:'14',   x1: 0,      x2: 1374,         y1: 705,       y2: 10000 });
      sinifDuvarlariKat2.push({ sinifAdi: 'elektrikGaleri',          sinifId:'15',    x1: 1140,      x2: 1261,         y1: 597,       y2: 666 });
-     sinifDuvarlariKat2.push({ sinifAdi: 'elektrikGaleriSagi',      sinifId:'16',    x1: 1285,      x2: 1372,         y1: 597,       y2: 666 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'elektrikGaleriSagi',      sinifId:'16',    x1: 1285,      x2: 1372,         y1: 593,       y2: 666 });
      sinifDuvarlariKat2.push({ sinifAdi: 'genelJeolojiLab',         sinifId:'17',    x1: 582,      x2: 666,         y1: 0,       y2: 666 });
      sinifDuvarlariKat2.push({ sinifAdi: 'jeolojiMikroskob',        sinifId:'18',    x1: 437,      x2: 598,         y1: 0,       y2: 555 });
-     sinifDuvarlariKat2.push({ sinifAdi: 'analitikJeoKimya',        sinifId:'19',    x1: 333,      x2: 411,         y1: 543,       y2: 10000 });
+     sinifDuvarlariKat2.push({ sinifAdi: 'analitikJeoKimya',        sinifId:'19',    x1: 333,      x2: 411,         y1: 538,       y2: 10000 });
      sinifDuvarlariKat2.push({ sinifAdi: 'jeolojiOgretimUyeleri',   sinifId:'20',    x1: 0,      x2: 300,         y1: 489,       y2: 10000 });
      sinifDuvarlariKat2.push({ sinifAdi:'jeolojiOgretimUyeleriYani',sinifId:'21',    x1: 291,      x2: 342,         y1: 570,       y2: 10000 });
      sinifDuvarlariKat2.push({ sinifAdi: 'jeolojiGaleriBosluk',     inifId:'22',    x1: 441,      x2: 559,         y1: 602,       y2: 663 });
@@ -493,7 +570,7 @@ function hedefFunc(rotaX, rotaY,sinifKat) {
         
         //Kat 3 merdiven koordinatlar
             merdivenListeKat3.push({ merdivenAdi: 'ogretmenlerMerdiven', x1: 1480, y1: 105 });
-            merdivenListeKat3.push({ merdivenAdi: 'BilgisayarGirisMerdiven', x1: 1398, y1: 394 });
+            merdivenListeKat3.push({ merdivenAdi: 'BilgisayarGirisMerdiven', x1: 1396, y1: 366 });
             merdivenListeKat3.push({ merdivenAdi: 'bilgisayarYanMerdiven', x1: 1063, y1: 97 });
             merdivenListeKat3.push({ merdivenAdi: 'FgirisYanMerdiven', x1: 858, y1: 97 });
             // merdivenListeKat3.push({ merdivenAdi: 'jeoFizikMerdiven', x1: 641, y1: 97 });
@@ -506,10 +583,13 @@ function hedefFunc(rotaX, rotaY,sinifKat) {
             merdivenListeKat2.push({ merdivenAdi: 'BGirisMerdiven', x1: 1394, y1: 390 });
             merdivenListeKat2.push({ merdivenAdi: 'ogretmenlerMerdiven', x1: 1472, y1:119 });
             merdivenListeKat2.push({ merdivenAdi: 'bilgisayarYanMerdiven', x1: 1061, y1:107 });
-            merdivenListeKat2.push({ merdivenAdi: 'Fgiris', x1: 860, y1: 109 });            
+            merdivenListeKat2.push({ merdivenAdi: 'Fgiris', x1: 860, y1: 106 });            
             merdivenListeKat2.push({ son: 'son' });
         //Kat 2 merdiven koorinatlar
 
+        merdivenlerListe.push({ kat: 0, merdivenListe: '' });   
+        merdivenlerListe.push({ kat: 1, merdivenListe: '' });   
+        merdivenlerListe.push({ kat: 2, merdivenListe: merdivenListeKat2 });   
         merdivenlerListe.push({ kat: 3, merdivenListe: merdivenListeKat3 });   
     }
     function EaltKataInıs()
@@ -530,18 +610,20 @@ function hedefFunc(rotaX, rotaY,sinifKat) {
             merdivenListeKat2.push({ son: 'son' });
         //Kat 2 asansor koordinatlar
 
-
+        merdivenlerListe.push({ kat: 0, merdivenListe: '' });   
+        merdivenlerListe.push({ kat: 1, merdivenListe: '' });   
+        merdivenlerListe.push({ kat: 2, merdivenListe: merdivenListeKat2 }); 
         merdivenlerListe.push({ kat: 3, merdivenListe: merdivenListeKat3 });   
         console.log(merdivenlerListe); 
     }
     
-    function enYakinMerdiven(solHiza3, topHiza3) {
+    function enYakinMerdiven(solHiza3, topHiza3,kat) {
         var enKucuk = { deger: 9999, index: 99 };
-        for (var i = 0; i < merdivenlerListe.length; i++) {
-            for (var k = 0; k < merdivenlerListe[i].merdivenListe.length; k++) {
-                console.log(merdivenlerListe[i].merdivenListe[k].x1 + "--" + merdivenlerListe[i].merdivenListe[k].y1);
-                var a = solHiza3 - merdivenlerListe[i].merdivenListe[k].x1;
-                var b = topHiza3 - merdivenlerListe[i].merdivenListe[k].y1;
+        // for (var i = 0; i < merdivenlerListe.length; i++) {
+            for (var k = 0; k < merdivenlerListe[kat].merdivenListe.length; k++) {
+                console.log(merdivenlerListe[kat].merdivenListe[k].x1 + "--" + merdivenlerListe[kat].merdivenListe[k].y1);
+                var a = solHiza3 - merdivenlerListe[kat].merdivenListe[k].x1;
+                var b = topHiza3 - merdivenlerListe[kat].merdivenListe[k].y1;
                 var c = Math.sqrt(a * a + b * b);
                 console.log("C= " + c);
                 if (c < enKucuk.deger) {
@@ -550,9 +632,9 @@ function hedefFunc(rotaX, rotaY,sinifKat) {
                 }
                 console.log("En Kucuk= " + enKucuk.deger + " index = " + enKucuk.index);
             }
-        }
-        hedefX = merdivenlerListe[0].merdivenListe[enKucuk.index].x1;
-        hedefY = merdivenlerListe[0].merdivenListe[enKucuk.index].y1;
+        // }
+        hedefX = merdivenlerListe[kat].merdivenListe[enKucuk.index].x1;
+        hedefY = merdivenlerListe[kat].merdivenListe[enKucuk.index].y1;
         sonHedefX = hedefX;
         sonHedefY = hedefY;
     }

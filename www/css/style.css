@@ -69,3 +69,13 @@
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
 }
+/*.pane {
+    background-color: rebeccapurple;
+}*/
+/*.tab-item .icon{
+    color: #327FAF;
+}
+ion-tabs.tabs-color-active-positive .tab-item {
+  color: #444; }
+  ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated {
+    color: #327FAF; }*/

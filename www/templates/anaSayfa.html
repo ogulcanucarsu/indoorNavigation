@@ -7,9 +7,10 @@
       &nbsp;
     </ion-nav-buttons>
   <ion-content>
-    <br><br><br>
+    <br><br>
         <div style="text-align:center;">
-            <img src="img/amblem2.png" >    
+          <img src="img/amblem2.png" width="80%" >
+            <!--<img src="img/amblem2.png" >    -->
         </div>
 <br>
 <!--<ul class="list">
@@ -25,13 +26,18 @@
   </li> 
 </ul>-->
 <div class="padding" >
-    <button class="button button-positive button-block" ng-click="barcode(engelli)" style="border-radius: 30px;">
-QR Kod Okut
+    <button class="button button-positive button-block" ng-click="barcode(engelli)" style="border-radius: 10px; background-color:#158da9">
+    <i class="icon icon-left ion-ios-barcode-outline" style="color:white; float:left">  </i>
+    QR Kod Okut
     </button>
-    
-    <button class="button button-positive button-block" ng-click="deneme(engelli)" style="border-radius: 30px;">
-Harita
+         <button class="button button-positive button-block" style="border-radius: 10px; background-color:rgb(21, 141, 169)" ng-click="yardim()">
+      <i class="icon icon-left ion-ios-help-outline" style="color:white; float:left">  </i>
+      Yardım
     </button>
+
+    <!--<button class="button button-assertive button-block" ng-click="deneme(engelli)" style="border-radius: 10px;">
+      Harita
+    </button>-->
 
     <!--<button class="button button-assertive button-block" style="border-radius: 30px;">
 ÇIKIŞ

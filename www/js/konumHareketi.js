@@ -1,8 +1,8 @@
 var pusulaListe = [];
 var adimPusulaListe = [];
-var konumX = 420;
-var konumY = 226;
-var baslangicNoktasi = 300;
+var konumX  ;
+var konumY ;
+var baslangicNoktasi = 310;
 
 function hareketEt(adim) {
     adimPusulaListe = pusulaListe.slice(Math.max(pusulaListe.length - adim, 0));
@@ -10,92 +10,25 @@ function hareketEt(adim) {
     for (var i = 0; i < adim; i++) {
         pusulaDegeri = adimPusulaListe[i];
         var fark = baslangicNoktasi - 90;
-        if (pusulaDegeri >= (11.25 + fark) % 360 && pusulaDegeri <= (33.75 + fark) % 360) {       //211 233
-            solaGit();
-            solaGit();
+        if (pusulaDegeri >= (45 + fark) % 360 && pusulaDegeri <= (135 + fark) % 360) {       //211 233
             yukariGit();
+            console.log("yukarı");
         }
-        else if (pusulaDegeri >= (33.75 + fark) % 360 && pusulaDegeri <= (56.25 + fark) % 360) { //233 256
-            solaGit();
-            solaGit();
-            yukariGit();
-            yukariGit();
+        else if (pusulaDegeri >= (135 + fark) % 360 && pusulaDegeri <= (139 + fark) % 360) { //210+1
+            sagaGit();
+            console.log("saga");
         }
-        else if (pusulaDegeri >= (56.25 + fark) % 360 && pusulaDegeri <= (78.75 + fark) % 360) { //256 278
-            solaGit();
-            yukariGit();
-            yukariGit();
+        else if (pusulaDegeri >= (140 + fark) % 360 && pusulaDegeri <= (225 + fark) % 360) { //210+1
+            sagaGit();
+            console.log("saga");
         }
-        else if (pusulaDegeri >= (78.75 + fark) % 360 && pusulaDegeri <= (101.25 + fark) % 360) { //278 301
-            yukariGit();
-            yukariGit();
-        }
-        else if (pusulaDegeri >= (101.25 + fark) % 360 && pusulaDegeri <= (123.75 + fark) % 360) { //301 323
-            sagaGit();
-            yukariGit();
-            yukariGit();
-        }
-        else if (pusulaDegeri >= (123.75 + fark) % 360 && pusulaDegeri <= (146.25 + fark) % 360) { //323 346
-            sagaGit();
-            sagaGit();
-            yukariGit();
-            yukariGit();
-        }
-        else if (pusulaDegeri >= (146.25 + fark) % 360 && pusulaDegeri <= (159.99 + fark) % 360) { //346 368
-            sagaGit();
-            sagaGit();
-            yukariGit();
-        }
-        else if (pusulaDegeri >= (160.01 + fark) % 360 && pusulaDegeri <= (168.75 + fark) % 360) { //346 368
-            sagaGit();
-            sagaGit();
-            yukariGit();
-        }
-        else if (pusulaDegeri >= (168.75 + fark) % 360 && pusulaDegeri <= (191.25 + fark) % 360) { //368 391
-            sagaGit();
-            sagaGit();
-
-        }
-        else if (pusulaDegeri >= (191.25 + fark) % 360 && pusulaDegeri <= (213.75 + fark) % 360) { //391 413
-            sagaGit();
-            sagaGit();
+        else if (pusulaDegeri >= (225 + fark) % 360 && pusulaDegeri <= (315 + fark) % 360) { //256 278
             asagiGit();
+            console.log("asagi");
         }
-        else if (pusulaDegeri >= (213.75 + fark) % 360 && pusulaDegeri <= (236.25 + fark) % 360) { //413 - 436
-            sagaGit();
-            sagaGit();
-            asagiGit();
-            asagiGit();
-        }
-        else if (pusulaDegeri >= (236.25 + fark) % 360 && pusulaDegeri <= (258.75 + fark) % 360) { //267 - 312
-            sagaGit();
-            asagiGit();
-            asagiGit();
-        }
-        else if (pusulaDegeri >= (258.75 + fark) % 360 && pusulaDegeri <= (281.25 + fark) % 360) { //312 - 357
-            asagiGit();
-            asagiGit();
-        }
-        else if (pusulaDegeri >= (281.25 + fark) % 360 && pusulaDegeri <= (303.75 + fark) % 360) { //0.5 - 42.5 
+        else if (pusulaDegeri >= (315 + fark) % 360 && pusulaDegeri <= (405 + fark) % 360) { //278 301
             solaGit();
-            asagiGit();
-            asagiGit();
-
-        }
-        else if (pusulaDegeri >= (303.75 + fark) % 360 && pusulaDegeri <= (326.25 + fark) % 360) { //42.5 - 87
-            solaGit();
-            solaGit();
-            asagiGit();
-            asagiGit();
-        }
-        else if (pusulaDegeri >= (326.25 + fark) % 360 && pusulaDegeri <= (348.75 + fark) % 360) { //87 - 132
-            solaGit();
-            solaGit();
-            asagiGit();
-        }
-        else if (pusulaDegeri >= (348.75 + fark) % 360 && pusulaDegeri <= (371.25 + fark) % 360) { //132 - 177
-            solaGit();
-            solaGit();
+            console.log("sola");
         }
     }
 }
@@ -112,8 +45,9 @@ function solaGit() {
         div.appendChild(img);
     };
 
-    konumX = konumX - 2.5;
-    konumY = konumY + 0;
+    // konumX = konumX - 3;
+    // konumY = konumY + 0;
+    konumDuzelt(-1,"X");
     document.getElementById("buradasinizKonum").style["left"] = konumX + "px";
     document.getElementById("buradasinizKonum").style["top"] = konumY + "px";
 }
@@ -130,8 +64,9 @@ function sagaGit() {
         div.appendChild(img);
     };
 
-    konumX = konumX + 2.5;
-    konumY = konumY + 0;
+    // konumX = konumX + 3;
+    // konumY = konumY + 0;
+    konumDuzelt(1,"X");    
     document.getElementById("buradasinizKonum").style["left"] = konumX + "px";
     document.getElementById("buradasinizKonum").style["top"] = konumY + "px";
 }
@@ -148,8 +83,9 @@ function asagiGit() {
         div.appendChild(img);
     };
 
-    konumX = konumX + 0;
-    konumY = konumY + 2.5;
+    // konumX = konumX + 0;
+    // konumY = konumY + 3;
+    konumDuzelt(1,"Y");    
     document.getElementById("buradasinizKonum").style["left"] = konumX + "px";
     document.getElementById("buradasinizKonum").style["top"] = konumY + "px";
 }
@@ -166,8 +102,9 @@ function yukariGit() {
         div.appendChild(img);
     };
 
-    konumX = konumX + 0;
-    konumY = konumY - 2.5;
+    // konumX = konumX + 0;
+    // konumY = konumY - 3;
+    konumDuzelt(-1,"Y");    
     document.getElementById("buradasinizKonum").style["left"] = konumX + "px";
     document.getElementById("buradasinizKonum").style["top"] = konumY + "px";
 }

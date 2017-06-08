@@ -1,0 +1,18 @@
+<ion-view view-title="Yardım">
+  <ion-content >
+    <div ng-repeat="group in groups">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <i class="icon" style="color:#158da9" ng-class="isGroupShown(group) ? 'ion-ios-help' : 'ion-ios-help-outline'"></i>
+            &nbsp;
+            {{group.name}}
+          </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="item in group.items"
+                    ng-show="isGroupShown(group)" style="font-size:13px;">
+            {{item}}
+          </ion-item>
+        </div>
+  </ion-content>
+</ion-view> 

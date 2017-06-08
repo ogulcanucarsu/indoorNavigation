@@ -49,6 +49,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova','starter.
       }
     }
   })
+    .state('tab.yardim', {
+    url: '/yardim',
+    views: {
+      'view-anaSayfa': {
+        templateUrl: 'templates/yardim.html',
+        controller: 'yardimCtrl'
+      }
+    }
+  })
   
   .state('tab.dropDown', {
     url: '/dropDown/:bolumId',

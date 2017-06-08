@@ -1,18 +1,22 @@
-<ion-view view-title="Nereye Gitmek İstiyorsunuz?">
+<ion-view view-title="Sınıflar">
   <ion-content class="padding">
-    <span style="font-size: 15px;">
+    <!--<span style="font-size: 15px;">
       <b>Bulunduğunuz Yer:</b> {{bulundugunYer}}
     </span>
-    <br><br>
+    <br><br>-->
+    <div style="font-size:20px; text-align:center;">
+      <b>Bulunduğunuz Sınıf:</b><br>
+      <u>{{bulundugunYer}}</u><br><br>
+      <b>Nereye Gitmek İstiyorsunuz?</b></div> <br>
     <label class="item item-input">
   <i class="icon ion-search placeholder-icon"></i>
-  <input type="search" placeholder="Ara" ng-model="arama">
+  <input type="search" placeholder="Sınıf Ara" ng-model="arama">
 </label>
     <br>
     <ion-list>
       <ion-item class="item item-icon-right" ng-repeat="item in liste | filter:arama" type="item-text-wrap" href="#/tab/harita/{{item.s_id}}">
         {{item.s_name}}
-        <i class="icon ion-chevron-right icon-accessory" style="color:#b72131"></i>
+        <i class="icon ion-chevron-right icon-accessory" style="color:#158da9"></i>
       </ion-item>
     </ion-list>
     <!--<br>
