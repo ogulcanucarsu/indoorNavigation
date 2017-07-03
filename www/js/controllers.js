@@ -31,7 +31,7 @@ angular.module('starter.controllers', [])
 
     $scope.deneme = function (engelliModel) {
         engelliBool=engelliModel;
-        barcodeSonuc = 318;
+        barcodeSonuc = 503;
         $state.go('tab.bolumler');
     }
 
@@ -63,7 +63,7 @@ angular.module('starter.controllers', [])
 })
 .controller('haritaCtrl', function ($scope, $stateParams, Chats, $ionicScrollDelegate, $state, $cordovaBarcodeScanner,$ionicPopup) {
     var katFarkli=false;
-    //  barcodeSonuc = 201; //Telefona atarken kapat sil
+     barcodeSonuc = 503; //Telefona atarken kapat sil
     $scope.kendiKonumu = Chats.get(barcodeSonuc);    
     konumX=$scope.kendiKonumu.s_x;
     konumY=$scope.kendiKonumu.s_y;
@@ -101,7 +101,7 @@ angular.module('starter.controllers', [])
             enYakinMerdiven(hedefX,hedefY,$scope.kendiKonumu.s_kat);
         }
         
-        EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.kendiKonumu.s_kat,hedefX,katFarkli);
+        EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.kendiKonumu.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.kendiKonumu.s_kat),$scope.kendiKonumu.s_kat,hedefX,hedefY,katFarkli);
     } 
     else 
     {       
@@ -128,7 +128,7 @@ angular.module('starter.controllers', [])
             enYakinMerdiven(hedefX,hedefY,$scope.kendiKonumu.s_kat);
         }
         
-        gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.kendiKonumu.s_kat,hedefX,katFarkli); 
+        gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.kendiKonumu.s_kat),bolgeKontrol(hedefX,hedefY,$scope.kendiKonumu.s_kat),$scope.kendiKonumu.s_kat,hedefX,hedefY,katFarkli); 
     }
     
     setTimeout(function(){
@@ -229,7 +229,7 @@ angular.module('starter.controllers', [])
                                 enYakinMerdiven(hedefX,hedefY,$scope.kendiKonumu.s_kat);
                             }
                             else
-                            EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.kendiKonumu.s_kat,hedefX,katFarkli);
+                            EgidilecekBolgeler(EbolgeKontrol(konumX,konumY,$scope.kendiKonumu.s_kat),EbolgeKontrol(hedefX,hedefY,$scope.kendiKonumu.s_kat),$scope.kendiKonumu.s_kat,hedefX,hedefY,katFarkli);
                         } 
                         else 
                         {       
@@ -240,7 +240,7 @@ angular.module('starter.controllers', [])
                                 enYakinMerdiven(hedefX,hedefY,$scope.kendiKonumu.s_kat);
                             }
                             else
-                            gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.secilenYer.s_kat),bolgeKontrol(hedefX,hedefY,$scope.secilenYer.s_kat),$scope.kendiKonumu.s_kat,hedefX,katFarkli); 
+                            gidilecekBolgeler(bolgeKontrol(konumX,konumY,$scope.kendiKonumu.s_kat),bolgeKontrol(hedefX,hedefY,$scope.kendiKonumu.s_kat),$scope.kendiKonumu.s_kat,hedefX,hedefY,katFarkli); 
                         }
                         
                         setTimeout(function(){

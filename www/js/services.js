@@ -93,14 +93,14 @@ angular.module('starter.services', [])
             { s_id:203,  s_kat:2,  s_name:'Kimya Derslik 209',               s_x:969,  s_y:107}, 
             { s_id:204,  s_kat:2,  s_name:'Kimya Kule',                s_x:945,  s_y:107}, 
             { s_id:205,  s_kat:2,  s_name:'Kimya Yüksek Lisans',       s_x:996,  s_y:107}, 
-            { s_id:206,  s_kat:2,  s_name:'Kimya Lab.',                s_x:1158,  s_y:107}, 
+            { s_id:206,  s_kat:2,  s_name:'Kimya Lab.',                s_x:1159,  s_y:107}, 
             { s_id:208,  s_kat:2,  s_name:'Kimya Membran',             s_x:1308,  s_y:107}, 
             { s_id:209,  s_kat:2,  s_name:'Fiziko Kimya Lab.',         s_x:1128,  s_y:157}, 
             { s_id:211,  s_kat:2,  s_name:'Kimya İşleme Lab.',         s_x:1330,  s_y:134}, 
             { s_id:212,  s_kat:2,  s_name:'Kimya Polimer Atölyesi',          s_x:1283,  s_y:249}, 
             { s_id:213,  s_kat:2,  s_name:'Kimyasal Madde Odası',      s_x:1336,  s_y:273}, 
             { s_id:214,  s_kat:2,  s_name:'Kimya Karakterizasyon Lab.',      s_x:1393,  s_y:147}, 
-            { s_id:215,  s_kat:2,  s_name:'Kimya Reaksiyon Lab.',            s_x:1336,  s_y:228}, 
+            { s_id:215,  s_kat:2,  s_name:'Kimya Reaksiyon Lab.',            s_x:1376,  s_y:228}, 
             { s_id:216,  s_kat:2,  s_name:'Kimya Öğretim Üyeleri Ofis',s_x:1567,  s_y:118}, 
             { s_id:217,  s_kat:2,  s_name:'Kimya Bölüm Başlanlığı',    s_x:1680,  s_y:118}
             // { s_id:218,  s_kat:2,  s_name:'2. Kat Deneme',    s_x:316,  s_y:536}    ,        
@@ -377,7 +377,7 @@ function hedefFunc(rotaX, rotaY,sinifKat) {
     
     if(durdurD)
     {
-          setTimeout(function(){
+            setTimeout(function(){
             if (hedefY == rotaY && hedefX == rotaX) 
             {
                 gitBolgeIndex++;
@@ -407,7 +407,7 @@ function hedefFunc(rotaX, rotaY,sinifKat) {
             }
             else
             hedefFunc(rotaX, rotaY,sinifKat);
-        },1);
+          },1);
     }
 
 }
@@ -447,7 +447,7 @@ function hedefFunc(rotaX, rotaY,sinifKat) {
         else if(bolgeX<bolgeler[kat].x && bolgeY>bolgeler[kat].y) { return 6;}
     }
     var gitBolgeler=[];
-    function gidilecekBolgeler(kendiBolgesi,hedefBolgesi,kat,hedefX,katFarkli)
+    function gidilecekBolgeler(kendiBolgesi,hedefBolgesi,kat,hedefX,hedefY,katFarkli)
     {
         gitBolgeler=[];
         console.log(kendiBolgesi,hedefBolgesi);    
@@ -478,6 +478,11 @@ function hedefFunc(rotaX, rotaY,sinifKat) {
                     {
                         bolgeler[kat].gitKoordinat[katIndex].x=1307;
                         bolgeler[kat].gitKoordinat[katIndex].y=404;
+                    }
+                    if(hedefX>1378 && hedefY<360)  //Yukardan aşağı gelirken kısmı eksik
+                    {
+                        bolgeler[kat].gitKoordinat[katIndex].x=1330;
+                        bolgeler[kat].gitKoordinat[katIndex].y=289;
                     }
                 }
                 //  if(bolgeler[kat].gitKoordinat[katIndex].x==1314 && bolgeler[kat].gitKoordinat[katIndex].y==365)
@@ -605,7 +610,7 @@ function hedefFunc(rotaX, rotaY,sinifKat) {
         //Kat 3 asansor koordinatlar
 
         //Kat 2 asansor koordinatlar
-            merdivenListeKat2.push({ merdivenAdi: 'asansor', x1: 860, y1: 109 });
+            merdivenListeKat2.push({ merdivenAdi: 'asansor', x1: 860, y1: 107 });
             merdivenListeKat2.push({ merdivenAdi: 'jeoFizikGirisMerdiven', x1: 312, y1: 494 });
             merdivenListeKat2.push({ son: 'son' });
         //Kat 2 asansor koordinatlar
